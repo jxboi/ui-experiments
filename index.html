@@ -73,6 +73,41 @@
         line-height: 1;
         color: #888;
       }
+      .versions {
+        list-style: none;
+        margin: 20px 0 0;
+        padding: 0;
+      }
+      .versions li {
+        border-top: 1px solid #ddd;
+      }
+      .version-link {
+        display: block;
+        padding: 16px 0;
+        color: inherit;
+        text-decoration: none;
+      }
+      .version-link:hover .version-label {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .version-link:focus-visible {
+        outline: 2px solid #111;
+        outline-offset: 2px;
+      }
+      .version-label {
+        font-size: 15px;
+        line-height: 1.4;
+        font-weight: 600;
+        color: #111;
+      }
+      .version-description, .version-score {
+        display: block;
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #555;
+      }
       @media (max-width: 640px) {
         .wrap { padding: 40px 16px 56px; }
         h1 { font-size: 28px; }
@@ -93,11 +128,26 @@
           <p>A sidebar component with four states — collapsed dark rail, collapsed light rail, expanded menu, and a search-focused state — with live search.</p>
           <span class="arrow" aria-hidden="true">→</span>
         </a>
-        <a class="card" href="./flowai-team-members/">
-          <h2>FlowAI Team Members</h2>
+        <section class="card" aria-labelledby="flowai-heading">
+          <h2 id="flowai-heading">FlowAI Team Members</h2>
           <p>A team members management page with a workspace sidebar, member statistics, and a searchable members table.</p>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
+          <ul class="versions">
+            <li>
+              <a class="version-link" href="./flowai-team-members/">
+                <span class="version-label">First version (one-shot)</span>
+                <span class="version-description">The original one-shot team members page.</span>
+                <span class="version-score">Opus score 7.0/10</span>
+              </a>
+            </li>
+            <li>
+              <a class="version-link" href="./flowai-team-members-iter1/">
+                <span class="version-label">Iteration 1 — Visual system and layout</span>
+                <span class="version-description">Refinements to the visual system and page layout.</span>
+                <span class="version-score">Opus score 7.4/10</span>
+              </a>
+            </li>
+          </ul>
+        </section>
       </div>
     </main>
   </body>

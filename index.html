@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="data:," />
+    <title>UI Experiments</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: #ededed;
+        color: #1a1a1a;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        min-height: 100vh;
+      }
+      .wrap {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 64px 24px 80px;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 32px;
+        line-height: 1.15;
+        font-weight: 650;
+        letter-spacing: -0.02em;
+        color: #111;
+      }
+      .cards {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .card {
+        display: block;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 24px;
+        text-decoration: none;
+        color: inherit;
+      }
+      .card:hover {
+        border-color: #c4c4c4;
+      }
+      .card:focus-visible {
+        outline: 2px solid #111;
+        outline-offset: 2px;
+      }
+      .card h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.3;
+        font-weight: 600;
+        color: #111;
+        letter-spacing: -0.01em;
+      }
+      .card p {
+        margin: 10px 0 0;
+        font-size: 15px;
+        line-height: 1.55;
+        color: #555;
+      }
+      .card .arrow {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 18px;
+        line-height: 1;
+        color: #888;
+      }
+      @media (max-width: 640px) {
+        .wrap { padding: 40px 16px 56px; }
+        h1 { font-size: 28px; }
+        .cards {
+          grid-template-columns: 1fr;
+          margin-top: 24px;
+        }
+        .card { padding: 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>UI Experiments</h1>
+      <div class="cards">
+        <a class="card" href="./interactive-sidebar/">
+          <h2>Interactive Sidebar</h2>
+          <p>A sidebar component with four states — collapsed dark rail, collapsed light rail, expanded menu, and a search-focused state — with live search.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="card" href="./flowai-team-members/">
+          <h2>FlowAI Team Members</h2>
+          <p>A team members management page with a workspace sidebar, member statistics, and a searchable members table.</p>
+          <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

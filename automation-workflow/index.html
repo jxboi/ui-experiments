@@ -9,7 +9,7 @@
 /* Reference: 1170 × 834. Rail/panel widths follow the rubric (180/310).
    Canvas coordinates are measured in the reference's 688 × 488 graph region:
    trunk x=359, branches x=212/508; node tops y=50/153/255/370. */
-:root{--rail:180px;--inspector:310px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#90909a;--input-fill:#fafafa;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
+:root{--rail:180px;--inspector:310px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#90909a;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
 *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}button,input,textarea{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion),color var(--motion),opacity var(--motion)}button{border:0;background:none}button:hover{background:#f0edf5}input:hover,textarea:hover{background:#fcfaff;border-color:#9273b0}button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--purple);outline-offset:3px}button:active{filter:brightness(.97)}button:disabled{cursor:default}::selection{background:#e5d7f7;color:#36204e}input,textarea{caret-color:var(--purple)}*{scrollbar-width:thin;scrollbar-color:#d7d0df transparent}.icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
 .app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr) var(--inspector);grid-template-rows:var(--topbar) minmax(0,1fr);height:100dvh;min-height:720px;transition:grid-template-columns 240ms var(--ease)}
 .sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:50%;background:#bda6e0;filter:blur(2px)}.icon-button{width:26px;height:26px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:12px;height:12px;color:#7a7a80}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:1px 0 3px 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:12px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;margin-bottom:4px;padding-left:7px;height:24px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:12px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#ececec;color:#29292d;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
@@ -73,13 +73,47 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
 .nav-item.section-open{background:var(--purple-wash);color:#50316f;font-weight:500;box-shadow:inset 2px 0 0 var(--purple)}.nav-item.section-open>.icon{color:var(--purple-dark)}.nav-item.section-open:hover{background:#e4d6f3;color:#50316f}.toolbar-button.section-open{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}.toolbar-button.section-open .icon{color:var(--purple-dark)}.toolbar-button.section-open:hover{background:#e4d6f3;border-color:#b795dd;color:#50316f}
 .feedback{display:flex;align-items:center;gap:10px;width:max-content}.feedback-action{min-height:24px;padding:2px 8px;border-radius:6px;font-weight:500;color:#50316f;text-decoration:underline;flex:none}.feedback.visible .feedback-action{pointer-events:auto}.feedback-action:hover{background:#e4d6f3}
 .options-reveal{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows 220ms var(--ease),opacity 180ms}.options-reveal.open{grid-template-rows:1fr;opacity:1}.options-inner{min-height:0;overflow:hidden}.options-title{margin:4px 0 4px;color:var(--muted);font-size:12px;font-weight:400;line-height:15px}.option-switch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:32px;padding:4px 6px;border-radius:7px;text-align:left}.option-switch:focus-visible{outline-offset:-2px}.switch-track{position:relative;flex:none;width:26px;height:16px;border:1px solid var(--input-edge);border-radius:8px;background:var(--input-fill);transition:background-color var(--motion),border-color var(--motion)}.switch-track:after{content:"";position:absolute;left:2px;top:2px;width:10px;height:10px;border-radius:50%;background:#6a6a70;transition:transform var(--motion),background-color var(--motion)}.option-switch[aria-checked="true"] .switch-track{background:var(--purple);border-color:var(--purple)}.option-switch[aria-checked="true"] .switch-track:after{background:#fff;transform:translateX(10px)}
-@media(max-width:760px){.editor.closing,.canvas.flow-expanded .editor.closing{height:0;min-height:0;margin-top:0;padding:0;border-width:0}.editor-body{font-size:10.5px}.code-line code{padding-left:5px;padding-right:5px}.code-line:before{flex-basis:24px}.code-lines:after{left:29px}.workspace-view{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:60dvh;z-index:16;transform:translateY(12px)}}
+@media(max-width:760px){.editor.closing,.canvas.flow-expanded .editor.closing{height:0;min-height:0;margin-top:0;padding:0;border-width:0}.code-line code{padding-left:5px;padding-right:5px}.code-line:before{flex-basis:24px}.code-lines:after{left:29px}.workspace-view{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:60dvh;z-index:16;transform:translateY(12px)}}
 
+/* A white inset highlight and shallow fill match the reference without fading the
+   #90909a boundary (3.03:1 against the surrounding #fafafa). No side accents. */
+.text-input,textarea,.select-button{background-color:var(--input-fill);background-image:linear-gradient(#fff,#fdfdfd);box-shadow:inset 0 1px 2px #29223304,inset 0 0 0 1px #fff,0 1px 1px #ffffffb3}
+.text-input:hover,textarea:hover,.select-button:hover{background-image:linear-gradient(#fff,#f5effb);border-color:#87639f}
+.select-button[aria-expanded="true"]{background-image:linear-gradient(#fff,#f5effb)}
+.help-content p{margin:0 0 8px}.help-content .option-switch{margin-top:6px}.configuration-note{font-size:12px;line-height:1.5;color:#626268;margin:6px 0 10px}
+.code-size{display:none}.editor-header .code-size{margin-left:auto}.editor-header:has(.code-size) .icon-button{margin-left:0}
+@media(min-width:761px){.editor-header:has(.code-size) .icon-button{margin-left:auto}}
+/* Stronger topology is available without altering the soft default node rings.
+   !important overrides the measured inline connector gradients, including pale stops. */
+.high-contrast-topology .connections path,.high-contrast-topology .connections line{stroke:#73737d!important}
+.high-contrast-topology .ports circle{fill:#73737d}
+.high-contrast-topology .ports .purple-dot{fill:#7442b6}
+@media(prefers-contrast:more){
+ .connections path,.connections line{stroke:#73737d!important}.ports circle{fill:#73737d}.ports .purple-dot{fill:#7442b6}
+}
+@media(forced-colors:active){
+ .app .connections path,.app .connections line{stroke:CanvasText!important;forced-color-adjust:none}
+ .app .ports circle{fill:CanvasText;forced-color-adjust:none}.app .ports .purple-dot{fill:Highlight}
+ .node,.node.selected,.node.trigger{border-color:ButtonText;box-shadow:none}
+ .node.selected{outline:2px solid Highlight;outline-offset:2px}
+ .node-icon,.node.selected .node-icon,.node.trigger .node-icon{background:ButtonFace;color:ButtonText;box-shadow:none}
+ .text-input,textarea,.select-button,.icon-button,.toolbar-button,.footer-button{border-color:ButtonText;box-shadow:none}
+ button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline-color:Highlight}
+}
+@media(max-width:760px){
+ .editor,.canvas.flow-expanded .editor{margin-left:8px;margin-right:8px;width:calc(100% - 16px)}.code-size{display:inline-flex;min-height:24px;padding:2px 5px;border:1px solid var(--line);border-radius:6px;font-size:11px;white-space:nowrap;color:#626268}
+ .code-size:hover,.code-size[aria-pressed="true"]{background:var(--purple-wash);color:#633899;border-color:#9273b0}
+ .editor.large-code .editor-body{font-size:14px;line-height:21px}.editor.large-code .code-line{min-height:21px}.editor.large-code .code-line:before{line-height:21px}
+ .panel-scroll,.inspector-footer{min-width:0}.inspector-footer{height:auto;min-height:47px;flex-wrap:wrap}
+ .feedback{width:auto;max-width:calc(100% - 24px)}#feedback-text{min-width:0}
+ .inspector,.editor-body{scroll-margin-block:12px}
+}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#workflow-canvas">Skip to workflow canvas</a>
+<a class="skip-link" href="#inspector" id="skip-inspector">Skip to node configuration</a>
 <svg class="svg-library" aria-hidden="true"><defs>
 <symbol id="i-collapse" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 4v16"/></symbol>
 <symbol id="i-company" viewBox="0 0 24 24"><path d="M3 21h18M5 21V9h7m0 12V3h7v18M8 12v1m0 3v1m7-10v1m0 3v1m0 3v1"/></symbol>
@@ -137,7 +171,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   <button class="icon-button" id="download" title="Download" aria-label="Download"><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></button>
   <button class="icon-button" id="upload" title="Upload" aria-label="Upload"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></button>
   <button class="icon-button" id="favorite" title="Favorite" aria-label="Favorite" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></button>
-  <button class="toolbar-button" id="activate" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-power"/></svg><span>Activate</span></button>
+  <button class="toolbar-button" id="activate" aria-pressed="false" aria-describedby="builder-limitation"><svg class="icon" aria-hidden="true"><use href="#i-power"/></svg><span>Activate</span></button>
   <button class="toolbar-button" id="discard"><svg class="icon" aria-hidden="true"><use href="#i-discard"/></svg>Discard Draft</button>
   <button class="toolbar-button" id="see-runs"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>See Runs</button>
   <button class="toolbar-button" id="add-node"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add a Node</button>
@@ -158,8 +192,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   <button class="add-action" id="add-action" title="Add an action" aria-label="Add an action"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
  </section>
  <section class="editor" id="editor" aria-labelledby="editor-title">
-  <header class="editor-header"><span class="code-icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><h2 class="editor-title" id="editor-title">Automation workflow</h2><button class="icon-button" id="close-editor" title="Close code editor" aria-label="Close code editor"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header>
-  <div class="editor-body" tabindex="0" role="region" aria-label="Workflow code, lines 1 through 12"><div class="code-lines">
+  <header class="editor-header"><span class="code-icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><h2 class="editor-title" id="editor-title">Automation workflow</h2><button class="code-size" id="code-size" aria-pressed="false" aria-controls="editor-code" title="Use larger code text with horizontal scrolling">Text +</button><button class="icon-button" id="close-editor" title="Close code editor" aria-label="Close code editor"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header>
+  <span class="sr-only" id="code-size-hint">On phones, Text + enlarges the code. Scroll horizontally with the arrow keys or a swipe to read long lines.</span>
+  <div class="editor-body" id="editor-code" tabindex="0" role="region" aria-label="Workflow code, lines 1 through 12" aria-describedby="code-size-hint"><div class="code-lines">
 <div class="code-line"><code><span class="token-key">const</span> psl = <span class="token-key">require</span>(<span class="token-string">'psl'</span>)</code></div>
 <div class="code-line"><code></code></div>
 <div class="code-line"><code><span class="token-key">const</span> <span class="token-variable">PERSONAL_EMAIL_DOMAINS</span> = <span class="token-key">new</span> <span class="token-type">Set</span>([</code></div>
@@ -176,9 +211,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
  </section>
  <button class="toolbar-button reopen-editor" id="reopen-editor" aria-controls="editor" hidden><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code</button>
 </main>
-<aside class="inspector" aria-labelledby="inspector-title" id="inspector">
+<aside class="inspector" aria-labelledby="inspector-title" id="inspector" tabindex="-1">
  <header class="inspector-header"><span class="agent-symbol"><svg class="icon" aria-hidden="true"><use id="panel-symbol" href="#i-sparkles"/></svg></span><h2 class="inspector-title" id="inspector-title" tabindex="-1">AI Agent</h2><div class="header-actions"><button class="icon-button" id="help" title="Help" aria-label="Help" aria-expanded="false" aria-controls="help-content"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg></button><button class="icon-button" id="close-panel" title="Close panel" aria-label="Close panel"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
- <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content">Select a node to edit its configuration. Add a Node extends the selected branch; + extends the branch beneath it. Download exports the workflow as JSON.</div></div>
+ <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content"><p>Select a node to edit its configuration. Add a Node extends the selected branch; + extends the branch beneath it. Download exports the workflow as JSON.</p><p id="builder-limitation">This static builder saves configuration locally and exports JSON. It does not execute workflows; Activate only sets the configuration status.</p><button class="option-switch" id="topology-contrast" role="switch" aria-checked="false"><span>Higher contrast connections</span><span class="switch-track" aria-hidden="true"></span></button></div></div>
  <div class="tabs" role="tablist" aria-label="AI Agent configuration"><button class="tab" id="prompt-tab" role="tab" aria-selected="true" aria-controls="prompt-panel">Prompt</button><button class="tab" id="permissions-tab" role="tab" aria-selected="false" aria-controls="permissions-panel" tabindex="-1">Permissions</button></div>
  <div class="panel-scroll">
   <section class="tab-panel" id="prompt-panel" role="tabpanel" aria-labelledby="prompt-tab">
@@ -220,6 +255,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
  let selectedId = 'agent';
  let plusAnchor = 'agent';
  let nextId = 1;
+ let initializing = true;
+ let pendingDiscard = null;
+ let discardTimer;
  let feedbackTimer;
  let feedbackAction = null;
  let outputId = 0;
@@ -246,6 +284,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   feedbackTimer = window.setTimeout(() => { $('#feedback-action').hidden = true; feedbackAction = null; },reducedMotion.matches ? 0 : 180);
  }
  function scheduleFeedbackHide(delay) {
+  if (feedbackAction?.kind === 'discard' && pendingDiscard) extendDiscardDeadline(delay);
   clearTimeout(feedbackTimer);
   feedbackTimer = window.setTimeout(hideFeedback,delay);
  }
@@ -493,8 +532,12 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   const reveal = document.createElement('div'); reveal.className = 'options-reveal'; reveal.id = 'node-options'; reveal.inert = true;
   const inner = document.createElement('div'); inner.className = 'options-inner';
   const heading = document.createElement('h3'); heading.className = 'options-title'; heading.textContent = 'Options'; inner.append(heading);
+  const note = document.createElement('p'); note.className = 'configuration-note'; note.id = 'options-note';
+  note.textContent = 'Configuration for when the workflow runs. This static builder stores these options but does not execute them.';
+  inner.append(note);
   (optionsByType[record.type] || optionsByType.action).forEach(text => {
    const toggle = document.createElement('button'); toggle.className = 'option-switch';
+   toggle.setAttribute('aria-describedby','options-note');
    toggle.setAttribute('role','switch'); toggle.setAttribute('aria-checked',String(record.settings[text] === true));
    const name = document.createElement('span'); name.textContent = text;
    const track = document.createElement('span'); track.className = 'switch-track';
@@ -511,7 +554,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   app.classList.remove('panel-closed');
   $('#inspector').inert = false;
   setPanelCue(true);
-  if (phone.matches) requestAnimationFrame(() => {
+  if (phone.matches && !initializing) requestAnimationFrame(() => {
    if (app.classList.contains('panel-closed')) return;
    $('#inspector').scrollIntoView({behavior:reducedMotion.matches ? 'instant' : 'smooth',block:'start'});
    $('#inspector-title').focus({preventScroll:true});
@@ -684,6 +727,69 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
  }
  $('#favorite').addEventListener('click',() => togglePressed($('#favorite')));
  const draftKey = 'automation-workflow-draft';
+ const discardKey = 'automation-workflow-pending-discard';
+ const contrastKey = 'automation-workflow-topology-contrast';
+ // Keep the previous saved version until the recovery interval actually ends.
+ // The deadline is absolute so a reload cannot restart the interval.
+ function persistDiscard() {
+  localStorage.setItem(discardKey,JSON.stringify(pendingDiscard));
+ }
+ function clearDiscard(removeSaved = false) {
+  clearTimeout(discardTimer);
+  if (!pendingDiscard) return;
+  try {
+   // Never erase a draft saved in the meantime, including in another tab.
+   if (removeSaved && pendingDiscard.snapshot.saved !== null && localStorage.getItem(draftKey) === pendingDiscard.snapshot.saved) localStorage.removeItem(draftKey);
+   localStorage.removeItem(discardKey);
+  } catch { /* Retained recovery data can be reconciled at the next load. */ }
+  pendingDiscard = null;
+ }
+ function expireDiscard() {
+  if (!pendingDiscard) return;
+  if (Date.now() < pendingDiscard.deadline) { armDiscard(); return; }
+  const toast = $('#feedback');
+  const interacting = toast.classList.contains('visible') && feedbackAction?.kind === 'discard' && (toast.matches(':hover') || toast.contains(document.activeElement));
+  if (interacting) { extendDiscardDeadline(8000); return; }
+  clearDiscard(true);
+  if (feedbackAction?.kind === 'discard') hideFeedback();
+ }
+ function armDiscard() {
+  clearTimeout(discardTimer);
+  if (pendingDiscard) discardTimer = window.setTimeout(expireDiscard,Math.max(0,pendingDiscard.deadline - Date.now()));
+ }
+ function extendDiscardDeadline(delay) {
+  if (!pendingDiscard) return;
+  pendingDiscard.deadline = Date.now() + delay;
+  try { persistDiscard(); } catch {}
+  armDiscard();
+ }
+ function offerDiscardUndo(focus = false) {
+  const remaining = Math.max(0,pendingDiscard.deadline - Date.now());
+  const deadline = pendingDiscard.deadline;
+  notify('Draft discarded',{kind:'discard',label:'Undo',focus,run:undoDiscard});
+  // notify's normal timer must not add time when recovering after reload.
+  pendingDiscard.deadline = deadline;
+  try { persistDiscard(); } catch {}
+  armDiscard();
+  clearTimeout(feedbackTimer);
+  feedbackTimer = window.setTimeout(expireDiscard,remaining);
+ }
+ function setTopologyContrast(enabled) {
+  app.classList.toggle('high-contrast-topology',enabled);
+  $('#topology-contrast').setAttribute('aria-checked',String(enabled));
+ }
+ $('#topology-contrast').addEventListener('click',() => {
+  const enabled = $('#topology-contrast').getAttribute('aria-checked') !== 'true';
+  setTopologyContrast(enabled);
+  try { localStorage.setItem(contrastKey,String(enabled)); } catch {}
+ });
+ $('#code-size').addEventListener('click',() => {
+  const large = $('#editor').classList.toggle('large-code');
+  $('#code-size').setAttribute('aria-pressed',String(large));
+  $('#code-size').textContent = large ? 'Text −' : 'Text +';
+  $('#code-size').title = large ? 'Fit code text to the phone width' : 'Use larger code text with horizontal scrolling';
+ });
+ $('#skip-inspector').addEventListener('click',event => { event.preventDefault(); revealPanel(true); });
  function workflowData() {
   captureAI();
   return {
@@ -766,10 +872,10 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   Tasks:() => ({summary:'Tasks assigned by workflow actions are listed here.',columns:['Task','Due','Assignee'],empty:'No tasks yet.'}),
   Notes:() => ({summary:'Notes attached to workflow records are listed here.',columns:['Title','Author','Updated'],empty:'No notes yet.'}),
   Dashboards:() => ({summary:'Dashboards that report on this workspace are listed here.',columns:['Name','Widgets','Updated'],empty:'No dashboards yet.'}),
-  'Workflow runs':() => ({summary:`This workflow is ${workflowStatus().toLowerCase()}. ` + (workflowStatus() === 'Active' ? 'Runs appear here as records are created.' : 'Activate it to start recording runs.'),columns:['Run','Status','Started'],empty:'No runs yet.'}),
+  'Workflow runs':() => ({summary:'This static builder configures workflows but does not execute them. Activate sets configuration status only.',columns:['Run','Status','Started'],empty:'Nothing has run yet. Run history requires an execution service.'}),
   'Workflow versions':() => ({summary:'Save a Draft stores the version you can return to after a reload.',columns:['Version','Status','Actions'],rows:[['Current',workflowStatus(),String(actionCount())],...savedVersionRow()]}),
   Settings:() => ({summary:'Current settings for this workflow.',columns:['Setting','Value'],rows:[['Name','Automation Workflow'],['Status',workflowStatus()],['Favorite',$('#favorite').getAttribute('aria-pressed') === 'true' ? 'Yes' : 'No'],['Actions',String(actionCount())]]}),
-  Documentation:() => ({summary:'Select a node to edit its configuration.',columns:['Control','What it does'],rows:[['Add a Node','Extends the selected branch'],['+','Extends the branch above it'],['Download','Exports the workflow as JSON'],['Upload','Imports a downloaded JSON file'],['Save a Draft','Keeps your changes after a reload'],['Discard Draft','Resets the workflow, with Undo']]})
+  Documentation:() => ({summary:'Select a node to edit its configuration.',columns:['Control','What it does'],rows:[['Add a Node','Extends the selected branch'],['+','Extends the branch above it'],['Download','Exports the workflow as JSON'],['Upload','Imports a downloaded JSON file'],['Save a Draft','Keeps your changes after a reload'],['Discard Draft','Resets the workflow; Undo survives reload during the recovery interval'],['Activate','Sets configuration status; this static builder does not execute workflows']]})
  };
  const workspaceView = $('#workspace-view');
  let sectionOpener;
@@ -888,6 +994,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
  });
  $('#activate').addEventListener('click',() => {
   setActive($('#activate').getAttribute('aria-pressed') !== 'true');
+  notify(workflowStatus() + ' configuration. This static builder does not execute workflows.');
  });
  function addNode(anchorId) {
   captureAI();
@@ -918,21 +1025,32 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
    editorClosed:$('#editor').classList.contains('closing'),
    panelClosed:app.classList.contains('panel-closed')
   };
+  const previousPending = pendingDiscard;
+  pendingDiscard = {version:1,snapshot,deadline:Date.now() + 8000};
+  try { persistDiscard(); }
+  catch {
+   pendingDiscard = previousPending;
+   notify('Discard could not be saved. Download the workflow to keep your changes.');
+   return;
+  }
+  armDiscard();
   // Do not copy the discarded AI form back over the fresh initial record.
   resetFlow(); selectedId = '';
   setActive(false);
   $('#favorite').setAttribute('aria-pressed','false');
   setHelp(false); closeSection(false);
-  try { localStorage.removeItem(draftKey); } catch {}
   $('#option').setAttribute('aria-pressed','false');
   showEditor(false); selectNode(getRecord('agent')); trackLayout();
   $('.canvas').scrollTop = 0; $('.panel-scroll').scrollTop = 0;
   // Keyboard activation reports detail 0; move focus so Undo is one key away.
-  notify('Draft discarded',{label:'Undo',focus:event.detail === 0,run:() => undoDiscard(snapshot)});
+  offerDiscardUndo(event.detail === 0);
  });
- function undoDiscard(snapshot) {
+ function undoDiscard() {
+  if (!pendingDiscard) return;
+  const {snapshot} = pendingDiscard;
   restoreWorkflow(snapshot.workflow);
-  try { if (snapshot.saved !== null) localStorage.setItem(draftKey,snapshot.saved); } catch {}
+  // The saved draft is still intact; recovery must not overwrite a newer save.
+  clearDiscard();
   setHelp(snapshot.help);
   if (snapshot.editorClosed) hideEditor();
   if (snapshot.panelClosed) closePanel();
@@ -940,9 +1058,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   notify('Draft restored');
  }
  $('#feedback-action').addEventListener('click',() => feedbackAction?.run());
- $('#feedback').addEventListener('pointerenter',() => { if (feedbackAction) clearTimeout(feedbackTimer); });
+ $('#feedback').addEventListener('pointerenter',() => { if (feedbackAction) { clearTimeout(feedbackTimer); if (feedbackAction.kind === 'discard') extendDiscardDeadline(8000); } });
  $('#feedback').addEventListener('pointerleave',() => { if (feedbackAction && !$('#feedback').contains(document.activeElement)) scheduleFeedbackHide(4000); });
- $('#feedback').addEventListener('focusin',() => { if (feedbackAction) clearTimeout(feedbackTimer); });
+ $('#feedback').addEventListener('focusin',() => { if (feedbackAction) { clearTimeout(feedbackTimer); if (feedbackAction.kind === 'discard') extendDiscardDeadline(8000); } });
  $('#feedback').addEventListener('focusout',() => { if (feedbackAction) scheduleFeedbackHide(4000); });
  document.addEventListener('keydown',event => {
   if (event.key === 'Escape' && $('#feedback').contains(document.activeElement)) { $('#discard').focus(); hideFeedback(); }
@@ -951,6 +1069,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   captureAI();
   try { localStorage.setItem(draftKey,JSON.stringify(workflowData())); }
   catch { notify('Draft could not be saved. Download the workflow to keep your changes.'); return; }
+  clearDiscard();
   $('#save-draft').classList.add('saved'); notify('Draft saved');
   window.setTimeout(() => $('#save-draft').classList.remove('saved'),1000);
  });
@@ -983,9 +1102,23 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
  resetFlow();
  renderConfiguration(getRecord('agent'));
  try {
-  const saved = localStorage.getItem(draftKey);
-  if (saved) restoreWorkflow(JSON.parse(saved));
+  const recovery = JSON.parse(localStorage.getItem(discardKey) || 'null');
+  if (recovery?.version === 1 && recovery.snapshot?.workflow && Number.isFinite(recovery.deadline)) {
+   pendingDiscard = recovery;
+   if (recovery.deadline > Date.now()) offerDiscardUndo();
+   else clearDiscard(true);
+  } else if (recovery) localStorage.removeItem(discardKey);
+  // A pending discard reloads the reset canvas, with Undo for the remaining time.
+  if (!pendingDiscard) {
+   const saved = localStorage.getItem(draftKey);
+   if (saved) restoreWorkflow(JSON.parse(saved));
+  }
+  setTopologyContrast(localStorage.getItem(contrastKey) === 'true');
  } catch { notify('Saved draft could not be restored.'); }
+ // Refresh the absolute deadline before leaving while Undo has keyboard focus.
+ window.addEventListener('pagehide',() => {
+  if (pendingDiscard && $('#feedback').contains(document.activeElement)) extendDiscardDeadline(8000);
+ });
  const graphObserver = new ResizeObserver(() => { layoutFlow(); });
  graphObserver.observe(graph);
  // Breakpoint changes also alter node heights and inspector layout.
@@ -995,6 +1128,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outlin
   if (sectionTitle) positionSection();
  });
  syncSidebarCue();
+ initializing = false;
 })();
 </script>
 </body>

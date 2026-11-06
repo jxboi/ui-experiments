@@ -6,17 +6,17 @@
 <meta name="color-scheme" content="light">
 <title>Automation Workflow</title>
 <style>
-/* Reference: 1170 × 834. Rail/panel widths follow the rubric (180/310).
+/* Reference: 1170 × 834. Rail/panel widths follow the screenshot (192/290).
    Canvas coordinates are measured in the reference's 688 × 488 graph region:
    trunk x=359, branches x=212/508; node tops y=50/153/255/370. */
-:root{--rail:180px;--inspector:310px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#d4d4da;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
+:root{--rail:192px;--inspector:290px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#d4d4da;--field-edge:#e8e8eb;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
 *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}button,input,textarea{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion),color var(--motion),opacity var(--motion)}button{border:0;background:none}button:hover{background:#f0edf5}input:hover,textarea:hover{background:#fcfaff;border-color:#9273b0}:where(button,input,textarea,select,[tabindex]):focus-visible{outline:2px solid var(--purple);outline-offset:-2px}button:active{filter:brightness(.97)}button:disabled{cursor:default}::selection{background:#e5d7f7;color:#36204e}input,textarea{caret-color:var(--purple)}*{scrollbar-width:thin;scrollbar-color:#d7d0df transparent}.icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
 .app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr) var(--inspector);grid-template-rows:var(--topbar) minmax(0,1fr);height:100dvh;min-height:720px;transition:grid-template-columns 240ms var(--ease)}
-.sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:50%;background:#bda6e0;filter:blur(2px)}.icon-button{width:26px;height:26px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:12px;height:12px;color:#7a7a80;stroke-width:1.2}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:1px 0 3px 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:12px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;margin-bottom:4px;padding-left:7px;height:24px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:12px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#ececec;color:#36363b;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
-.topbar{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 14px;border-bottom:1px solid var(--line);background:#fafafa;min-width:0;z-index:3}.breadcrumb{display:flex;align-items:baseline;gap:4px;white-space:nowrap;font-size:11.5px;min-width:0;margin:0;font-weight:500}.breadcrumb .crumb,.breadcrumb .count{color:var(--muted)}.breadcrumb strong{font-weight:500}.toolbar{display:flex;align-items:center;gap:5px;flex:none}.toolbar-button,.footer-button{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid #e6e6e9;background:#fff;box-shadow:0 1px 2px #23212b04;border-radius:8px;height:26px;padding:0 7px;color:#68686e;white-space:nowrap;font-size:11.5px}.toolbar-button .icon{width:12px;height:12px;color:#818188}.toolbar-button:hover,.footer-button:hover,.icon-button:hover{background:#f2edf9;border-color:#cbb6e7;color:#633899}.toolbar .icon-button{border-radius:9px}.toolbar .close-button{margin-left:5px;color:#b5474e}.toolbar-button[aria-pressed="true"],.icon-button[aria-pressed="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
-.canvas{position:relative;display:flex;flex-direction:column;grid-column:2;grid-row:2;min-width:0;overflow:auto;background-color:var(--ground);background-image:radial-gradient(circle,#d9d9e0 .65px,transparent .8px);background-size:15px 15px;background-position:7px 7px}.draft{position:absolute;right:16px;top:19px;z-index:1;padding:4px 9px;border-radius:6px;background:#faf3c7;color:#675022;font-size:11.5px;line-height:14px}.graph{height:492px;flex:none;position:relative;width:100%;isolation:isolate;transition:height 240ms var(--ease)}.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.connections path,.connections line{fill:none;stroke:#c9c9ce;stroke-width:2;vector-effect:non-scaling-stroke}.connections .dashed{stroke-dasharray:2 3}.node{position:absolute;display:flex;align-items:center;gap:10px;left:52.18023%;transform:translateX(-50%);width:168px;height:52px;border-radius:17px;border:1px solid var(--node-edge);background:var(--node-fill);box-shadow:0 0 0 3px var(--node-ring);padding:9px 12px;text-align:left;transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}.node:hover{border-color:#9273b0;background:#f3eef9;box-shadow:0 0 0 3px #e8ddf36b}.node.trigger{top:50px;background:var(--purple-wash);border-color:var(--selected-edge);box-shadow:0 0 0 3px var(--selected-ring)}.node.update{top:153px}.node.condition{top:255px;width:142px}.node.agent{top:370px;left:30.81395%}.node.empty{top:370px;left:73.83721%}.node.selected{border-color:var(--selected-edge);background:var(--purple-wash);box-shadow:0 0 0 3px var(--selected-ring)}.node.selected:hover{border-color:var(--purple);background:#eae0f7}.node-icon{width:32px;height:32px;display:grid;place-items:center;background:#e5e5e7;border-radius:11px;color:#77777e;flex:none}.node-icon .icon{height:19px;width:19px;stroke-width:1.35}.trigger .node-icon,.agent .node-icon{background:var(--purple);color:#fff;box-shadow:0 1px 3px #5b328f26}.node-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}.node-kind{font-size:11.5px;line-height:13px;color:var(--muted)}.node-name{font-size:12px;line-height:14px;font-weight:500}.node.empty{background:var(--node-fill)}.node.empty:hover{background:#f3eef9}.node.selected.empty{background:var(--purple-wash)}.node.selected.empty:hover{background:#eae0f7}.empty .node-name{color:#6b6b72;font-weight:400}.branch-label{position:absolute;top:317px;transform:translateX(-50%);border:1px solid #dfdfe4;background:#f7f7f8;border-radius:5px;min-width:29px;line-height:16px;text-align:center;font-size:10px;color:#3d3d43}.branch-label.if{left:27.32558%;background:#f2ebfb;border-color:#d9c8ee;color:#4d376b}.branch-label.else{left:77.32558%}.add-action{position:absolute;left:30.81395%;top:454px;transform:translateX(-50%);width:27px;height:27px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:#77777e}.add-action .icon{height:13px;width:13px}.add-action:hover{border-color:var(--purple);background:var(--purple-wash);color:var(--purple)}
-.editor{position:relative;flex:none;margin:auto 32px 9px;height:282px;min-height:282px;background:white;border:1px solid #ededf0;border-radius:15px;padding:0 5px 5px;box-shadow:0 1px 3px #24202c08;display:flex;flex-direction:column;overflow:hidden;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity var(--motion),visibility 0s}.editor.closing{height:0;min-height:0;padding:0;border-width:0;opacity:0;visibility:hidden;pointer-events:none;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity var(--motion),visibility 0s var(--motion)}.editor-header{height:39px;min-height:39px;display:flex;align-items:center;gap:9px;padding:0 8px}.code-icon{width:21px;height:21px;border-radius:6px;background:#f5f5f6;display:grid;place-items:center}.code-icon .icon{width:13px;height:13px}.editor-title{font-weight:500;font-size:12px;margin:0}.editor-header .icon-button{margin-left:auto;border:0;background:transparent;width:24px;height:24px}.editor-header .icon-button:hover{background:var(--purple-wash)}.editor-body{flex:1;min-height:0;overflow:auto;border-radius:9px;background:#fafafa;padding:10px 0;font:11.5px/18px "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#51515a;counter-reset:line}.code-line{display:flex;min-height:18px;white-space:pre;counter-increment:line}.code-line:before{content:counter(line);display:block;text-align:center;flex:0 0 43px;font:10px/18px "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#737377;user-select:none}.code-line code{padding-left:10px;font:inherit;display:block;padding-right:10px;position:relative}.code-lines{position:relative;width:max-content;min-width:100%;min-height:100%}.code-lines:after{content:"";position:absolute;left:53px;top:54px;bottom:-10px;border-left:1px solid #e2e2e6;pointer-events:none}.code-line code{flex:none}.token-key{color:#16799e}.token-variable{color:#247953}.token-type{color:#297d79}.token-string{color:#c71891}
-.inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:12px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto}.header-actions .icon-button{width:24px;height:24px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:12px 13px 0;background:#f1f1f1;border-radius:9px;height:27px;flex:none;padding:1px}.tabs:before{content:"";box-sizing:border-box;position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:12px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:19px 13px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:12px}.field-label{display:block;color:var(--muted);font-size:12px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:27px;padding:4px 8px;border:1px solid var(--input-edge);background:var(--input-fill);border-radius:9px;text-align:left;font-size:12px}.select-button:hover{border-color:#9273b0;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:16px;height:16px;color:#c46c4c}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:11px;margin-bottom:11px}textarea{display:block;resize:none;width:100%;height:101px;min-height:85px;padding:7px;border:1px solid var(--input-edge);border-radius:10px;background:var(--input-fill);line-height:14px;font-size:12px}.output-label{margin-bottom:5px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:12px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:9px}.output-fields .field{margin-bottom:12px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:27px;border:1px solid var(--input-edge);border-radius:9px;padding:4px 7px;background:var(--input-fill);font-size:12px;min-width:0}.instruction-input{font-size:11.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:11.5px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:10px 8px 7px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:11.5px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:700}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
+.sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:50%;background:#bda6e0;filter:blur(2px)}.icon-button{width:28px;height:28px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:14px;height:14px;margin:0 -1px;color:#85858b;stroke-width:1.3}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:0 0 0 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:14px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;padding-left:7px;height:28px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:14px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#ececec;color:#36363b;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
+.topbar{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 14px;border-bottom:1px solid var(--line);background:#fafafa;min-width:0;z-index:3}.breadcrumb{display:flex;align-items:baseline;gap:4px;white-space:nowrap;font-size:11.5px;min-width:0;margin:0;font-weight:500}.breadcrumb .crumb,.breadcrumb .count{color:var(--muted)}.breadcrumb strong{font-weight:500}.toolbar{display:flex;align-items:center;gap:5px;flex:none}.toolbar-button,.footer-button{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid #e6e6e9;background:#fff;box-shadow:0 1px 2px #23212b04;border-radius:8px;height:28px;padding:0 7px;color:#68686e;white-space:nowrap;font-size:11.5px}.toolbar-button .icon{width:12px;height:12px;color:#818188}.toolbar-button:hover,.footer-button:hover,.icon-button:hover{background:#f2edf9;border-color:#cbb6e7;color:#633899}.toolbar .icon-button{border-radius:9px}.toolbar .close-button{margin-left:5px;color:#bf1f2c}.toolbar .close-button .icon{width:16px;height:16px;stroke-width:2.3}.toolbar-button[aria-pressed="true"],.icon-button[aria-pressed="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
+.canvas{position:relative;display:flex;flex-direction:column;grid-column:2;grid-row:2;min-width:0;min-height:0;overflow:hidden;background-color:var(--ground);background-image:radial-gradient(circle,#d9d9e0 .65px,transparent .8px);background-size:15px 15px;background-position:7px 7px}.draft{position:absolute;right:16px;top:19px;z-index:1;padding:4px 9px;border-radius:6px;background:#faf3c7;color:#675022;font-size:11.5px;line-height:14px}.graph-scroll{flex:1;min-height:0;overflow:auto;overflow-anchor:none}.graph{height:492px;flex:none;position:relative;width:100%;isolation:isolate;transition:height 240ms var(--ease)}.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.connections path,.connections line{fill:none;stroke:#c9c9ce;stroke-width:2;vector-effect:non-scaling-stroke}.connections .dashed{stroke-dasharray:2 3}.node{position:absolute;display:flex;align-items:center;gap:10px;left:52.18023%;transform:translateX(-50%);width:168px;height:52px;border-radius:17px;border:1px solid var(--node-edge);background:var(--node-fill);box-shadow:0 0 0 3px var(--node-ring);padding:9px 12px;text-align:left;transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}.node:hover{border-color:#9273b0;background:#f3eef9;box-shadow:0 0 0 3px #e8ddf36b}.node.trigger{top:50px;background:var(--purple-wash);border-color:var(--selected-edge);box-shadow:0 0 0 3px var(--selected-ring)}.node.update{top:153px}.node.condition{top:255px;width:142px}.node.agent{top:370px;left:30.81395%}.node.empty{top:370px;left:73.83721%}.node.selected{border-color:var(--selected-edge);background:var(--purple-wash);box-shadow:0 0 0 3px var(--selected-ring)}.node.selected:hover{border-color:var(--purple);background:#eae0f7}.node-icon{width:32px;height:32px;display:grid;place-items:center;background:#e5e5e7;border-radius:11px;color:#77777e;flex:none}.node-icon .icon{height:19px;width:19px;stroke-width:1.35}.trigger .node-icon,.agent .node-icon{background:var(--purple);color:#fff;box-shadow:0 1px 3px #5b328f26}.node-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}.node-kind{font-size:11.5px;line-height:13px;color:var(--muted)}.node-name{font-size:12px;line-height:14px;font-weight:400}.node.empty{background:var(--node-fill)}.node.empty:hover{background:#f3eef9}.node.selected.empty{background:var(--purple-wash)}.node.selected.empty:hover{background:#eae0f7}.empty .node-name{color:#707077;font-weight:400}.node.empty:hover .node-name{color:#6c6c73}.branch-label{position:absolute;top:317px;transform:translateX(-50%);border:1px solid #dfdfe4;background:#f7f7f8;border-radius:5px;min-width:29px;line-height:16px;text-align:center;font-size:10px;color:#3d3d43}.branch-label.if{left:27.32558%;background:#f2ebfb;border-color:#d9c8ee;color:#4d376b}.branch-label.else{left:77.32558%}.add-action{position:absolute;left:30.81395%;top:454px;transform:translateX(-50%);width:28px;height:28px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:#77777e}.add-action .icon{height:13px;width:13px}.add-action:hover{border-color:var(--purple);background:var(--purple-wash);color:var(--purple)}
+.editor{position:relative;flex:none;margin:auto 31px 9px 33px;height:282px;min-height:282px;background:white;border:1px solid #ededf0;border-radius:15px;padding:0 5px 5px;box-shadow:0 1px 3px #24202c08;display:flex;flex-direction:column;overflow:hidden;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity 260ms var(--ease),visibility 0s}.editor.closing{height:0;min-height:0;margin-bottom:0;padding:0;border-width:0;opacity:0;visibility:hidden;pointer-events:none;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity 260ms var(--ease),visibility 0s 260ms}.editor-header{height:39px;min-height:39px;display:flex;align-items:center;gap:9px;padding:0 8px}.code-icon{width:21px;height:21px;border-radius:6px;background:#f5f5f6;display:grid;place-items:center}.code-icon .icon{width:13px;height:13px}.editor-title{font-weight:500;font-size:12px;margin:0}.editor-header .icon-button{margin-left:auto;margin-right:-6px;border:0;background:transparent;width:28px;height:28px}.editor-header .icon-button:hover{background:var(--purple-wash)}.editor-code-shell{position:relative;display:flex;flex:1;min-height:0}.code-overflow{display:none;position:absolute;right:6px;bottom:4px;width:18px;height:16px;align-items:center;justify-content:center;border-radius:3px;background:#fafafa;color:#737377;pointer-events:none;z-index:3}.code-overflow .icon{width:14px;height:14px}.code-overflowing .code-overflow{display:flex}.editor-body{--code-row:18px;flex:1;min-height:0;overflow:auto;border-radius:9px;background:#fafafa;padding:10px 0;font:11.5px/var(--code-row) "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#51515a;counter-reset:line}.code-line{display:flex;min-height:var(--code-row);white-space:pre;counter-increment:line}.code-line:before{content:counter(line);display:block;text-align:center;flex:0 0 34px;position:sticky;left:0;z-index:2;background:#fafafa;font:10px/var(--code-row) "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#737377;user-select:none}.code-line code{margin-left:10px;font:inherit;display:block;padding-right:10px;position:relative}.code-lines{position:relative;width:max-content;min-width:100%;min-height:100%}.editor-code-shell{--guide-x:44px}.code-lines:after{content:"";position:absolute;left:var(--guide-x);top:calc(3 * var(--code-row));bottom:-10px;border-left:1px solid #e2e2e6;pointer-events:none}.editor-code-shell:after{content:"";position:absolute;left:calc(var(--guide-x) - var(--code-scroll,0px));top:100%;height:5px;border-left:1px solid #e2e2e6;pointer-events:none}.editor-code-shell.guide-under-gutter:after{display:none}.code-line code{flex:none}.token-key{color:#4f788f}.token-variable{color:#497b63}.token-type{color:#4f7c66}.token-string{color:#c2298f}
+.inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:12px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto;margin-right:-4px}.header-actions .icon-button{width:28px;height:28px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:10px 13px 0;background:#f1f1f1;border-radius:9px;height:30px;flex:none;padding:1px}.tabs:before{content:"";box-sizing:border-box;position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:12px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:17px 13px 16px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:9px}.field-label{display:block;color:var(--muted);font-size:12px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:28px;padding:4px 8px;border:1px solid var(--field-edge);background:var(--input-fill);border-radius:9px;text-align:left;font-size:12px}.select-button:hover{border-color:#9273b0;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:13px;height:13px;color:#d47b58}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:9px;margin-bottom:12px}textarea{display:block;resize:none;width:100%;height:100px;min-height:85px;padding:7px;border:1px solid var(--field-edge);border-radius:10px;background:var(--input-fill);line-height:14px;font-size:12px}#input-prompt{padding:7px 1px 7px 6px;letter-spacing:-.45px}.field-label.output-label{margin-bottom:6px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:12px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:8px 9px}.output-fields .field{margin-bottom:10px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:28px;border:1px solid var(--field-edge);border-radius:9px;padding:4px 7px;background:var(--input-fill);font-size:12px;min-width:0}.instruction-input{font-size:11.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:11.5px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:12px 8px 6px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:11.5px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:500}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
 .app.sidebar-collapsed{--rail:52px}.sidebar-collapsed .nav-label,.sidebar-collapsed .workflow-children:before,.sidebar-collapsed .workflow-children .nav-item:before{display:none}.sidebar-collapsed .brand-row{padding:0 13px}.sidebar-collapsed .brand{display:none}.sidebar-collapsed .navigation{padding:13px 9px}.sidebar-collapsed .nav-item{justify-content:center}.sidebar-collapsed .workflow-children{margin-left:0;padding-left:0}.sidebar-collapsed .workflow-children .nav-item{padding-left:0}.app.panel-closed{grid-template-columns:var(--rail) minmax(0,1fr) 0}.panel-closed .inspector{opacity:0;pointer-events:none;visibility:hidden;transition:opacity var(--motion),visibility 0s var(--motion)}.panel-closed .canvas{grid-column:2}
 /* Ports overlay the node edges, independently of the connector layer. */
 .connections{z-index:0}.ports{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}.ports circle{fill:#c7c7cb;transition:fill var(--motion)}.ports .purple-dot{fill:var(--purple)}
@@ -26,8 +26,16 @@
 .node.selected .node-icon{background:var(--purple);color:#fff}.node.selected .node-kind,.node.trigger .node-kind{color:#635272}.node.selected.empty .node-name{color:#503a65}.node-icon{transition:background-color var(--motion),color var(--motion)}
 .branch-label,.add-action{z-index:3}.branch-label{transition:top 240ms var(--ease)}.add-action{transition:top 240ms var(--ease),left 240ms var(--ease),background-color var(--motion),border-color var(--motion),color var(--motion)}.node.added{animation:node-in 180ms var(--ease)}@keyframes node-in{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
-/* Net zero flow height, so showing it cannot shift the bottom-anchored editor. */
-.reopen-editor{position:sticky;bottom:12px;align-self:flex-start;flex:none;margin:-38px 0 12px 32px;z-index:4;gap:5px;animation:tab-in 180ms var(--ease)}.reopen-editor .icon{width:13px;height:13px}
+/* A zero-height divider exposes the full-width scroll edge on expanded graphs,
+   including the grid beside the capped editor. It does not alter either rectangle. */
+.graph-boundary{position:relative;flex:none;height:0;z-index:3;pointer-events:none}
+.canvas.flow-expanded .graph-boundary:before{content:"";position:absolute;inset:0 0 auto;border-top:1px solid var(--input-edge);transition:opacity 260ms var(--ease)}
+/* With the editor closed the viewport runs to the canvas edge, so no rule is needed. */
+.canvas.flow-expanded:has(.editor.closing) .graph-boundary:before{opacity:0}
+
+/* The reopen control never contributes flow space, including on phones.
+   Only the editor owns the coordinated 260ms collapse/expansion. */
+.reopen-editor{position:absolute;bottom:12px;left:33px;margin:0;z-index:4;gap:5px;animation:tab-in 180ms var(--ease)}.reopen-editor .icon{width:13px;height:13px}
 .native-select{position:relative}.native-select select{appearance:none;padding-right:26px;cursor:pointer;transition:background-color var(--motion),border-color var(--motion)}.native-select>.icon{position:absolute;right:8px;top:7px;width:12px;height:12px;pointer-events:none;color:var(--muted)}
 select:hover{background:#fcfaff;border-color:#9273b0}
 .feedback{position:fixed;left:50%;bottom:20px;transform:translate(-50%,8px);z-index:20;max-width:calc(100% - 32px);padding:9px 13px;border:1px solid #d3c0ed;border-radius:9px;background:#f5effc;color:#50316f;box-shadow:0 3px 12px #30213e12;opacity:0;pointer-events:none;transition:opacity var(--motion),transform var(--motion)}.feedback.visible{opacity:1;transform:translate(-50%,0)}
@@ -35,6 +43,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 .footer-button[aria-pressed="true"],.header-actions .icon-button[aria-pressed="true"]{background:var(--purple-wash);border-color:var(--purple-line);color:var(--purple-dark)}
 .toolbar-button[aria-pressed="true"]:hover,.icon-button[aria-pressed="true"]:hover,.footer-button[aria-pressed="true"]:hover{background:#e4d6f3;border-color:#b795dd;color:#50316f}
 
+@media(min-width:1101px){.toolbar>.toolbar-button{padding-inline:5.125px}}
 /* At reference height: 48px header + 492px graph + 282px editor + 12px.
    A shorter viewport scrolls the page instead of covering workflow nodes. */
 @media(max-height:819px) and (min-width:761px){.app{height:834px;min-height:834px}}
@@ -46,18 +55,18 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  .app,.app.panel-closed{height:auto;min-height:100dvh;grid-template-columns:var(--rail) minmax(0,1fr);grid-template-rows:auto auto auto}
  .sidebar{grid-column:1;grid-row:1/-1;position:relative;z-index:15;justify-self:start;width:var(--rail);overflow:clip;transition:width 220ms var(--ease),box-shadow 220ms}.brand-row{padding:0;justify-content:center;height:48px;position:sticky;top:0;z-index:1;background:#f7f7f7}.brand{display:none}
  .navigation{padding:13px 6px;position:sticky;top:48px}.nav-label{display:none}.nav-item{height:34px;justify-content:center;padding:0}.nav-item>.icon{width:15px;height:15px}
- .workflow-children{margin:0 0 12px;padding:0}.workflow-children:before,.workflow-children .nav-item:before{display:none}.workflow-children .nav-item{height:30px;padding:0}.nav-marker{width:15px;height:15px}
+ .workflow-children{margin:0 0 12px;padding:0}.workflow-children:before,.workflow-children .nav-item:before{display:none}.workflow-children .nav-item{height:30px;padding:0;margin-bottom:2px}.nav-marker{width:15px;height:15px}
  .topbar{grid-column:2;grid-row:1;min-height:112px;display:block;padding:12px 8px 8px}.breadcrumb{font-size:11.5px;gap:3px;white-space:normal;flex-wrap:wrap;margin-bottom:10px}
- .toolbar{flex-wrap:wrap;gap:5px}.toolbar-button{height:26px;padding:0 6px;font-size:11.5px}.toolbar .close-button{margin-left:0}
- .canvas{grid-column:2;grid-row:2;overflow:hidden;padding-bottom:13px}.draft{top:13px;right:10px}.graph{height:492px}
+ .toolbar{flex-wrap:wrap;gap:5px}.toolbar-button{height:28px;padding:0 6px;font-size:11.5px}.toolbar .close-button{margin-left:0}
+ .canvas{grid-column:2;grid-row:2;overflow:hidden;padding-bottom:13px}.draft{right:10px}.graph-scroll{flex:none;height:460px;transition:height 260ms var(--ease)}.canvas{transition:padding-bottom 260ms var(--ease)}.canvas:has(.editor.closing){padding-bottom:0}.canvas:has(.editor.closing) .graph-scroll{height:473px}.graph{height:492px}
  .node{width:min(168px,calc(50% - 32px));gap:6px;padding:9px 8px;border-radius:15px;height:60px}.node.trigger,.node.update{width:176px;max-width:calc(100% - 20px)}.node.condition{width:150px}
  .node-icon{width:28px;height:30px;border-radius:9px}.node-kind{font-size:11.5px}.node-name,.node.empty .node-name{font-size:12px}.node-copy{gap:2px;white-space:normal;min-width:0}
  .node.trigger,.node.update,.node.condition{left:50%}.node[data-lane="left"]{left:25%}.node[data-lane="right"]{left:75%}.node[data-lane="trunk"]{left:50%}
  .branch-label.if{left:18%}.branch-label.else{left:82%}.add-action{left:25%}
- .editor,.canvas.flow-expanded .editor{position:relative;inset:auto;margin:8px 10px 0;width:calc(100% - 20px);height:282px;min-height:282px;max-height:none;border-radius:12px}.editor-body{font-size:11.5px}.code-line:before{flex-basis:28px;font-size:10px}.code-lines:after{left:38px}
+ .editor,.canvas.flow-expanded .editor{position:relative;inset:auto;margin:8px 10px 0;width:calc(100% - 20px);height:282px;min-height:282px;max-height:none;border-radius:12px}.editor-body{font-size:11.5px}.code-line:before{flex-basis:28px;font-size:10px}.editor-code-shell{--guide-x:38px}
  .inspector{grid-column:2;grid-row:3;border-top:1px solid var(--line);border-left:0;overflow:visible;scroll-margin-top:0}.inspector-header{height:40px}.panel-scroll{overflow:visible;flex:1}.panel-closed .inspector{display:none}
  .nav-drawer .sidebar{width:224px;box-shadow:4px 0 18px #29223322}.nav-drawer .brand-row{padding:0 11px;justify-content:space-between}.nav-drawer .brand{display:flex}.nav-drawer .navigation{padding:13px 10px}.nav-drawer .nav-label{display:inline}.nav-drawer .nav-item{justify-content:flex-start;padding:0 8px}.nav-drawer .workflow-children{margin:0 0 6px 14px}.nav-drawer .workflow-children .nav-item{padding-left:8px}
- .reopen-editor{position:static;margin:16px 0 0 10px}
+ .reopen-editor{left:8px}
 }
 #favorite[aria-pressed="true"] .icon{fill:currentColor}
 .help-content{margin:12px 13px 0;padding:9px;border:1px solid var(--purple-line);border-radius:9px;background:var(--purple-wash);color:#503a65;line-height:1.5;animation:tab-in var(--motion) var(--ease)}
@@ -79,11 +88,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 @media(min-width:761px){.app:not(.sidebar-collapsed) .navigation>.nav-item{width:calc(100% + 4px);margin-left:-4px;padding-left:5px}}
 .draft{transition:opacity 220ms,transform 220ms var(--ease)}.draft.inactive{opacity:0;transform:translateY(-5px);pointer-events:none}
 .node.exiting{opacity:0;transform:translateX(-50%) scale(.94);pointer-events:none;transition:opacity 180ms,transform 180ms var(--ease)}
-.workspace-view{position:fixed;left:var(--view-left,192px);top:var(--view-top,60px);z-index:12;width:var(--view-width,300px);max-height:calc(100dvh - 24px);overflow:auto;padding:12px;background:#fff;border:1px solid #dcdce2;border-radius:11px;box-shadow:0 6px 20px #29223324;opacity:0;transform:translateY(4px);transition:opacity 180ms var(--ease),transform 180ms var(--ease)}.workspace-view.open{opacity:1;transform:translateY(0)}.workspace-view header{display:flex;align-items:center;justify-content:space-between;gap:8px}.workspace-view h2{font-size:13px;font-weight:500;margin:0}.workspace-view header .icon-button{border:0;background:transparent;width:24px;height:24px}.workspace-view header .icon-button:hover{background:var(--purple-wash)}.workspace-view p{color:#626268;line-height:1.5;margin:8px 0 0}.view-table{width:100%;margin-top:10px;border-collapse:collapse;font-size:11.5px;line-height:15px}.view-table th{padding:0 8px 5px 0;border-bottom:1px solid var(--line);color:var(--muted);font-weight:400;text-align:left}.view-table td{padding:7px 8px 7px 0;border-bottom:1px solid #f2f2f4;vertical-align:top}.view-table td[colspan]{padding:14px 0;text-align:center;color:#626268;border-bottom:0}
+.workspace-view{position:fixed;left:var(--view-left,192px);top:var(--view-top,60px);z-index:12;width:var(--view-width,300px);max-height:calc(100dvh - 24px);overflow:auto;padding:12px;background:#fff;border:1px solid #dcdce2;border-radius:11px;box-shadow:0 6px 20px #29223324;opacity:0;transform:translateY(4px);transition:opacity 180ms var(--ease),transform 180ms var(--ease)}.workspace-view.open{opacity:1;transform:translateY(0)}.workspace-view header{display:flex;align-items:center;justify-content:space-between;gap:8px}.workspace-view h2{font-size:13px;font-weight:500;margin:0}.workspace-view header .icon-button{border:0;background:transparent;width:28px;height:28px}.workspace-view header .icon-button:hover{background:var(--purple-wash)}.workspace-view p{color:#626268;line-height:1.5;margin:8px 0 0}.view-table{width:100%;margin-top:10px;border-collapse:collapse;font-size:11.5px;line-height:15px}.view-table th{padding:0 8px 5px 0;border-bottom:1px solid var(--line);color:var(--muted);font-weight:400;text-align:left}.view-table td{padding:7px 8px 7px 0;border-bottom:1px solid #f2f2f4;vertical-align:top}.view-table td[colspan]{padding:14px 0;text-align:center;color:#626268;border-bottom:0}
 .navigation:has(.nav-item.section-open) .nav-item.active:not(:hover){background:transparent}.nav-item.section-open{background:var(--purple-wash);color:#50316f;font-weight:500}.nav-item.section-open>.icon{color:var(--purple-dark)}.nav-item.section-open:hover{background:#e4d6f3;color:#50316f}.toolbar-button.section-open{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}.toolbar-button.section-open .icon{color:var(--purple-dark)}.toolbar-button.section-open:hover{background:#e4d6f3;border-color:#b795dd;color:#50316f}
-.feedback{display:flex;flex-direction:column;gap:4px;width:max-content}.feedback.has-action.visible{pointer-events:auto}.feedback-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.feedback-action{min-height:24px;padding:2px 8px;border-radius:6px;font-weight:500;color:#50316f;text-decoration:underline;flex:none}.feedback-action:hover{background:#e4d6f3}
+.feedback{display:flex;flex-direction:column;gap:4px;width:max-content}.feedback.has-action.visible{pointer-events:auto}.feedback-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.feedback-action{min-height:28px;padding:2px 8px;border-radius:6px;font-weight:500;color:#50316f;text-decoration:underline;flex:none}.feedback-action:hover{background:#e4d6f3}
 .options-reveal{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows 220ms var(--ease),opacity 180ms}.options-reveal.open{grid-template-rows:1fr;opacity:1}.options-inner{min-height:0;overflow:hidden}.options-title{margin:4px 0 4px;color:var(--muted);font-size:12px;font-weight:400;line-height:15px}.option-switch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:32px;padding:4px 6px;border-radius:7px;text-align:left}.switch-track{position:relative;flex:none;width:26px;height:16px;border:1px solid #90909a;border-radius:8px;background:var(--input-fill);transition:background-color var(--motion),border-color var(--motion)}.switch-track:after{content:"";position:absolute;left:2px;top:2px;width:10px;height:10px;border-radius:50%;background:#6a6a70;transition:transform var(--motion),background-color var(--motion)}.option-switch[aria-checked="true"] .switch-track{background:var(--purple);border-color:var(--purple)}.option-switch[aria-checked="true"] .switch-track:after{background:#fff;transform:translateX(10px)}
-@media(max-width:760px){.editor.closing,.canvas.flow-expanded .editor.closing{height:0;min-height:0;margin-top:0;padding:0;border-width:0}.code-line code{padding-left:5px;padding-right:5px}.code-line:before{flex-basis:24px}.code-lines:after{left:29px}.workspace-view{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:60dvh;z-index:16;transform:translateY(12px)}}
+@media(max-width:760px){.editor.closing,.canvas.flow-expanded .editor.closing{height:0;min-height:0;margin-top:0;padding:0;border-width:0}.code-line code{margin-left:5px;padding-right:5px}.code-line:before{flex-basis:24px}.editor-code-shell{--guide-x:29px}.workspace-view{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:60dvh;z-index:16;transform:translateY(12px)}}
 
 /* Soft edge and 255 to 248 fill, as measured in the reference. Hover, focus, the Help
    switch, prefers-contrast and forced colours all carry the strong boundary. */
@@ -92,15 +101,15 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 .select-button[aria-expanded="true"]{background-image:linear-gradient(#fff,#f5effb)}
 .help-content p{margin:0 0 8px}.help-content .option-switch{margin-top:6px}.configuration-note{font-size:12px;line-height:1.5;color:#626268;margin:6px 0 10px}
 .code-size{display:none}.editor-header .code-size{margin-left:auto}.editor-header:has(.code-size) .icon-button{margin-left:0}
-@media(min-width:761px){.editor-header:has(.code-size) .icon-button{margin-left:auto}}
+@media(min-width:761px){.editor-header:has(.code-size) .icon-button{margin-left:auto}.editor{max-width:624px}}
 /* Stronger topology and field edges are available without altering the soft defaults.
    !important overrides the measured inline connector gradients, including pale stops. */
-.high-contrast-topology{--input-edge:#73737d}
+.high-contrast-topology{--input-edge:#73737d;--field-edge:#73737d}
 .high-contrast-topology .connections path,.high-contrast-topology .connections line{stroke:#73737d!important}
 .high-contrast-topology .ports circle{fill:#73737d}
 .high-contrast-topology .ports .purple-dot{fill:#7442b6}
 @media(prefers-contrast:more){
- :root{--input-edge:#73737d}
+ :root{--input-edge:#73737d;--field-edge:#73737d}
  .connections path,.connections line{stroke:#73737d!important}.ports circle{fill:#73737d}.ports .purple-dot{fill:#7442b6}
 }
 @media(forced-colors:active){
@@ -114,13 +123,33 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline-color:Highlight}
 }
 @media(max-width:760px){
- .editor,.canvas.flow-expanded .editor{margin-left:8px;margin-right:8px;width:calc(100% - 16px)}.code-size{display:inline-flex;min-height:24px;padding:2px 5px;border:1px solid var(--line);border-radius:6px;font-size:11px;white-space:nowrap;color:#626268}
+ .editor,.canvas.flow-expanded .editor{margin-left:8px;margin-right:8px;width:calc(100% - 16px)}.code-size{display:inline-flex;align-items:center;min-height:28px;padding:2px 5px;border:1px solid var(--line);border-radius:6px;font-size:11px;white-space:nowrap;color:#626268}
+ .editor-header{gap:5px;padding-inline:6px}.editor-title{white-space:nowrap;flex-shrink:0}.code-icon,.code-size{flex-shrink:0}
  .code-size:hover,.code-size[aria-pressed="true"]{background:var(--purple-wash);color:#633899;border-color:#9273b0}
- .editor.large-code .editor-body{font-size:14px;line-height:21px}.editor.large-code .code-line{min-height:21px}.editor.large-code .code-line:before{line-height:21px}
+ .code-line:before{font-size:11px}
+ .editor.large-code .editor-body{--code-row:21px;font-size:14px}
+ .editor.large-code .code-line:before{font-size:12px}
  .panel-scroll,.inspector-footer{min-width:0}.inspector-footer{height:auto;min-height:47px;flex-wrap:wrap}
  .feedback{max-width:calc(100% - 24px)}.feedback-row>span{min-width:0}
  .inspector,.editor-body{scroll-margin-block:12px}
 }
+@media(max-width:360px){.instruction-input{font-size:11px;letter-spacing:-.3px;padding-inline:4px}}
+/* Three columns: the fields follow the reference's 14px left and 5px right insets. */
+@media(min-width:761px){
+ .inspector-header{padding-right:5px}.header-actions{margin-right:0}
+ .tabs{margin-left:14px;margin-right:5px}.panel-scroll{padding-left:14px;padding-right:5px}
+ .inspector-footer{padding-left:14px;padding-right:5px}.help-reveal.open .help-content,.help-content{margin-left:14px;margin-right:5px}
+}
+/* Up to 1100px the lanes reach Draft and Code. A 40px strip holds both, and the graph
+   scrolls below it. The negative margin keeps the graph's resting position unchanged. */
+@media(max-width:1100px){
+ .graph-scroll{margin-top:40px}.graph{margin-top:-40px}
+ .draft{top:9px}
+ .reopen-editor{top:6px;bottom:auto;scroll-margin-block:12px}
+ .canvas:before{content:"";position:absolute;inset:40px 0 auto;z-index:3;border-top:1px solid var(--input-edge);opacity:0;pointer-events:none;transition:opacity var(--motion)}
+ .canvas.graph-scrolled:before{opacity:1}
+}
+@media(min-width:761px) and (max-width:1100px){.reopen-editor{left:20px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -160,7 +189,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 </defs></svg>
 <div class="app" id="app">
 <aside class="sidebar" aria-label="Workspace sidebar">
- <div class="brand-row"><div class="brand"><span class="brand-mark"></span><span class="brand-wordmark" aria-hidden="true"><svg viewBox="0 0 56 16"><path d="M1 4h7v9H1zm11 0h5v9h-5zm9 0h8v9h-8zm12 0h6v9h-6zm10 0h10v9H43z" fill="currentColor"/></svg></span></div><button class="icon-button collapse-button" aria-label="Collapse sidebar" aria-expanded="true" id="collapse-sidebar"><svg class="icon" aria-hidden="true"><use href="#i-collapse"/></svg></button></div>
+ <div class="brand-row"><div class="brand"><span class="brand-mark"></span><span class="brand-wordmark" aria-hidden="true"><svg viewBox="0 0 56 16"><path d="M1 4h7v9H1zm11 0h5v9h-5zm9 0h8v9h-8zm12 0h6v9h-6zm10 0h10v9H43z" fill="currentColor"/></svg></span></div><button class="icon-button collapse-button" title="Sidebar navigation" aria-label="Sidebar navigation" aria-expanded="true" id="collapse-sidebar"><svg class="icon" aria-hidden="true"><use href="#i-collapse"/></svg></button></div>
  <nav class="navigation" aria-label="Main navigation">
   <button class="nav-item" title="Companies"><svg class="icon" aria-hidden="true"><use href="#i-company"/></svg><span class="nav-label">Companies</span></button>
   <button class="nav-item" title="People"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg><span class="nav-label">People</span></button>
@@ -188,11 +217,12 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   <button class="toolbar-button" id="discard"><svg class="icon" aria-hidden="true"><use href="#i-discard"/></svg>Discard Draft</button>
   <button class="toolbar-button" id="see-runs"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>See Runs</button>
   <button class="toolbar-button" id="add-node"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add a Node</button>
-  <button class="icon-button close-button" id="close-panel-top" title="Close node configuration" aria-label="Close node configuration" aria-expanded="true" aria-controls="inspector"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  <button class="icon-button close-button" id="close-panel-top" title="Node configuration" aria-label="Node configuration" aria-expanded="true" aria-controls="inspector"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
  </div>
 </header>
 <main class="canvas" id="workflow-canvas" tabindex="-1" aria-label="Automation workflow canvas">
  <span class="draft" id="draft-badge">Draft</span>
+ <div class="graph-scroll" id="graph-scroll" role="region" aria-label="Scrollable workflow graph" tabindex="0">
  <section class="graph" aria-label="Workflow nodes">
   <svg class="connections" aria-hidden="true"></svg>
   <svg class="ports" aria-hidden="true"></svg>
@@ -204,10 +234,12 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   <button class="node empty" data-title="Add an action" data-icon="i-toggle" aria-pressed="false"><span class="node-icon"><svg class="icon" aria-hidden="true"><use href="#i-toggle"/></svg></span><span class="node-copy"><span class="node-kind">Action</span> <span class="node-name">Add an action</span></span></button>
   <button class="add-action" id="add-action" title="Add an action" aria-label="Add an action"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
  </section>
+ </div>
+ <div class="graph-boundary" aria-hidden="true"></div>
  <section class="editor" id="editor" aria-labelledby="editor-title">
-  <header class="editor-header"><span class="code-icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><h2 class="editor-title" id="editor-title">Automation workflow</h2><button class="code-size" id="code-size" aria-pressed="false" aria-controls="editor-code" title="Use larger code text with horizontal scrolling">Text +</button><button class="icon-button" id="close-editor" title="Close code editor" aria-label="Close code editor"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header>
+  <header class="editor-header"><span class="code-icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><h2 class="editor-title" id="editor-title">Automation workflow</h2><button class="code-size" id="code-size" aria-label="Text + / Text −, larger code text" aria-pressed="false" aria-controls="editor-code" title="Use larger code text with horizontal scrolling">Text +</button><button class="icon-button" id="close-editor" title="Close code editor" aria-label="Close code editor"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header>
   <span class="sr-only" id="code-size-hint">On phones, Text + enlarges the code. Scroll horizontally with the arrow keys or a swipe to read long lines.</span>
-  <div class="editor-body" id="editor-code" tabindex="0" role="region" aria-label="Workflow code, lines 1 through 12" aria-describedby="code-size-hint"><div class="code-lines">
+  <div class="editor-code-shell"><div class="editor-body" id="editor-code" tabindex="0" role="region" aria-label="Workflow code, lines 1 through 12" aria-describedby="code-size-hint"><div class="code-lines">
 <div class="code-line"><code><span class="token-key">const</span> psl = <span class="token-key">require</span>(<span class="token-string">'psl'</span>)</code></div>
 <div class="code-line"><code></code></div>
 <div class="code-line"><code><span class="token-key">const</span> <span class="token-variable">PERSONAL_EMAIL_DOMAINS</span> = <span class="token-key">new</span> <span class="token-type">Set</span>([</code></div>
@@ -220,9 +252,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 <div class="code-line"><code>     <span class="token-string">'googlemail.com'</span>,</code></div>
 <div class="code-line"><code>     <span class="token-string">'hotmail.fr'</span>,</code></div>
 <div class="code-line"><code>     <span class="token-string">'icloud.com'</span>,</code></div>
-  </div></div>
+  </div></div><span class="code-overflow" aria-hidden="true" title="Scroll code horizontally"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12h16M8 8l-4 4 4 4m8-8 4 4-4 4"/></svg></span></div>
  </section>
- <button class="toolbar-button reopen-editor" id="reopen-editor" aria-controls="editor" hidden><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code</button>
+ <button class="toolbar-button reopen-editor" id="reopen-editor" aria-label="Show workflow code" aria-expanded="true" aria-controls="editor" hidden><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code</button>
 </main>
 <aside class="inspector" aria-labelledby="inspector-title" id="inspector" tabindex="-1">
  <header class="inspector-header"><span class="agent-symbol"><svg class="icon" aria-hidden="true"><use id="panel-symbol" href="#i-sparkles"/></svg></span><h2 class="inspector-title" id="inspector-title" tabindex="-1">AI Agent</h2><div class="header-actions"><button class="icon-button" id="help" title="Help" aria-label="Help" aria-expanded="false" aria-controls="help-content"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg></button><button class="icon-button" id="close-panel" title="Close panel" aria-label="Close panel"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
@@ -248,7 +280,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 </div>
 <input type="file" id="workflow-upload" accept=".json,application/json" hidden>
 <aside class="workspace-view" id="workspace-view" aria-labelledby="workspace-view-title" hidden><header><h2 id="workspace-view-title"></h2><button class="icon-button" id="close-workspace-view" aria-label="Close section"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header><div id="workspace-view-content"></div></aside>
-<div class="feedback" id="feedback" role="status" aria-live="polite"><div id="feedback-note" hidden></div><div class="feedback-row" id="feedback-row-2" hidden><span id="feedback-text-2"></span><button class="feedback-action" id="feedback-action-2" hidden>Undo</button></div><div class="feedback-row"><span id="feedback-text"></span><button class="feedback-action" id="feedback-action" hidden>Undo</button></div></div>
+<div class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true"><div class="feedback-row"><span id="feedback-text"></span><button class="feedback-action" id="feedback-action" hidden>Undo</button></div></div>
 <script>
 (() => {
  'use strict';
@@ -276,7 +308,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  let toastMessage = '';
  let messageTimer;
  let toastClearTimer;
- let slotOffers = [];
+ let feedbackKind = '';
+ let feedbackOffer = null;
  let outputId = 0;
  const getRecord = id => records.find(record => record.id === id);
  const selectedRecord = () => getRecord(selectedId);
@@ -285,46 +318,46 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   $$('.select-button').forEach(button => button.setAttribute('aria-expanded','false'));
   $$('.dropdown-menu').forEach(menu => { menu.hidden = true; });
  };
- // An Undo offer lasts as long as its recovery record. Messages show beside it, never instead of it.
- function notify(message) {
-  toastMessage = message;
+ // A new notification replaces the visible toast. Recovery records retain their
+ // own deadlines; replacing their toast does not commit or discard recovery data.
+ function replaceFeedback(kind,message = '') {
   clearTimeout(messageTimer);
-  messageTimer = window.setTimeout(() => { toastMessage = ''; renderFeedback(); },2400);
+  feedbackKind = kind;
+  toastMessage = message;
   renderFeedback();
+ }
+ function notify(message) {
+  replaceFeedback('message',message);
+  messageTimer = window.setTimeout(() => { toastMessage = ''; renderFeedback(); },2400);
  }
  function setText(element,text) {
   if (element.textContent !== text) element.textContent = text;
  }
- function fillFeedback(offers) {
-  slotOffers = offers;
-  setText($('#feedback-text'),offers[0]?.text ?? toastMessage);
-  setText($('#feedback-text-2'),offers[1]?.text ?? '');
-  setText($('#feedback-note'),offers.length ? toastMessage : '');
-  $('#feedback-note').hidden = !offers.length || !toastMessage;
-  $('#feedback-row-2').hidden = !offers[1];
-  [$('#feedback-action'),$('#feedback-action-2')].forEach((button,index) => {
-   button.hidden = !offers[index];
-   if (offers[index]) button.setAttribute('aria-label',offers[index].name);
-  });
+ function fillFeedback(offer) {
+  feedbackOffer = offer;
+  setText($('#feedback-text'),offer?.text ?? toastMessage);
+  const button = $('#feedback-action');
+  button.hidden = !offer;
+  if (offer) button.setAttribute('aria-label',offer.name);
  }
  function renderFeedback() {
   const toast = $('#feedback');
-  const offers = [];
-  if (pendingDiscard) offers.push({name:'Undo discard',text:'Draft discarded',run:undoDiscard,home:$('#discard')});
-  if (pendingDelete) offers.push({name:'Undo delete',text:pendingDelete.text,run:undoDelete,home:$('#delete')});
+  let offer = null;
+  if (feedbackKind === 'discard' && pendingDiscard) offer = {name:'Undo discard',text:'Draft discarded',run:undoDiscard,home:$('#discard')};
+  if (feedbackKind === 'delete' && pendingDelete) offer = {name:'Undo delete',text:pendingDelete.text,run:undoDelete,home:$('#delete')};
   clearTimeout(toastClearTimer);
-  if (!offers.length && !toastMessage) {
+  if (!offer && !toastMessage) {
    toast.classList.remove('visible','has-action');
    // Keep the words on screen until the fade has finished.
-   toastClearTimer = window.setTimeout(() => fillFeedback([]),reducedMotion.matches ? 0 : 180);
+   toastClearTimer = window.setTimeout(() => fillFeedback(null),reducedMotion.matches ? 0 : 180);
    return;
   }
-  fillFeedback(offers);
+  fillFeedback(offer);
   toast.classList.add('visible');
-  toast.classList.toggle('has-action',offers.length > 0);
+  toast.classList.toggle('has-action',!!offer);
   placeFeedback();
  }
- // Rise above the inspector footer whenever both occupy the same part of the screen.
+ // Keep feedback above the footer and clear of the visible phone selection.
  function placeFeedback() {
   const toast = $('#feedback');
   if (!toast.classList.contains('visible')) return;
@@ -333,7 +366,26 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const half = toast.offsetWidth / 2;
   const shared = footer.width > 0 && footer.left < middle + half && footer.right > middle - half && footer.top < window.innerHeight && footer.bottom > 0;
   const lift = shared ? window.innerHeight - footer.top + 8 : 0;
-  toast.style.bottom = Math.max(20,Math.min(lift,window.innerHeight - toast.offsetHeight - 8)) + 'px';
+  const height = toast.offsetHeight;
+  const viewportHeight = window.innerHeight;
+  let bottom = Math.max(20,Math.min(lift,viewportHeight - height - 8));
+  if (phone.matches) {
+   const selected = selectedRecord()?.node.getBoundingClientRect();
+   if (selected) {
+    // Only the portion inside the graph scroller can cover, or be covered by, feedback.
+    const graphBox = $('#graph-scroll').getBoundingClientRect();
+    const visibleTop = Math.max(0,selected.top,graphBox.top);
+    const visibleBottom = Math.min(viewportHeight,selected.bottom,graphBox.bottom);
+    const sharedNode = selected.left < middle + half && selected.right > middle - half;
+    const overlaps = viewportHeight - bottom - height < visibleBottom + 12 && viewportHeight - bottom > visibleTop - 12;
+    if (sharedNode && visibleTop < visibleBottom && overlaps) {
+     const above = viewportHeight - visibleTop + 12;
+     const below = viewportHeight - visibleBottom - height - 12;
+     bottom = above <= viewportHeight - height - 8 ? above : Math.max(8,below);
+    }
+   }
+  }
+  toast.style.bottom = bottom + 'px';
  }
  const feedbackInUse = () => $('#feedback').classList.contains('visible') && ($('#feedback').matches(':hover') || $('#feedback').contains(document.activeElement));
  function makeRecord(node,id,type,lane) {
@@ -470,6 +522,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    shape(svg,'path',{d:`M${a.x} ${a.y+a.h}V${add.offsetTop}`,class:'dashed'});
    dot(a.x,a.y+a.h,false);
   }
+  placeFeedback();
  }
  // Sample the animated top positions too; connectors never jump ahead of the nodes.
  let trackingUntil = 0;
@@ -707,29 +760,72 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
 
  $('#output-toggle').addEventListener('click',() => setOutput($('#output-toggle').getAttribute('aria-expanded') !== 'true'));
+ // Cancel deferred focus/scroll on close or reversal; never act on a stale expansion.
+ let cancelEditorReveal = () => {};
  function showEditor(focus = true) {
-  $('#editor').inert = false;
-  $('#editor').classList.remove('closing'); $('#reopen-editor').hidden = true;
-  if (focus) {
-   $('#editor').scrollIntoView({behavior:reducedMotion.matches ? 'instant' : 'smooth',block:'nearest'});
-   $('#close-editor').focus({preventScroll:true});
+  cancelEditorReveal();
+  const editor = $('#editor');
+  editor.inert = false;
+  editor.classList.remove('closing'); $('#reopen-editor').hidden = true;
+  $('#reopen-editor').setAttribute('aria-expanded','true');
+  saveViewPrefs();
+  const close = $('#close-editor');
+  if (focus) close.focus({preventScroll:true});
+  let timer;
+  const finish = () => {
+   cancelEditorReveal();
+   if (editor.classList.contains('closing')) return;
+   // Measure only after expansion: the editor has now reduced the graph viewport.
+   // This also runs for non-focusing restores, and uses the same reveal as Add a Node.
+   const record = selectedRecord() || records[records.length - 1];
+   if (record) revealAddedNode(record,focus ? $('.editor-header') : null);
+  };
+  const onEnd = event => {
+   if (event.target === editor && event.propertyName === 'height') finish();
+  };
+  cancelEditorReveal = () => {
+   clearTimeout(timer); editor.removeEventListener('transitionend',onEnd);
+   cancelEditorReveal = () => {};
+  };
+  if (reducedMotion.matches) finish();
+  else {
+   editor.addEventListener('transitionend',onEnd);
+   // Also covers reopening an already-open panel, which emits no transitionend.
+   timer = window.setTimeout(finish,280);
   }
  }
  $('#close-editor').addEventListener('click',() => {
   hideEditor();
-  $('#reopen-editor').focus({preventScroll:true});
-  // Height and opacity reverse smoothly, including an interrupted close.
+  const reopen = $('#reopen-editor');
+  reopen.focus({preventScroll:true});
+  // On narrow layouts Code sits at the top of the canvas, possibly above a scrolled page.
+  const reopenBox = reopen.getBoundingClientRect();
+  if (reopenBox.top < 0 || reopenBox.bottom > window.innerHeight) reopen.scrollIntoView({block:'nearest',behavior:reducedMotion.matches ? 'instant' : 'smooth'});
+  // Height, opacity, padding and the phone margin share the same 260ms duration.
  });
  function hideEditor() {
+  cancelEditorReveal();
   $('#editor').classList.add('closing'); $('#editor').inert = true;
   $('#reopen-editor').hidden = false;
+  $('#reopen-editor').setAttribute('aria-expanded','false');
+  saveViewPrefs();
  }
  $('#reopen-editor').addEventListener('click',() => showEditor());
+ function updateCodeOverflow() {
+  const code = $('#editor-code');
+  $('#editor').classList.toggle('code-overflowing',code.scrollWidth > code.clientWidth + 1);
+ }
+ new ResizeObserver(updateCodeOverflow).observe($('#editor-code'));
+ // The stub below the code box follows the guide line, and hides once it passes under the gutter.
+ $('#editor-code').addEventListener('scroll',event => {
+  const shell = event.target.parentElement;
+  const {scrollLeft} = event.target;
+  shell.style.setProperty('--code-scroll',scrollLeft + 'px');
+  shell.classList.toggle('guide-under-gutter',scrollLeft > (phone.matches ? 5 : 10));
+ },{passive:true});
  function setPanelCue(open) {
   const button = $('#close-panel-top');
   button.setAttribute('aria-expanded',String(open));
-  button.setAttribute('aria-label',open ? 'Close node configuration' : 'Open node configuration');
-  button.title = open ? 'Close node configuration' : 'Open node configuration';
   button.querySelector('use').setAttribute('href',open ? '#i-close' : '#i-collapse');
  }
  function closePanel() {
@@ -748,10 +844,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function syncSidebarCue() {
   const button = $('#collapse-sidebar');
   const expanded = phone.matches ? app.classList.contains('nav-drawer') : !app.classList.contains('sidebar-collapsed');
-  const label = phone.matches ? (expanded ? 'Close navigation' : 'Open navigation') : (expanded ? 'Collapse sidebar' : 'Expand sidebar');
   button.setAttribute('aria-expanded',String(expanded));
-  button.setAttribute('aria-label',label);
-  button.title = label;
  }
  function setDrawer(open) {
   app.classList.toggle('nav-drawer',open);
@@ -797,6 +890,18 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  const draftKey = 'automation-workflow-draft';
  const discardKey = 'automation-workflow-pending-discard';
  const contrastKey = 'automation-workflow-topology-contrast';
+ const viewKey = 'automation-workflow-view';
+ // Written on every change, independent of Save a Draft, and restored on load.
+ function saveViewPrefs() {
+  const editor = $('#editor');
+  try { localStorage.setItem(viewKey,JSON.stringify({editorClosed:editor.classList.contains('closing'),largeCode:editor.classList.contains('large-code')})); } catch {}
+ }
+ function readViewPrefs() {
+  try {
+   const view = JSON.parse(localStorage.getItem(viewKey));
+   return view && typeof view === 'object' ? view : null;
+  } catch { return null; }
+ }
  // Keep the previous saved version until the recovery interval actually ends.
  // The deadline is absolute so a reload cannot restart the interval.
  function persistDiscard() {
@@ -832,7 +937,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function offerDiscardUndo(focus = false) {
   // Showing the offer must not add time when recovering after reload.
   armDiscard();
-  renderFeedback();
+  replaceFeedback('discard');
   if (focus) requestAnimationFrame(() => $('#feedback-action').focus({preventScroll:true}));
  }
  function setTopologyContrast(enabled) {
@@ -844,12 +949,15 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   setTopologyContrast(enabled);
   try { localStorage.setItem(contrastKey,String(enabled)); } catch {}
  });
- $('#code-size').addEventListener('click',() => {
-  const large = $('#editor').classList.toggle('large-code');
+ function setCodeSize(large) {
+  $('#editor').classList.toggle('large-code',large);
   $('#code-size').setAttribute('aria-pressed',String(large));
   $('#code-size').textContent = large ? 'Text −' : 'Text +';
   $('#code-size').title = large ? 'Fit code text to the phone width' : 'Use larger code text with horizontal scrolling';
- });
+  updateCodeOverflow();
+  saveViewPrefs();
+ }
+ $('#code-size').addEventListener('click',() => setCodeSize(!$('#editor').classList.contains('large-code')));
  $('#skip-inspector').addEventListener('click',event => { event.preventDefault(); revealPanel(true,true); });
  function workflowData() {
   captureAI();
@@ -857,7 +965,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    name:'Automation Workflow',
    nodes:records.map(({id,type,lane,settings,ai}) => ({id,type,lane,settings,ai})),
    edges,active:$('#activate').getAttribute('aria-pressed') === 'true',
-   selectedId,plusAnchor,favorite:$('#favorite').getAttribute('aria-pressed') === 'true'
+   selectedId,plusAnchor,favorite:$('#favorite').getAttribute('aria-pressed') === 'true',
+   editorClosed:$('#editor').classList.contains('closing'),
+   largeCode:$('#editor').classList.contains('large-code')
   };
  }
  function setActive(active) {
@@ -904,6 +1014,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   selectedId = ''; plusAnchor = ids.has(data.plusAnchor) ? data.plusAnchor : (records.find(record => record.type === 'agent') || records[0]).id;
   nextId = Math.max(0,...records.map(record => Number(record.id.match(/^action-(\d+)$/)?.[1]) || 0)) + 1;
   setActive(!!data.active); $('#favorite').setAttribute('aria-pressed',String(!!data.favorite));
+  setCodeSize(!!data.largeCode);
+  if (data.editorClosed) hideEditor(); else showEditor(false);
   layoutFlow(); selectNode(getRecord(data.selectedId) || records.find(record => record.type === 'agent') || records[0]); trackLayout();
  }
  $('#download').addEventListener('click',() => {
@@ -1058,6 +1170,43 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   setActive($('#activate').getAttribute('aria-pressed') !== 'true');
   notify(workflowStatus() + ' configuration. This static builder does not execute workflows.');
  });
+ // Scrolls the graph so the editor stays pinned. Commits the final graph height first:
+ // mid-transition, scrollHeight would clamp the scroll short of the new node.
+ function revealAddedNode(record,editorHeader = null) {
+  const scroller = $('#graph-scroll');
+  graph.style.transition = 'none';
+  void graph.offsetHeight;
+  graph.style.transition = '';
+  const {node} = record;
+  const behavior = reducedMotion.matches ? 'instant' : 'smooth';
+  const box = scroller.getBoundingClientRect();
+  const graphBox = graph.getBoundingClientRect();
+  const top = graphBox.top - box.top + scroller.scrollTop + parseFloat(node.style.top);
+  const bottom = top + node.offsetHeight + (plusAnchor === record.id ? 32 + $('#add-action').offsetHeight : 0);
+  const left = graphBox.left - box.left + scroller.scrollLeft + node.offsetLeft - node.offsetWidth / 2;
+  let targetTop = scroller.scrollTop, targetLeft = scroller.scrollLeft;
+  if (bottom + 12 > targetTop + scroller.clientHeight) targetTop = bottom + 12 - scroller.clientHeight;
+  if (top - 12 < targetTop) targetTop = top - 12;
+  if (left + node.offsetWidth + 12 > targetLeft + scroller.clientWidth) targetLeft = left + node.offsetWidth + 12 - scroller.clientWidth;
+  if (left - 12 < targetLeft) targetLeft = left - 12;
+  scroller.scrollTo({top:targetTop,left:targetLeft,behavior});
+  // Short and phone viewports scroll the page as well.
+  const nodeTop = box.top + top - Math.max(0,Math.min(targetTop,scroller.scrollHeight - scroller.clientHeight));
+  let visibleTop = nodeTop, visibleBottom = nodeTop + node.offsetHeight;
+  if (editorHeader) {
+   const header = editorHeader.getBoundingClientRect();
+   const combinedTop = Math.min(visibleTop,header.top);
+   const combinedBottom = Math.max(visibleBottom,header.bottom);
+   // Use one page scroll for both targets when they fit, so smooth scrolls cannot
+   // compete on phones. Otherwise the selected node takes priority.
+   if (combinedBottom - combinedTop + 24 <= window.innerHeight) {
+    visibleTop = combinedTop; visibleBottom = combinedBottom;
+   }
+  }
+  const overflow = visibleBottom + 12 - window.innerHeight;
+  if (overflow > 0) window.scrollBy({top:overflow,behavior});
+  else if (visibleTop < 12) window.scrollBy({top:visibleTop - 12,behavior});
+ }
  function addNode(anchorId) {
   captureAI();
   const end = terminalFrom(anchorId);
@@ -1068,7 +1217,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   graph.insertBefore(node,$('#add-action'));
   if (end.id === plusAnchor) plusAnchor = record.id;
   layoutFlow(); selectNode(record); trackLayout();
-  node.scrollIntoView({behavior:reducedMotion.matches ? 'instant' : 'smooth',block:'nearest'});
+  revealAddedNode(record);
   notify('Action added');
  }
  $('#add-node').addEventListener('click',() => addNode(selectedId));
@@ -1103,7 +1252,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   setHelp(false); closeSection(false);
   $('#option').setAttribute('aria-pressed','false');
   showEditor(false); selectNode(getRecord('agent')); trackLayout();
-  $('.canvas').scrollTop = 0; $('.panel-scroll').scrollTop = 0;
+  $('#graph-scroll').scrollTop = 0; $('.panel-scroll').scrollTop = 0;
   // Keyboard activation reports detail 0; move focus so Undo is one key away.
   offerDiscardUndo(event.detail === 0);
  });
@@ -1114,13 +1263,12 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   // The saved draft is still intact; recovery must not overwrite a newer save.
   clearDiscard();
   setHelp(snapshot.help);
-  if (snapshot.editorClosed) hideEditor();
+  if (snapshot.editorClosed) hideEditor(); else showEditor(false);
   if (snapshot.panelClosed) closePanel();
   $('#discard').focus({preventScroll:true});
   notify('Draft restored');
  }
- $('#feedback-action').addEventListener('click',() => slotOffers[0]?.run());
- $('#feedback-action-2').addEventListener('click',() => slotOffers[1]?.run());
+ $('#feedback-action').addEventListener('click',() => feedbackOffer?.run());
  // Reading or reaching for an offer buys time; the offers expire on their own otherwise.
  function holdOffers() {
   extendDiscardDeadline(8000);
@@ -1128,11 +1276,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
  $('#feedback').addEventListener('pointerenter',holdOffers);
  $('#feedback').addEventListener('focusin',holdOffers);
- window.addEventListener('scroll',placeFeedback,{passive:true});
+ window.addEventListener('scroll',placeFeedback,{passive:true,capture:true});
  window.addEventListener('resize',placeFeedback);
  document.addEventListener('keydown',event => {
   if (event.key !== 'Escape' || !$('#feedback').contains(document.activeElement)) return;
-  slotOffers[document.activeElement === $('#feedback-action-2') ? 1 : 0]?.home.focus();
+  feedbackOffer?.home.focus();
  });
  $('#save-draft').addEventListener('click',() => {
   captureAI();
@@ -1200,9 +1348,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const gone = snapshot.records.filter(item => !records.includes(item)).length;
   pendingDelete = {snapshot,target:record,deadline:Date.now() + 8000,text:branched ? 'If / Else deleted. If path kept.' : gone > 1 ? gone + ' actions deleted' : 'Action deleted'};
   armDelete();
-  renderFeedback();
+  replaceFeedback('delete');
   // Keyboard activation reports detail 0; move focus so Undo is one key away.
-  if (event.detail === 0) requestAnimationFrame(() => $(pendingDiscard ? '#feedback-action-2' : '#feedback-action').focus({preventScroll:true}));
+  if (event.detail === 0) requestAnimationFrame(() => $('#feedback-action').focus({preventScroll:true}));
  });
  function undoDelete() {
   if (!pendingDelete) return;
@@ -1234,6 +1382,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
  resetFlow();
  renderConfiguration(getRecord('agent'));
+ // Read first: restoring a draft writes its own view back. No collapse animation on load.
+ const savedView = readViewPrefs();
+ $('#editor').style.transition = 'none';
  try {
   const recovery = JSON.parse(localStorage.getItem(discardKey) || 'null');
   if (recovery?.version === 1 && recovery.snapshot?.workflow && Number.isFinite(recovery.deadline)) {
@@ -1248,16 +1399,52 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   }
   setTopologyContrast(localStorage.getItem(contrastKey) === 'true');
  } catch { notify('Saved draft could not be restored.'); }
+ if (savedView) {
+  setCodeSize(savedView.largeCode === true);
+  if (savedView.editorClosed === true) hideEditor(); else showEditor(false);
+ }
+ void $('#editor').offsetHeight;
+ $('#editor').style.transition = '';
  // Refresh the absolute deadline before leaving while Undo has keyboard focus.
  window.addEventListener('pagehide',() => {
   if (pendingDiscard && $('#feedback').contains(document.activeElement)) extendDiscardDeadline(8000);
  });
  const graphObserver = new ResizeObserver(() => { layoutFlow(); });
  graphObserver.observe(graph);
+ // A narrower/shorter graph can hide the selection even without adding a node.
+ // Debounce the coordinated editor/column transitions before measuring final bounds.
+ let viewportRevealTimer;
+ function scheduleViewportReveal() {
+  clearTimeout(viewportRevealTimer);
+  viewportRevealTimer = window.setTimeout(() => {
+   const record = selectedRecord() || records[records.length - 1];
+   if (record) revealAddedNode(record);
+  },280);
+ }
+ let previousGraphSize;
+ const graphViewportObserver = new ResizeObserver(([entry]) => {
+  const size = entry.contentRect;
+  if (previousGraphSize && (size.width < previousGraphSize.width || size.height < previousGraphSize.height)) scheduleViewportReveal();
+  previousGraphSize = {width:size.width,height:size.height};
+ });
+ graphViewportObserver.observe($('#graph-scroll'));
+ $('#graph-scroll').addEventListener('scroll',event => $('.canvas').classList.toggle('graph-scrolled',event.target.scrollTop > 0),{passive:true});
+ let previousWindowSize = {width:window.innerWidth,height:window.innerHeight};
+ window.addEventListener('resize',() => {
+  if (window.innerWidth < previousWindowSize.width || window.innerHeight < previousWindowSize.height) scheduleViewportReveal();
+  previousWindowSize = {width:window.innerWidth,height:window.innerHeight};
+ });
  // Breakpoint changes also alter node heights and inspector layout.
  for (const breakpoint of [phone,compactRail]) breakpoint.addEventListener('change',() => {
   fitRailToWidth(); layoutFlow(); trackLayout();
   if (sectionTitle) positionSection();
+ });
+ // Run after the other Escape dismissals so focus finishes on Code, even when
+ // Escape started on the page, a node, the sidebar, or the inspector.
+ document.addEventListener('keydown',event => {
+  if (event.key !== 'Escape' || $('#editor').classList.contains('closing')) return;
+  event.preventDefault();
+  $('#close-editor').click();
  });
  fitRailToWidth();
 })();

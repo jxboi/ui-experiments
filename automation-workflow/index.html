@@ -9,14 +9,14 @@
 /* Reference: 1170 × 834. Rail/panel widths follow the rubric (180/310).
    Canvas coordinates are measured in the reference's 688 × 488 graph region:
    trunk x=359, branches x=212/508; node tops y=50/153/255/370. */
-:root{--rail:180px;--inspector:310px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#d3c0ed;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
-*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}button,input,textarea{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion),color var(--motion),opacity var(--motion)}button{border:0;background:none}button:hover{background:#f0edf5}input:hover,textarea:hover{background:#fcfaff;border-color:#c7b6de}button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--purple);outline-offset:3px}button:active{filter:brightness(.97)}button:disabled{cursor:default}::selection{background:#e5d7f7;color:#36204e}input,textarea{caret-color:var(--purple)}*{scrollbar-width:thin;scrollbar-color:#d7d0df transparent}.icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
+:root{--rail:180px;--inspector:310px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
+*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}button,input,textarea{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion),color var(--motion),opacity var(--motion)}button{border:0;background:none}button:hover{background:#f0edf5}input:hover,textarea:hover{background:#fcfaff;border-color:#9273b0}button:focus-visible,input:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--purple);outline-offset:3px}button:active{filter:brightness(.97)}button:disabled{cursor:default}::selection{background:#e5d7f7;color:#36204e}input,textarea{caret-color:var(--purple)}*{scrollbar-width:thin;scrollbar-color:#d7d0df transparent}.icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
 .app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr) var(--inspector);grid-template-rows:var(--topbar) minmax(0,1fr);height:100dvh;min-height:720px;transition:grid-template-columns 240ms var(--ease)}
-.sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:7px;background:#a892ca;display:grid;place-items:center;color:#f7f4fb;filter:blur(1.5px);opacity:.7}.brand-mark .icon{width:14px;height:14px;stroke-width:1.5}.icon-button{width:26px;height:26px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:12px;height:12px;color:#7a7a80}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:1px 0 12px 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:12px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;margin-bottom:4px;padding-left:7px;height:24px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:12px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#eeeef0;color:#29292d;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
+.sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:7px;background:#a892ca;display:grid;place-items:center;color:#f7f4fb;filter:blur(1.5px);opacity:.7}.brand-mark .icon{width:14px;height:14px;stroke-width:1.5}.icon-button{width:26px;height:26px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:12px;height:12px;color:#7a7a80}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:1px 0 3px 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:12px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;margin-bottom:4px;padding-left:7px;height:24px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:12px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#eeeef0;color:#29292d;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
 .topbar{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 14px;border-bottom:1px solid var(--line);background:#fdfdfd;min-width:0;z-index:3}.breadcrumb{display:flex;align-items:baseline;gap:4px;white-space:nowrap;font-size:11.5px;min-width:0;margin:0;font-weight:500}.breadcrumb .crumb,.breadcrumb .count{color:var(--muted)}.breadcrumb strong{font-weight:500}.toolbar{display:flex;align-items:center;gap:5px;flex:none}.toolbar-button,.footer-button{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid #e6e6e9;background:#fff;box-shadow:0 1px 2px #23212b04;border-radius:8px;height:26px;padding:0 7px;color:#68686e;white-space:nowrap;font-size:11.5px}.toolbar-button .icon{width:12px;height:12px;color:#818188}.toolbar-button:hover,.footer-button:hover,.icon-button:hover{background:#f2edf9;border-color:#cbb6e7;color:#633899}.toolbar .icon-button{border-radius:9px}.toolbar .close-button{margin-left:5px;color:#b5474e}.toolbar-button[aria-pressed="true"],.icon-button[aria-pressed="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
-.canvas{position:relative;display:flex;flex-direction:column;grid-column:2;grid-row:2;min-width:0;overflow:auto;background-color:var(--ground);background-image:radial-gradient(circle,#d9d9e0 .65px,transparent .8px);background-size:15px 15px;background-position:7px 7px}.draft{position:absolute;right:16px;top:19px;z-index:1;padding:4px 9px;border-radius:6px;background:#f8efc6;color:#675022;font-size:11.5px;line-height:14px}.graph{height:492px;flex:none;position:relative;width:100%;isolation:isolate;transition:height 240ms var(--ease)}.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.connections path,.connections line{fill:none;stroke:#c9c9ce;stroke-width:2.5;vector-effect:non-scaling-stroke}.connections .accent{stroke:var(--purple)}.connections .dashed{stroke-dasharray:2 3}.node{position:absolute;display:flex;align-items:center;gap:10px;left:52.18023%;transform:translateX(-50%);width:168px;height:52px;border-radius:17px;border:1px solid #dedee2;background:#f9f9fa;box-shadow:0 0 0 2px #fafafa,0 0 0 3px #e7e7ebbd;padding:9px 12px;text-align:left;transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}.node:hover{border-color:#bfa6dd;background:#f3eef9;box-shadow:0 0 0 3px #e8ddf36b}.node.trigger{top:50px;background:var(--purple-wash);border-color:var(--purple-line);box-shadow:0 0 0 2px #f5f0fa,0 0 0 4px #dfd1f38c}.node.update{top:153px}.node.condition{top:255px;width:142px}.node.agent{top:370px;left:30.81395%}.node.empty{top:370px;left:73.83721%}.node.selected{border-color:var(--purple-line);background:var(--purple-wash);box-shadow:0 0 0 2px #f5f0fa,0 0 0 4px #dfd1f38c}.node.selected:hover{border-color:var(--purple);background:#eae0f7}.node-icon{width:32px;height:32px;display:grid;place-items:center;background:#e5e5e7;border-radius:11px;color:#77777e;flex:none}.node-icon .icon{height:19px;width:19px;stroke-width:1.5}.trigger .node-icon,.agent .node-icon{background:var(--purple);color:#fff;box-shadow:0 1px 3px #5b328f26}.node-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}.node-kind{font-size:11.5px;line-height:13px;color:var(--muted)}.node-name{font-size:12px;line-height:14px;font-weight:500}.empty .node-name{color:#6a6a70}.branch-label{position:absolute;top:317px;transform:translateX(-50%);border:1px solid #dfdfe4;background:#f7f7f8;border-radius:5px;min-width:29px;line-height:16px;text-align:center;font-size:10px;color:#3d3d43}.branch-label.if{left:27.32558%;background:#f2ebfb;border-color:#d9c8ee;color:#4d376b}.branch-label.else{left:77.32558%}.add-action{position:absolute;left:30.81395%;top:454px;transform:translateX(-50%);width:27px;height:27px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:#77777e}.add-action .icon{height:13px;width:13px}.add-action:hover{border-color:var(--purple);background:var(--purple-wash);color:var(--purple)}
-.editor{position:relative;flex:none;margin:auto 32px 9px;height:282px;min-height:282px;background:white;border:1px solid #ededf0;border-radius:15px;padding:0 5px 5px;box-shadow:0 1px 3px #24202c08;display:flex;flex-direction:column;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.editor.closing{opacity:0;transform:translateY(10px);visibility:hidden;pointer-events:none;transition:opacity var(--motion),transform var(--motion),visibility 0s var(--motion)}.editor-header{height:39px;min-height:39px;display:flex;align-items:center;gap:9px;padding:0 8px}.code-icon{width:21px;height:21px;border-radius:6px;background:#f5f5f6;display:grid;place-items:center}.code-icon .icon{width:13px;height:13px}.editor-title{font-weight:500;font-size:12px;margin:0}.editor-header .icon-button{margin-left:auto;border:0;background:transparent;width:24px;height:24px}.editor-header .icon-button:hover{background:var(--purple-wash)}.editor-body{flex:1;min-height:0;overflow:auto;border-radius:9px;background:#fafafa;padding:10px 0 11px;font:11.5px/18px "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#51515a;counter-reset:line}.code-line{display:flex;min-height:18px;white-space:pre;counter-increment:line}.code-line:before{content:counter(line);display:block;text-align:center;flex:0 0 43px;font:10px/18px "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#727278;user-select:none}.code-line code{padding-left:10px;font:inherit;display:block;padding-right:10px;position:relative}.code-lines{position:relative;width:max-content;min-width:100%;min-height:100%}.code-lines:after{content:"";position:absolute;left:53px;top:54px;bottom:-11px;border-left:1px solid #e2e2e6;pointer-events:none}.code-line code{flex:none}.token-key{color:#407a96}.token-variable{color:#247953}.token-type{color:#297d79}.token-string{color:#c02b91}
-.inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:12px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto}.header-actions .icon-button{width:24px;height:24px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:12px 13px 0;background:#eeeef0;border-radius:9px;height:27px;flex:none;padding:1px}.tabs:before{content:"";position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:12px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:19px 13px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:12px}.field-label{display:block;color:var(--muted);font-size:12px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:27px;padding:4px 8px;border:1px solid #e6e6ea;background:#fff;border-radius:9px;text-align:left;font-size:12px;box-shadow:0 1px 3px #211b300b}.select-button:hover{border-color:#c8b4e2;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:16px;height:16px;color:#c46c4c}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:11px;margin-bottom:11px}textarea{display:block;resize:none;width:100%;height:101px;min-height:85px;padding:7px;border:1px solid #e5e5e9;border-radius:10px;background:#fff;line-height:14px;font-size:12px;box-shadow:0 1px 3px #211b300b}.output-label{margin-bottom:5px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:12px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:9px}.output-fields .field{margin-bottom:12px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:27px;border:1px solid #e6e6ea;border-radius:9px;padding:4px 7px;background:#fff;font-size:12px;min-width:0;box-shadow:0 1px 3px #211b300b}.instruction-input{font-size:11.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:11.5px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:10px 8px 7px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:11.5px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:400}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
+.canvas{position:relative;display:flex;flex-direction:column;grid-column:2;grid-row:2;min-width:0;overflow:auto;background-color:var(--ground);background-image:radial-gradient(circle,#d9d9e0 .65px,transparent .8px);background-size:15px 15px;background-position:7px 7px}.draft{position:absolute;right:16px;top:19px;z-index:1;padding:4px 9px;border-radius:6px;background:#f8efc6;color:#675022;font-size:11.5px;line-height:14px}.graph{height:492px;flex:none;position:relative;width:100%;isolation:isolate;transition:height 240ms var(--ease)}.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.connections path,.connections line{fill:none;stroke:#c9c9ce;stroke-width:2.5;vector-effect:non-scaling-stroke}.connections .accent{stroke:var(--purple)}.connections .dashed{stroke-dasharray:2 3}.node{position:absolute;display:flex;align-items:center;gap:10px;left:52.18023%;transform:translateX(-50%);width:168px;height:52px;border-radius:17px;border:1px solid #868690;background:#f9f9fa;box-shadow:0 0 0 2px #fafafa,0 0 0 3px #e7e7ebbd;padding:9px 12px;text-align:left;transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}.node:hover{border-color:#9273b0;background:#f3eef9;box-shadow:0 0 0 3px #e8ddf36b}.node.trigger{top:50px;background:var(--purple-wash);border-color:var(--purple-line);box-shadow:0 0 0 2px #f5f0fa,0 0 0 4px #dfd1f38c}.node.update{top:153px}.node.condition{top:255px;width:142px}.node.agent{top:370px;left:30.81395%}.node.empty{top:370px;left:73.83721%}.node.selected{border-color:var(--purple-line);background:var(--purple-wash);box-shadow:0 0 0 2px #f5f0fa,0 0 0 4px #dfd1f38c}.node.selected:hover{border-color:var(--purple);background:#eae0f7}.node-icon{width:32px;height:32px;display:grid;place-items:center;background:#e5e5e7;border-radius:11px;color:#77777e;flex:none}.node-icon .icon{height:19px;width:19px;stroke-width:1.5}.trigger .node-icon,.agent .node-icon{background:var(--purple);color:#fff;box-shadow:0 1px 3px #5b328f26}.node-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}.node-kind{font-size:11.5px;line-height:13px;color:var(--muted)}.node-name{font-size:12px;line-height:14px;font-weight:500}.node.empty{background:#ededf0}.empty .node-name{color:#6b6b72;font-weight:400}.branch-label{position:absolute;top:317px;transform:translateX(-50%);border:1px solid #dfdfe4;background:#f7f7f8;border-radius:5px;min-width:29px;line-height:16px;text-align:center;font-size:10px;color:#3d3d43}.branch-label.if{left:27.32558%;background:#f2ebfb;border-color:#d9c8ee;color:#4d376b}.branch-label.else{left:77.32558%}.add-action{position:absolute;left:30.81395%;top:454px;transform:translateX(-50%);width:27px;height:27px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:#77777e}.add-action .icon{height:13px;width:13px}.add-action:hover{border-color:var(--purple);background:var(--purple-wash);color:var(--purple)}
+.editor{position:relative;flex:none;margin:auto 32px 9px;height:282px;min-height:282px;background:white;border:1px solid #ededf0;border-radius:15px;padding:0 5px 5px;box-shadow:0 1px 3px #24202c08;display:flex;flex-direction:column;overflow:hidden;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity var(--motion),transform var(--motion),visibility 0s}.editor.closing{height:0;min-height:0;margin-top:0;margin-bottom:0;padding:0;border-width:0;opacity:0;transform:translateY(10px);visibility:hidden;pointer-events:none;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity var(--motion),transform var(--motion),visibility 0s var(--motion)}.editor-header{height:39px;min-height:39px;display:flex;align-items:center;gap:9px;padding:0 8px}.code-icon{width:21px;height:21px;border-radius:6px;background:#f5f5f6;display:grid;place-items:center}.code-icon .icon{width:13px;height:13px}.editor-title{font-weight:500;font-size:12px;margin:0}.editor-header .icon-button{margin-left:auto;border:0;background:transparent;width:24px;height:24px}.editor-header .icon-button:hover{background:var(--purple-wash)}.editor-body{flex:1;min-height:0;overflow:auto;border-radius:9px;background:#fafafa;padding:10px 0 11px;font:11.5px/18px "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#51515a;counter-reset:line}.code-line{display:flex;min-height:18px;white-space:pre;counter-increment:line}.code-line:before{content:counter(line);display:block;text-align:center;flex:0 0 43px;font:10px/18px "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#737377;user-select:none}.code-line code{padding-left:10px;font:inherit;display:block;padding-right:10px;position:relative}.code-lines{position:relative;width:max-content;min-width:100%;min-height:100%}.code-lines:after{content:"";position:absolute;left:53px;top:54px;bottom:-11px;border-left:1px solid #e2e2e6;pointer-events:none}.code-line code{flex:none}.token-key{color:#16799e}.token-variable{color:#247953}.token-type{color:#297d79}.token-string{color:#c71891}
+.inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:12px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto}.header-actions .icon-button{width:24px;height:24px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:12px 13px 0;background:#eeeef0;border-radius:9px;height:27px;flex:none;padding:1px}.tabs:before{content:"";position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:12px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:19px 13px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:12px}.field-label{display:block;color:var(--muted);font-size:12px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:27px;padding:4px 8px;border:1px solid #8d8d98;background:#f5f5f7;border-radius:9px;text-align:left;font-size:12px;box-shadow:0 1px 3px #211b300b}.select-button:hover{border-color:#9273b0;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:16px;height:16px;color:#c46c4c}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:11px;margin-bottom:11px}textarea{display:block;resize:none;width:100%;height:101px;min-height:85px;padding:7px;border:1px solid #8d8d98;border-radius:10px;background:#f5f5f7;line-height:14px;font-size:12px;box-shadow:0 1px 3px #211b300b}.output-label{margin-bottom:5px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:12px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:9px}.output-fields .field{margin-bottom:12px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:27px;border:1px solid #8d8d98;border-radius:9px;padding:4px 7px;background:#f5f5f7;font-size:12px;min-width:0;box-shadow:0 1px 3px #211b300b}.instruction-input{font-size:11.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:11.5px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:10px 8px 7px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:11.5px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:700}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
 .app.sidebar-collapsed{--rail:52px}.sidebar-collapsed .nav-label,.sidebar-collapsed .workflow-children:before,.sidebar-collapsed .workflow-children .nav-item:before{display:none}.sidebar-collapsed .brand-row{padding:0 13px}.sidebar-collapsed .brand{display:none}.sidebar-collapsed .navigation{padding:13px 9px}.sidebar-collapsed .nav-item{justify-content:center}.sidebar-collapsed .workflow-children{margin-left:0;padding-left:0}.sidebar-collapsed .workflow-children .nav-item{padding-left:0}.app.panel-closed{grid-template-columns:var(--rail) minmax(0,1fr) 0}.panel-closed .inspector{opacity:0;pointer-events:none;visibility:hidden;transition:opacity var(--motion),visibility 0s var(--motion)}.panel-closed .canvas{grid-column:2}
 /* Ports overlay the node edges, independently of the connector layer. */
 .connections{z-index:0}.ports{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}.ports circle{fill:#c7c7cb;transition:fill var(--motion)}.ports .purple-dot{fill:var(--purple)}
@@ -26,9 +26,9 @@
 .node.selected .node-icon{background:var(--purple);color:#fff}.node.selected .node-kind,.node.trigger .node-kind{color:#635272}.node.selected.empty .node-name{color:#503a65}.node-icon{transition:background-color var(--motion),color var(--motion)}
 .branch-label,.add-action{z-index:3}.branch-label{transition:top 240ms var(--ease)}.add-action{transition:top 240ms var(--ease),left 240ms var(--ease),background-color var(--motion),border-color var(--motion),color var(--motion)}.node.added{animation:node-in 180ms var(--ease)}@keyframes node-in{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
-.reopen-editor{position:absolute;left:32px;bottom:12px;z-index:4;gap:5px}.reopen-editor .icon{width:13px;height:13px}
+.reopen-editor{position:sticky;bottom:12px;align-self:flex-start;flex:none;margin: auto 0 12px 32px;z-index:4;gap:5px}.reopen-editor .icon{width:13px;height:13px}
 .native-select{position:relative}.native-select select{appearance:none;padding-right:26px;cursor:pointer;transition:background-color var(--motion),border-color var(--motion)}.native-select>.icon{position:absolute;right:8px;top:7px;width:12px;height:12px;pointer-events:none;color:var(--muted)}
-select:hover{background:#fcfaff;border-color:#c7b6de}select:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
+select:hover{background:#fcfaff;border-color:#9273b0}select:focus-visible{outline:2px solid var(--purple);outline-offset:3px}
 .feedback{position:fixed;left:50%;bottom:20px;transform:translate(-50%,8px);z-index:20;max-width:calc(100% - 32px);padding:9px 13px;border:1px solid #d3c0ed;border-radius:9px;background:#f5effc;color:#50316f;box-shadow:0 3px 12px #30213e12;opacity:0;pointer-events:none;transition:opacity var(--motion),transform var(--motion)}.feedback:empty{padding:0;border:0}.feedback.visible{opacity:1;transform:translate(-50%,0)}
 .dropdown-menu button:hover{background:#eee4f8;color:#50316f}.dropdown-menu button[aria-selected="true"]:hover{background:#e0d0f0;color:#50316f}
 .footer-button[aria-pressed="true"],.header-actions .icon-button[aria-pressed="true"]{background:var(--purple-wash);border-color:var(--purple-line);color:var(--purple-dark)}
@@ -54,21 +54,31 @@ select:hover{background:#fcfaff;border-color:#c7b6de}select:focus-visible{outlin
  .editor,.canvas.flow-expanded .editor{position:relative;inset:auto;margin:0 10px;width:calc(100% - 20px);height:282px;min-height:282px;max-height:none;border-radius:12px}.editor-body{font-size:11.5px}.code-line:before{flex-basis:28px;font-size:10px}.code-lines:after{left:38px}
  .inspector{grid-column:2;grid-row:3;border-top:1px solid var(--line);border-left:0;min-height:650px;overflow:visible;scroll-margin-top:0}.inspector-header{height:40px}.panel-scroll{overflow:visible;flex:1}.inspector-footer{margin-top:100px}.panel-closed .inspector{display:none}
  .app.sidebar-collapsed{--rail:0px}.sidebar-collapsed .sidebar{overflow:visible;border:0}.sidebar-collapsed .navigation{visibility:hidden}.sidebar-collapsed .brand-row{position:fixed;top:8px;left:8px;width:26px;height:26px;padding:0;border:0;z-index:5}.sidebar-collapsed .topbar{padding-left:42px}
- .reopen-editor{left:10px;bottom:13px}
+ .reopen-editor{bottom:13px;margin:0 0 0 10px}
 }
-button:disabled,button:disabled:hover{cursor:default;filter:none;background:transparent;color:#76767c;box-shadow:none}
-.toolbar-button:disabled,.icon-button:disabled{background:#f5f5f6;border-color:#e6e6e9;color:#76767c}
-.nav-item:disabled:hover{color:#76767c;background:transparent}
 #favorite[aria-pressed="true"] .icon{fill:currentColor}
 .help-content{margin:12px 13px 0;padding:9px;border:1px solid var(--purple-line);border-radius:9px;background:var(--purple-wash);color:#503a65;line-height:1.5;animation:tab-in var(--motion) var(--ease)}
 .output-fields.added-output{animation:tab-in var(--motion) var(--ease)}
 .inspector.compact{align-self:start;max-height:100%;border-bottom:1px solid var(--line)}
 .inspector.compact .panel-scroll{flex:0 1 auto}
 @media(max-width:760px){.inspector.compact{min-height:0}.inspector.compact .inspector-footer{margin-top:0}}
+
+.brand-wordmark{width:49px;height:16px;color:#747478;filter:blur(3px);opacity:.75}.brand-wordmark svg{width:100%;height:100%}
+.skip-link{position:fixed;left:12px;top:-60px;z-index:50;padding:9px 12px;background:#fff;color:#50316f;border:2px solid var(--purple);border-radius:6px}.skip-link:focus{top:8px}
+.workflow-reveal,.help-reveal{display:grid;grid-template-rows:1fr;opacity:1;transition:grid-template-rows 240ms var(--ease),opacity 180ms}
+.workflow-reveal.collapsed,.help-reveal{grid-template-rows:0fr;opacity:0}.workflow-reveal>.workflow-children,.help-reveal>.help-content{min-height:0;overflow:hidden}
+.workflow-reveal.collapsed .workflow-children{margin-top:0;margin-bottom:0}.workflow-children{transition:margin 240ms var(--ease)}
+.help-reveal.open{grid-template-rows:1fr;opacity:1}.help-content{margin:0 13px;padding:0 9px;border-width:0;animation:none;transition:padding 240ms var(--ease),margin 240ms var(--ease),border-width 240ms var(--ease)}.help-reveal.open .help-content{margin-top:12px;padding:9px;border-width:1px}
+.draft{transition:opacity 220ms,transform 220ms var(--ease)}.draft.inactive{opacity:0;transform:translateY(-5px);pointer-events:none}
+.node.exiting{opacity:0;transform:translateX(-50%) scale(.94);pointer-events:none;transition:opacity 180ms,transform 180ms var(--ease)}
+.workspace-view{position:fixed;right:14px;top:58px;z-index:12;width:290px;max-width:calc(100vw - 70px);padding:13px;background:#fafafa;border:1px solid #8d8d98;border-radius:11px;box-shadow:0 5px 18px #2922331a;animation:tab-in 180ms var(--ease)}.workspace-view header{display:flex;align-items:center;justify-content:space-between;gap:8px}.workspace-view h2{font-size:13px;font-weight:500;margin:0}.workspace-view p{color:#626268;line-height:1.6;margin:15px 0 4px}
+@media(max-width:760px){.editor.closing,.canvas.flow-expanded .editor.closing{height:0;min-height:0;padding:0;border-width:0}.editor-body{font-size:10.5px}.code-line code{padding-left:5px;padding-right:5px}.code-line:before{flex-basis:24px}.code-lines:after{left:29px}.workspace-view{top:122px}}
+
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#workflow-canvas">Skip to workflow canvas</a>
 <svg class="svg-library" aria-hidden="true"><defs>
 <symbol id="i-logo" viewBox="0 0 24 24"><path d="M6 7v10h5V7m2 0v10h5V7"/></symbol>
 <symbol id="i-collapse" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 4v16"/></symbol>
@@ -78,7 +88,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
 <symbol id="i-task" viewBox="0 0 24 24"><path d="M20 11v1a8 8 0 1 1-4-7M8 11l4 4 8-10"/></symbol>
 <symbol id="i-note" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6v6h6M8 13h8m-8 4h5"/></symbol>
 <symbol id="i-dashboard" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
-<symbol id="i-workflow" viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="5" rx="1"/><rect x="16" y="7" width="5" height="5" rx="1"/><rect x="12" y="17" width="5" height="5" rx="1"/><path d="M8 5h4v5h4M6 8v11h6"/></symbol>
+<symbol id="i-workflow" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><rect x="15" y="3" width="5" height="5" rx="1"/><rect x="15" y="15" width="5" height="5" rx="1"/><path d="M7 5h8M5 7v9a2 2 0 0 0 2 2h8m-5-13v13"/></symbol>
 <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-.7 3-2 .9-2.6-.5-2 3.4 2 2.1v2.2l-2 2.1 2 3.4 2.6-.5 2 .9.7 3h4l.7-3 2-.9 2.6.5 2-3.4-2-2.1v-2.2l2-2.1-2-3.4-2.6.5-2-.9L13 3Z" transform="translate(1 -1) scale(.92)"/><circle cx="11.5" cy="11.5" r="3"/></symbol>
 <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1 .6-1.5 1-1.5 2.5M12 17h.01"/></symbol>
 <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v15m-6-6 6 6 6-6"/></symbol>
@@ -93,7 +103,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
 <symbol id="i-trigger" viewBox="0 0 24 24"><path d="M4 7h11M4 11h7M4 15h4m7-3v8m-4-4h8"/></symbol>
 <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M19 9a8 8 0 1 0 0 7m1-12v6h-6"/></symbol>
 <symbol id="i-branch" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="18" cy="19" r="2"/><path d="M7 12h9m-5 0V5h5m-5 7v7h5"/></symbol>
-<symbol id="i-ai" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m6.5 15 2.5-6 2.5 6m-4-2h3M15 9v6m-1-6h2m-2 6h2"/></symbol>
+<symbol id="i-ai" viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 0-5 3 3.5 3.5 0 0 0-1 6 3.5 3.5 0 0 0 3 5 3 3 0 0 0 6 1V5a3 3 0 0 0-3-1Zm6 0a3 3 0 0 1 5 3 3.5 3.5 0 0 1 1 6 3.5 3.5 0 0 1-3 5 3 3 0 0 1-6 1M7 8l2 2v4l-2 2m10-8-2 2v4l2 2M9 12h6"/></symbol>
 <symbol id="i-nav-file" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7Z" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m13 3 2.3 6.7L22 12l-6.7 2.3L13 21l-2.3-6.7L4 12l6.7-2.3ZM5 3v4M3 5h4"/></symbol>
 <symbol id="i-toggle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M3 12h5m8 0h5"/></symbol>
@@ -102,39 +112,39 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
 <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
 </defs></svg>
 <div class="app" id="app">
-<aside class="sidebar" aria-label="Main navigation">
- <div class="brand-row"><div class="brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg></span></div><button class="icon-button collapse-button" aria-label="Collapse sidebar" aria-expanded="true" id="collapse-sidebar"><svg class="icon" aria-hidden="true"><use href="#i-collapse"/></svg></button></div>
- <nav class="navigation" aria-label="Workspace">
-  <button class="nav-item" disabled title="Companies is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-company"/></svg><span class="nav-label">Companies</span></button>
-  <button class="nav-item" disabled title="People is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg><span class="nav-label">People</span></button>
-  <button class="nav-item" disabled title="Opportunities is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-opportunity"/></svg><span class="nav-label">Opportunities</span></button>
-  <button class="nav-item" disabled title="Tasks is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-task"/></svg><span class="nav-label">Tasks</span></button>
-  <button class="nav-item" disabled title="Notes is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg><span class="nav-label">Notes</span></button>
-  <button class="nav-item" disabled title="Dashboards is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-dashboard"/></svg><span class="nav-label">Dashboards</span></button>
+<aside class="sidebar" aria-label="Workspace sidebar">
+ <div class="brand-row"><div class="brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg></span><span class="brand-wordmark" aria-hidden="true"><svg viewBox="0 0 56 16"><path d="M1 4h7v9H1zm11 0h5v9h-5zm9 0h8v9h-8zm12 0h6v9h-6zm10 0h10v9H43z" fill="currentColor"/></svg></span></div><button class="icon-button collapse-button" aria-label="Collapse sidebar" aria-expanded="true" id="collapse-sidebar"><svg class="icon" aria-hidden="true"><use href="#i-collapse"/></svg></button></div>
+ <nav class="navigation" aria-label="Main navigation">
+  <button class="nav-item" title="Companies"><svg class="icon" aria-hidden="true"><use href="#i-company"/></svg><span class="nav-label">Companies</span></button>
+  <button class="nav-item" title="People"><svg class="icon" aria-hidden="true"><use href="#i-people"/></svg><span class="nav-label">People</span></button>
+  <button class="nav-item" title="Opportunities"><svg class="icon" aria-hidden="true"><use href="#i-opportunity"/></svg><span class="nav-label">Opportunities</span></button>
+  <button class="nav-item" title="Tasks"><svg class="icon" aria-hidden="true"><use href="#i-task"/></svg><span class="nav-label">Tasks</span></button>
+  <button class="nav-item" title="Notes"><svg class="icon" aria-hidden="true"><use href="#i-note"/></svg><span class="nav-label">Notes</span></button>
+  <button class="nav-item" title="Dashboards"><svg class="icon" aria-hidden="true"><use href="#i-dashboard"/></svg><span class="nav-label">Dashboards</span></button>
   <button class="nav-item" id="workflow-nav" title="Workflow navigation" aria-label="Workflow navigation" aria-expanded="true" aria-controls="workflow-children"><svg class="icon" aria-hidden="true"><use href="#i-workflow"/></svg><span class="nav-label">Workflow</span></button>
-  <div class="workflow-children" id="workflow-children">
+  <div class="workflow-reveal" id="workflow-reveal"><div class="workflow-children" id="workflow-children">
    <button class="nav-item active" title="Workflow" aria-current="page"><span class="nav-marker"><svg class="icon" aria-hidden="true"><use href="#i-nav-file"/></svg></span><span class="nav-label">Workflow</span></button>
-   <button class="nav-item" disabled title="Workflow runs is unavailable in this standalone workflow editor"><span class="nav-marker blue"><svg class="icon" aria-hidden="true"><use href="#i-nav-file"/></svg></span><span class="nav-label">Workflow runs</span></button>
-   <button class="nav-item" disabled title="Workflow versions is unavailable in this standalone workflow editor"><span class="nav-marker green"><svg class="icon" aria-hidden="true"><use href="#i-nav-file"/></svg></span><span class="nav-label">Workflow versions</span></button>
-  </div>
-  <button class="nav-item" disabled title="Settings is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><span class="nav-label">Settings</span></button>
-  <button class="nav-item" disabled title="Documentation is unavailable in this standalone workflow editor"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg><span class="nav-label">Documentation</span></button>
+   <button class="nav-item" title="Workflow runs"><span class="nav-marker blue"><svg class="icon" aria-hidden="true"><use href="#i-nav-file"/></svg></span><span class="nav-label">Workflow runs</span></button>
+   <button class="nav-item" title="Workflow versions"><span class="nav-marker green"><svg class="icon" aria-hidden="true"><use href="#i-nav-file"/></svg></span><span class="nav-label">Workflow versions</span></button>
+  </div></div>
+  <button class="nav-item" title="Settings"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg><span class="nav-label">Settings</span></button>
+  <button class="nav-item" title="Documentation"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg><span class="nav-label">Documentation</span></button>
  </nav>
 </aside>
 <header class="topbar">
  <h1 class="breadcrumb"><span class="crumb">Wokflow</span><span class="crumb">/</span><strong>Automation Workflow</strong><span class="count">(0/4)</span></h1>
  <div class="toolbar" role="toolbar" aria-label="Workflow actions">
   <button class="icon-button" id="download" title="Download" aria-label="Download"><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg></button>
-  <button class="icon-button" id="upload" title="Upload is unavailable in this standalone workflow editor" aria-label="Upload" disabled><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></button>
+  <button class="icon-button" id="upload" title="Upload" aria-label="Upload"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></button>
   <button class="icon-button" id="favorite" title="Favorite" aria-label="Favorite" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></button>
   <button class="toolbar-button" id="activate" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-power"/></svg><span>Activate</span></button>
   <button class="toolbar-button" id="discard"><svg class="icon" aria-hidden="true"><use href="#i-discard"/></svg>Discard Draft</button>
-  <button class="toolbar-button" id="see-runs" disabled title="Runs are unavailable without a connected workflow service"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>See Runs</button>
+  <button class="toolbar-button" id="see-runs"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>See Runs</button>
   <button class="toolbar-button" id="add-node"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add a Node</button>
-  <button class="icon-button close-button" id="close-panel-top" title="Toggle node configuration" aria-label="Toggle node configuration" aria-expanded="true" aria-controls="inspector"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+  <button class="icon-button close-button" id="close-panel-top" title="Close node configuration" aria-label="Close node configuration" aria-expanded="true" aria-controls="inspector"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
  </div>
 </header>
-<main class="canvas" aria-label="Automation workflow canvas">
+<main class="canvas" id="workflow-canvas" tabindex="-1" aria-label="Automation workflow canvas">
  <span class="draft" id="draft-badge">Draft</span>
  <section class="graph" aria-label="Workflow nodes">
   <svg class="connections" aria-hidden="true"></svg>
@@ -147,7 +157,6 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
   <button class="node empty" data-title="Add an action" data-icon="i-toggle" aria-pressed="false"><span class="node-icon"><svg class="icon" aria-hidden="true"><use href="#i-toggle"/></svg></span><span class="node-copy"><span class="node-kind">Action</span><span class="node-name">Add an action</span></span></button>
   <button class="add-action" id="add-action" title="Add an action" aria-label="Add an action"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
  </section>
- <button class="toolbar-button reopen-editor" id="reopen-editor" aria-controls="editor" hidden><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code</button>
  <section class="editor" id="editor" aria-labelledby="editor-title">
   <header class="editor-header"><span class="code-icon"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg></span><h2 class="editor-title" id="editor-title">Automation workflow</h2><button class="icon-button" id="close-editor" title="Close code editor" aria-label="Close code editor"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header>
   <div class="editor-body" tabindex="0" role="region" aria-label="Workflow code, lines 1 through 12"><div class="code-lines">
@@ -165,10 +174,11 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
 <div class="code-line"><code>     <span class="token-string">'icloud.com'</span>,</code></div>
   </div></div>
  </section>
+ <button class="toolbar-button reopen-editor" id="reopen-editor" aria-controls="editor" hidden><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code</button>
 </main>
 <aside class="inspector" aria-labelledby="inspector-title" id="inspector">
  <header class="inspector-header"><span class="agent-symbol"><svg class="icon" aria-hidden="true"><use id="panel-symbol" href="#i-sparkles"/></svg></span><h2 class="inspector-title" id="inspector-title" tabindex="-1">AI Agent</h2><div class="header-actions"><button class="icon-button" id="help" title="Help" aria-label="Help" aria-expanded="false" aria-controls="help-content"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg></button><button class="icon-button" id="close-panel" title="Close node configuration" aria-label="Close node configuration"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
- <div class="help-content" id="help-content" hidden>Select a node to edit its configuration. Add a Node extends the selected branch; + extends the branch beneath it. Download exports the workflow as JSON.</div>
+ <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content">Select a node to edit its configuration. Add a Node extends the selected branch; + extends the branch beneath it. Download exports the workflow as JSON.</div></div>
  <div class="tabs" role="tablist" aria-label="AI Agent configuration"><button class="tab" id="prompt-tab" role="tab" aria-selected="true" aria-controls="prompt-panel">Prompt</button><button class="tab" id="permissions-tab" role="tab" aria-selected="false" aria-controls="permissions-panel" tabindex="-1">Permissions</button></div>
  <div class="panel-scroll">
   <section class="tab-panel" id="prompt-panel" role="tabpanel" aria-labelledby="prompt-tab">
@@ -188,6 +198,8 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  <footer class="inspector-footer"><button class="footer-button" id="save-draft">Save a Draft</button><span class="footer-spacer"></span><button class="footer-button" id="option" aria-pressed="false">Option</button><button class="footer-button delete" id="delete">Delete</button></footer>
 </aside>
 </div>
+<input type="file" id="workflow-upload" accept=".json,application/json" hidden>
+<aside class="workspace-view" id="workspace-view" aria-labelledby="workspace-view-title" hidden><header><h2 id="workspace-view-title"></h2><button class="icon-button" id="close-workspace-view" aria-label="Close section"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></header><p id="workspace-view-content"></p></aside>
 <div class="feedback" id="feedback" role="status" aria-live="polite" aria-atomic="true"></div>
 <script>
 (() => {
@@ -226,6 +238,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  function makeRecord(node,id,type,lane) {
   node.dataset.nodeId = id;
   node.dataset.lane = lane;
+  node.setAttribute('aria-label',(type === 'trigger' ? 'Trigger ' : 'Action ') + titles[type] + (id.startsWith('action-') ? ' ' + id.slice(7) : ''));
   return {id,type,lane,node,settings:{},ai:{...aiDefaults,outputs:[]}};
  }
  // Topology is separate from the buttons: deleting a node can reconnect its neighbours.
@@ -268,6 +281,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
    label.hidden = !branch || outgoing(branch.id).length < 2;
    if (branch) label.style.top = (parseFloat(branch.node.style.top) + 62) + 'px';
   });
+  $('.count').textContent = '(0/' + records.filter(record => record.type !== 'trigger').length + ')';
   connectNodes();
  }
  // Read live bounds so the lines and full, foreground ports track nodes at every width.
@@ -294,7 +308,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
    const turn = branching ? sy : (sy+b.y)/2;
    const path = branching ? `M${sx} ${sy}H${b.x}V${b.y}` : `M${sx} ${sy}V${turn}H${b.x}V${b.y}`;
    shape(svg,'path',{d:path,class:from.type === 'trigger' ? 'accent' : ''});
-   if (to.id === selectedId) shape(svg,'path',{d:`M${b.x} ${Math.max(turn,b.y-36)}V${b.y}`,class:'accent'});
+   if ((branching && b.x < a.x) || to.id === selectedId) shape(svg,'path',{d:`M${b.x} ${branching ? sy : Math.max(turn,b.y-36)}V${b.y}`,class:'accent'});
    dot(sx,sy,from.type === 'trigger' || (branching && from.id === selectedId));
    dot(b.x,b.y,to.id === selectedId);
   });
@@ -373,8 +387,8 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  function renderConfiguration(record) {
   const ai = record.type === 'agent';
   $('#inspector').classList.toggle('compact', !ai);
-  $('#option').disabled = !ai;
-  $('#option').title = ai ? 'Permissions' : 'No additional options for this node';
+  $('#option').setAttribute('aria-pressed','false');
+  $('#option').title = ai ? 'Permissions' : 'Node options';
   $('.tabs').hidden = !ai;
   $('#prompt-panel').hidden = !ai;
   $('#permissions-panel').hidden = true;
@@ -400,6 +414,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
      record.node.className = 'node selected ' + record.type;
      record.node.dataset.title = titles[record.type]; record.node.dataset.icon = icons[record.type];
      record.node.querySelector('.node-name').textContent = titles[record.type];
+     record.node.setAttribute('aria-label','Action ' + titles[record.type] + ' ' + record.id);
      record.node.querySelector('.node-icon use').setAttribute('href','#' + icons[record.type]);
      selectedId = ''; selectNode(record); layoutFlow(); trackLayout();
     });
@@ -418,7 +433,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  function revealPanel(focus = false) {
   app.classList.remove('panel-closed');
   $('#inspector').inert = false;
-  $('#close-panel-top').setAttribute('aria-expanded','true');
+  setPanelCue(true);
   if (phone.matches) requestAnimationFrame(() => {
    if (app.classList.contains('panel-closed')) return;
    $('#inspector').scrollIntoView({behavior:reducedMotion.matches ? 'instant' : 'smooth',block:'start'});
@@ -435,7 +450,16 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
   $('#inspector-title').textContent = record.type === 'trigger' ? 'Trigger' : titles[record.type];
   $('#panel-symbol').setAttribute('href','#' + (record.type === 'agent' ? 'i-sparkles' : icons[record.type]));
   $('.agent-symbol').style.background = record.type === 'agent' ? '#db4bdd' : record.type === 'trigger' ? 'var(--purple)' : '#77777e';
-  renderConfiguration(record); revealPanel(focus); connectNodes();
+  const inspector = $('#inspector');
+  const previousHeight = inspector.getBoundingClientRect().height;
+  inspector.getAnimations().forEach(animation => animation.cancel());
+  renderConfiguration(record); revealPanel(focus);
+  const nextHeight = inspector.getBoundingClientRect().height;
+  if (!reducedMotion.matches) {
+   inspector.animate([{height:previousHeight+'px',minHeight:0,overflow:'hidden'},{height:nextHeight+'px',minHeight:0,overflow:'hidden'}],{duration:280,easing:'cubic-bezier(.22,1,.36,1)'});
+   $('.panel-scroll').animate([{opacity:.3,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],{duration:200});
+  }
+  connectNodes();
  }
  graph.addEventListener('click',event => {
   const node = event.target.closest('.node');
@@ -443,6 +467,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  });
  function switchTab(tab) {
   const permissions = tab.id === 'permissions-tab';
+  $('#option').setAttribute('aria-pressed',String(permissions));
   $('.tabs').classList.toggle('permissions-active', permissions);
   $$('.tab').forEach(item => {
    const selected = item === tab;
@@ -523,13 +548,20 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
   $('#editor').classList.add('closing'); $('#editor').inert = true;
   $('#reopen-editor').hidden = false;
   $('#reopen-editor').focus({preventScroll:true});
-  // Keep the editor's measured space; visibility and opacity reverse smoothly on reopen.
+  // Height and opacity reverse smoothly, including an interrupted close.
  });
  $('#reopen-editor').addEventListener('click',() => showEditor());
+ function setPanelCue(open) {
+  const button = $('#close-panel-top');
+  button.setAttribute('aria-expanded',String(open));
+  button.setAttribute('aria-label',open ? 'Close node configuration' : 'Open node configuration');
+  button.title = open ? 'Close node configuration' : 'Open node configuration';
+  button.querySelector('use').setAttribute('href',open ? '#i-close' : '#i-collapse');
+ }
  function closePanel() {
   if (app.classList.contains('panel-closed')) { revealPanel(true); return; }
   app.classList.add('panel-closed'); $('#inspector').inert = true;
-  $('#close-panel-top').setAttribute('aria-expanded','false');
+  setPanelCue(false);
   $('#close-panel-top').focus({preventScroll:true});
  }
  $('#close-panel').addEventListener('click',closePanel);
@@ -542,31 +574,112 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  $('#workflow-nav').addEventListener('click',() => {
   const expanded = $('#workflow-nav').getAttribute('aria-expanded') === 'true';
   $('#workflow-nav').setAttribute('aria-expanded',String(!expanded));
-  $('#workflow-children').hidden = expanded;
+  $('#workflow-reveal').classList.toggle('collapsed',expanded);
+  $('#workflow-children').inert = expanded;
  });
  function togglePressed(button) {
   button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed') !== 'true'));
  }
  $('#favorite').addEventListener('click',() => togglePressed($('#favorite')));
- $('#download').addEventListener('click',() => {
+ const draftKey = 'automation-workflow-draft';
+ function workflowData() {
   captureAI();
-  const workflow = {
+  return {
    name:'Automation Workflow',
    nodes:records.map(({id,type,lane,settings,ai}) => ({id,type,lane,settings,ai})),
-   edges,active:$('#activate').getAttribute('aria-pressed') === 'true'
+   edges,active:$('#activate').getAttribute('aria-pressed') === 'true',
+   selectedId,plusAnchor,favorite:$('#favorite').getAttribute('aria-pressed') === 'true'
   };
-  const url = URL.createObjectURL(new Blob([JSON.stringify(workflow,null,2) + '\n'],{type:'application/json'}));
+ }
+ function setActive(active) {
+  $('#activate').setAttribute('aria-pressed',String(active));
+  $('#draft-badge').classList.toggle('inactive',active);
+  $('#draft-badge').setAttribute('aria-hidden',String(active));
+ }
+ function restoreWorkflow(data) {
+  // Validate the complete topology before replacing the current workflow.
+  if (!data || data.name !== 'Automation Workflow' || !Array.isArray(data.nodes) || !data.nodes.length || !Array.isArray(data.edges)) throw new Error('Invalid workflow');
+  if (data.nodes.filter(node => node?.type === 'trigger').length !== 1) throw new Error('Invalid trigger');
+  const ids = new Set();
+  data.nodes.forEach(node => {
+   if (!node || typeof node.id !== 'string' || !node.id || ids.has(node.id) || !Object.hasOwn(titles,node.type) || !['trunk','left','right'].includes(node.lane)) throw new Error('Invalid node');
+   ids.add(node.id);
+  });
+  const parents = new Map();
+  data.edges.forEach(edge => {
+   if (!edge || !ids.has(edge.from) || !ids.has(edge.to) || parents.has(edge.to)) throw new Error('Invalid connection');
+   parents.set(edge.to,edge.from);
+  });
+  if (parents.has(data.nodes.find(node => node.type === 'trigger').id)) throw new Error('Invalid trigger connection');
+  ids.forEach(id => {
+   const seen = new Set();
+   while (id) {
+    if (seen.has(id)) throw new Error('Circular connection');
+    seen.add(id); id = parents.get(id);
+   }
+  });
+  const restored = data.nodes.map(item => {
+   const template = initialTemplates[initialTypes.indexOf(item.type)].cloneNode(true);
+   template.className = 'node ' + item.type;
+   const record = makeRecord(template,item.id,item.type,item.lane);
+   record.settings = item.settings && typeof item.settings === 'object' ? item.settings : {};
+   const ai = item.ai && typeof item.ai === 'object' ? item.ai : {};
+   record.ai = {...aiDefaults,...ai,outputs:Array.isArray(ai.outputs) ? ai.outputs.filter(output => output && typeof output === 'object') : []};
+   if (!['prompt','permissions'].includes(record.ai.tab)) record.ai.tab = 'prompt';
+   return record;
+  });
+  $$('.node').forEach(node => node.remove());
+  records = restored; edges = data.edges.map(({from,to}) => ({from,to}));
+  records.forEach(record => graph.insertBefore(record.node,$('#add-action')));
+  selectedId = ''; plusAnchor = ids.has(data.plusAnchor) ? data.plusAnchor : (records.find(record => record.type === 'agent') || records[0]).id;
+  nextId = Math.max(0,...records.map(record => Number(record.id.match(/^action-(\d+)$/)?.[1]) || 0)) + 1;
+  setActive(!!data.active); $('#favorite').setAttribute('aria-pressed',String(!!data.favorite));
+  layoutFlow(); selectNode(getRecord(data.selectedId) || records.find(record => record.type === 'agent') || records[0]); trackLayout();
+ }
+ $('#download').addEventListener('click',() => {
+  const url = URL.createObjectURL(new Blob([JSON.stringify(workflowData(),null,2) + '\n'],{type:'application/json'}));
   const link = document.createElement('a'); link.href = url; link.download = 'automation-workflow.json';
   document.body.append(link); link.click(); link.remove();
+  notify('Workflow downloaded');
   window.setTimeout(() => URL.revokeObjectURL(url),1000);
+ });
+ $('#upload').addEventListener('click',() => { $('#workflow-upload').value = ''; $('#workflow-upload').click(); });
+ $('#workflow-upload').addEventListener('change',async event => {
+  const file = event.target.files[0];
+  if (!file) return;
+  try { restoreWorkflow(JSON.parse(await file.text())); notify('Workflow imported'); }
+  catch { notify('Could not import JSON. Choose a downloaded automation-workflow.json file.'); }
+ });
+ let sectionOpener;
+ function openSection(title,opener) {
+  sectionOpener = opener;
+  $('#workspace-view-title').textContent = title;
+  const messages = {'Workflow runs':'No runs yet.','Workflow versions':'No saved versions yet.',Settings:'No settings to configure.',Documentation:'Select a node to edit its configuration. Download exports the workflow as JSON.'};
+  $('#workspace-view-content').textContent = messages[title] || 'No ' + title.toLowerCase() + ' yet.';
+  $('#workspace-view').hidden = false;
+  $('#close-workspace-view').focus();
+ }
+ function closeSection() {
+  $('#workspace-view').hidden = true;
+  sectionOpener?.focus();
+ }
+ $('#see-runs').addEventListener('click',() => openSection('Workflow runs',$('#see-runs')));
+ $('#close-workspace-view').addEventListener('click',closeSection);
+ document.addEventListener('keydown',event => { if (event.key === 'Escape' && !$('#workspace-view').hidden) closeSection(); });
+ $$('.nav-item').filter(item => !item.id && !item.hasAttribute('aria-current')).forEach(item => {
+  const title = item.querySelector('.nav-label').textContent;
+  item.setAttribute('aria-label',title);
+  item.addEventListener('click',() => openSection(title,item));
  });
  $('#help').addEventListener('click',() => {
   const expanded = $('#help').getAttribute('aria-expanded') !== 'true';
   $('#help').setAttribute('aria-expanded',String(expanded));
-  $('#help-content').hidden = !expanded;
+  $('#help-reveal').classList.toggle('open',expanded);
+  $('#help-reveal').inert = !expanded;
  });
  const currentNav = $('.nav-item[aria-current="page"]');
  currentNav.addEventListener('click',() => {
+  $('#workspace-view').hidden = true;
   currentNav.setAttribute('aria-current','page');
   revealPanel(); showEditor(false);
   $('.canvas').scrollIntoView({behavior:reducedMotion.matches ? 'instant' : 'smooth',block:'start'});
@@ -591,8 +704,7 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
   toolbarFocus(toolbarButtons[next]); toolbarButtons[next].focus();
  });
  $('#activate').addEventListener('click',() => {
-  togglePressed($('#activate'));
-  $('#draft-badge').hidden = $('#activate').getAttribute('aria-pressed') === 'true';
+  setActive($('#activate').getAttribute('aria-pressed') !== 'true');
  });
  function addNode(anchorId) {
   captureAI();
@@ -619,7 +731,8 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
   closeMenus();
   // Do not copy the discarded AI form back over the fresh initial record.
   resetFlow(); selectedId = '';
-  $('#activate').setAttribute('aria-pressed','false'); $('#draft-badge').hidden = false;
+  setActive(false);
+  try { localStorage.removeItem(draftKey); } catch {}
   $('#option').setAttribute('aria-pressed','false');
   showEditor(false); selectNode(getRecord('agent')); trackLayout();
   $('.canvas').scrollTop = 0;
@@ -627,15 +740,19 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  });
  $('#save-draft').addEventListener('click',() => {
   captureAI();
+  try { localStorage.setItem(draftKey,JSON.stringify(workflowData())); }
+  catch { notify('Draft could not be saved. Download the workflow to keep your changes.'); return; }
   $('#save-draft').classList.add('saved'); notify('Draft saved');
   window.setTimeout(() => $('#save-draft').classList.remove('saved'),1000);
  });
  $('#option').addEventListener('click',() => {
   togglePressed($('#option'));
   if (selectedRecord().type === 'agent') switchTab($('#option').getAttribute('aria-pressed') === 'true' ? $('#permissions-tab') : $('#prompt-tab'));
+  else { $('#option').setAttribute('aria-pressed','false'); notify(titles[selectedRecord().type] + ' options are shown in the configuration panel.'); }
  });
  $('#delete').addEventListener('click',() => {
   const record = selectedRecord();
+  if (!record) return;
   if (record.type === 'trigger') { notify('Trigger cannot be deleted'); return; }
   const incoming = edges.filter(edge => edge.to === record.id);
   const children = outgoing(record.id);
@@ -643,7 +760,8 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
   edges = edges.filter(edge => edge.from !== record.id && edge.to !== record.id);
   incoming.forEach(parent => children.forEach(child => edges.push({from:parent.from,to:child.to})));
   records = records.filter(item => item !== record);
-  record.node.remove();
+  record.node.classList.add('exiting'); record.node.inert = true;
+  window.setTimeout(() => record.node.remove(),reducedMotion.matches ? 0 : 180);
   if (plusAnchor === record.id) plusAnchor = neighbour.id;
   selectedId = '';
   layoutFlow(); selectNode(neighbour); trackLayout();
@@ -651,6 +769,10 @@ button:disabled,button:disabled:hover{cursor:default;filter:none;background:tran
  });
  resetFlow();
  renderConfiguration(getRecord('agent'));
+ try {
+  const saved = localStorage.getItem(draftKey);
+  if (saved) restoreWorkflow(JSON.parse(saved));
+ } catch { notify('Saved draft could not be restored.'); }
  const graphObserver = new ResizeObserver(() => { layoutFlow(); });
  graphObserver.observe(graph);
  // Breakpoint changes also alter node heights and inspector layout.

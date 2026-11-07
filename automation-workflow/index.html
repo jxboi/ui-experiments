@@ -9,7 +9,7 @@
 /* Reference: 1170 × 834. Rail/panel widths follow the screenshot (192/290).
    Canvas coordinates are measured in the reference's 688 × 488 graph region:
    trunk x=359, branches x=212/508; node tops y=50/153/255/370. */
-:root{--rail:192px;--inspector:290px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#d4d4da;--field-edge:#e8e8eb;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI Variable Text","Segoe UI",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
+:root{--rail:192px;--inspector:290px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#d4d4da;--field-edge:#e8e8eb;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:Inter,"Inter Variable",-apple-system,BlinkMacSystemFont,"SF Pro Text",Roboto,"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
 *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}button,input,textarea{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion),color var(--motion),opacity var(--motion)}button{border:0;background:none}button:hover{background:#f0edf5}input:hover,textarea:hover{background:#fcfaff;border-color:#9273b0}:where(button,input,textarea,select,[tabindex]):focus-visible{outline:2px solid var(--purple);outline-offset:-2px}button:active{filter:brightness(.97)}button:disabled{cursor:default}::selection{background:#e5d7f7;color:#36204e}input,textarea{caret-color:var(--purple)}*{scrollbar-width:thin;scrollbar-color:#d7d0df transparent}.icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
 .app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr) var(--inspector);grid-template-rows:var(--topbar) minmax(0,1fr);height:100dvh;min-height:720px;transition:grid-template-columns 240ms var(--ease)}
 .sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:50%;background:#bda6e0;filter:blur(2px)}.icon-button{width:28px;height:28px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:14px;height:14px;margin:0 -1px;color:#85858b;stroke-width:1.3}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:0 0 0 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:14px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;padding-left:7px;height:28px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:14px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#ececec;color:#36363b;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
@@ -19,12 +19,12 @@
 .inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:12px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto;margin-right:-4px}.header-actions .icon-button{width:28px;height:28px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:10px 13px 0;background:#f1f1f1;border-radius:9px;height:30px;flex:none;padding:1px}.tabs:before{content:"";box-sizing:border-box;position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:12px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:17px 13px 16px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:9px}.field-label{display:block;color:var(--muted);font-size:12px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:28px;padding:4px 8px;border:1px solid var(--field-edge);background:var(--input-fill);border-radius:9px;text-align:left;font-size:12px}.select-button:hover{border-color:#9273b0;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:13px;height:13px;color:#d47b58}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:9px;margin-bottom:12px}textarea{display:block;resize:none;width:100%;height:100px;min-height:85px;padding:7px;border:1px solid var(--field-edge);border-radius:10px;background:var(--input-fill);line-height:14px;font-size:12px}#input-prompt{padding:7px 0 7px 6px;font-size:11.5px;letter-spacing:-.12px}.field-label.output-label{margin-bottom:6px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:12px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:8px 9px}.output-fields .field{margin-bottom:10px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:28px;border:1px solid var(--field-edge);border-radius:9px;padding:4px 7px;background:var(--input-fill);font-size:12px;min-width:0}.instruction-input{font-size:11.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:11.5px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:12px 8px 6px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:11.5px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:500}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
 .app.sidebar-collapsed{--rail:52px}.sidebar-collapsed .nav-label,.sidebar-collapsed .workflow-children:before,.sidebar-collapsed .workflow-children .nav-item:before{display:none}.sidebar-collapsed .brand-row{padding:0 13px}.sidebar-collapsed .brand{display:none}.sidebar-collapsed .navigation{padding:13px 9px}.sidebar-collapsed .nav-item{justify-content:center}.sidebar-collapsed .workflow-children{margin-left:0;padding-left:0}.sidebar-collapsed .workflow-children .nav-item{padding-left:0}.app.panel-closed{grid-template-columns:var(--rail) minmax(0,1fr) 0}.panel-closed .inspector{opacity:0;pointer-events:none;visibility:hidden;transition:opacity var(--motion),visibility 0s var(--motion)}.panel-closed .canvas{grid-column:2}
 /* Ports overlay the node edges, independently of the connector layer. */
-.connections{z-index:0}.ports{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:2}.ports circle{fill:#c7c7cb;transition:fill var(--motion)}.ports .purple-dot{fill:var(--purple)}
-.node{z-index:1;transition:top 240ms var(--ease),left 240ms var(--ease),background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}
+.connections{z-index:0}.ports{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1000}.ports circle{fill:#c7c7cb;transition:fill var(--motion)}.ports .purple-dot{fill:var(--purple)}
+.node{z-index:var(--stack,1);transition:top 240ms var(--ease),left 240ms var(--ease),background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}
 .node[data-lane="left"]{left:30.81395%}.node[data-lane="right"]{left:73.83721%}.node[data-lane="trunk"]{left:52.18023%}
 .node.trigger:hover{background:#e6daf5;border-color:#a47acb;box-shadow:0 0 0 2px #f1eaf9,0 0 0 4px #cbb6e74d}
 .node.selected .node-icon{background:var(--purple);color:#fff}.node.selected .node-kind,.node.trigger .node-kind{color:#635272}.node.selected.empty .node-name{color:#503a65}.node-icon{transition:background-color var(--motion),color var(--motion)}
-.branch-label,.add-action{z-index:3}.branch-label{transition:top 240ms var(--ease)}.add-action{transition:top 240ms var(--ease),left 240ms var(--ease),background-color var(--motion),border-color var(--motion),color var(--motion)}.node.added{animation:node-in 180ms var(--ease)}@keyframes node-in{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.branch-label{z-index:1}.add-action{z-index:1001}.branch-label{transition:top 240ms var(--ease)}.add-action{transition:top 240ms var(--ease),left 240ms var(--ease),background-color var(--motion),border-color var(--motion),color var(--motion)}.node.added{animation:node-in 180ms var(--ease)}@keyframes node-in{from{opacity:0;transform:translateX(-50%) translateY(-6px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 
 /* A zero-height divider exposes the full-width scroll edge on expanded graphs,
    including the grid beside the capped editor. It does not alter either rectangle. */
@@ -150,6 +150,53 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  .canvas.graph-scrolled:before{opacity:1}
 }
 @media(min-width:761px) and (max-width:1100px){.reopen-editor{left:20px}}
+/* Connectors v1: palette, drag ghost, output-port handles and the live wire preview. */
+.node{touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab}
+.graph .node:focus-visible{z-index:999}
+.node.dragging{z-index:1002;cursor:grabbing}
+.graph.node-dragging .node.dragging,.graph.node-dragging .add-action,.graph.node-dragging .branch-label{transition:none}
+.node.wire-target,.node.wire-target:hover{border-color:var(--purple);background:#f3eef9;box-shadow:0 0 0 3px var(--selected-ring)}
+.graph.wiring,.graph.wiring .node{cursor:crosshair}
+.port-handles{position:absolute;inset:0;z-index:1001;pointer-events:none}
+.port-handle{--hit:28px;position:absolute;width:var(--hit);height:var(--hit);margin:calc(var(--hit) / -2) 0 0 calc(var(--hit) / -2);display:grid;place-items:center;border-radius:50%;opacity:0;pointer-events:none;touch-action:none;cursor:crosshair;transition:opacity var(--motion)}
+.port-handle:after{content:"";width:9px;height:9px;border-radius:50%;background:#c7c7cb;transition:background-color var(--motion),transform var(--motion)}
+.port-handle.covered{display:none}
+.port-handle.from-trigger:after{background:var(--purple)}
+.port-handle.show{opacity:1;pointer-events:auto}
+.port-handle.show:after{background:var(--purple)}
+.port-handle.show:hover:after,.port-handle.wiring-from:after{transform:scale(1.3)}
+@media(pointer:coarse){.port-handle{--hit:40px}}
+@media(hover:none){.port-handle{opacity:1;pointer-events:auto}.port-handle:after{background:var(--purple)}}
+.connection-field{margin-top:14px}.connection-controls{display:flex;align-items:center;gap:6px}.connection-controls .native-select{flex:1;min-width:0}.connection-controls select:hover{background:#fcfaff;border-color:#9273b0}
+.wire-layer{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1000}
+.wire-layer path{fill:none;stroke:var(--purple);stroke-width:2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.wire-layer circle{fill:var(--purple)}
+.palette{position:absolute;top:0;bottom:0;left:0;z-index:5;width:248px;display:flex;flex-direction:column;background:#fafafa;border-right:1px solid var(--line);box-shadow:4px 0 18px #29223322;transform:translateX(-102%);transition:transform 240ms var(--ease),opacity var(--motion)}
+.palette.open{transform:none}
+.palette-list{flex:1;min-height:0;overflow:auto;padding:12px 13px 16px}
+.palette-group{margin:0 0 6px;font-size:12px;font-weight:400;line-height:15px;color:var(--muted)}
+.palette-items{display:grid;gap:6px;margin-bottom:14px}
+.palette-item{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:7px 9px;border:1px solid var(--field-edge);border-radius:10px;background:#fff;text-align:left;touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab}
+.palette-item:hover{background:#fcfaff;border-color:#cbb6e7}
+.palette-item:focus-visible{outline-offset:-1px}
+.palette-item.drag-source{border-color:var(--selected-edge);background:var(--purple-wash)}
+.palette-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+.palette-name{font-size:12px;line-height:15px;font-weight:500}
+.palette-description{font-size:11.5px;line-height:14px;color:var(--muted)}
+.node.drag-ghost{position:fixed;margin:0;z-index:60;transform:translate(-50%,-50%);pointer-events:none;transition:opacity var(--motion);opacity:.55;box-shadow:0 0 0 3px var(--node-ring),0 6px 20px #29223324}
+.node.drag-ghost.over-canvas{opacity:1;border-color:var(--selected-edge)}
+#add-node[aria-expanded="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
+.high-contrast-topology .port-handle:after{background:#73737d}
+.high-contrast-topology .port-handle.show:after{background:#7442b6}
+@media(hover:none){.high-contrast-topology .port-handle:after{background:#7442b6}}
+@media(prefers-contrast:more){.port-handle:after{background:#73737d}.port-handle.show:after{background:#7442b6}.palette-item{border-color:#73737d}}
+@media(hover:none) and (prefers-contrast:more){.port-handle:after{background:#7442b6}}
+@media(forced-colors:active){.port-handle:after{background:CanvasText;forced-color-adjust:none}.port-handle.show:after{background:Highlight}.palette-item{border-color:ButtonText}.wire-layer path{stroke:Highlight}.wire-layer circle{fill:Highlight}.node.wire-target{outline:2px solid Highlight;outline-offset:2px}}
+@media(hover:none) and (forced-colors:active){.port-handle:after,.high-contrast-topology .port-handle:after{background:Highlight}}
+@media(max-width:760px){
+ .palette{width:208px}.palette-list{padding:10px 8px 12px}.palette-items{margin-bottom:10px}.palette-item{gap:7px;padding:6px 7px}
+ .palette.drag-through{opacity:.16;pointer-events:none}
+}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -186,6 +233,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4m8-8 4 4-4 4M14 5l-4 14"/></symbol>
 <symbol id="i-model" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="m12 5 1.5 4 4-2-2 4 4 1-4 1 2 4-4-2-1.5 4-1.5-4-4 2 2-4-4-1 4-1-2-4 4 2Z" stroke="white" stroke-width=".9"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></symbol>
+<symbol id="i-github" viewBox="0 0 16 16"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4m-2 0h4M2 13v3m20-3v3M9 13v1m6-1v1m-5 3h4"/></symbol>
 </defs></svg>
 <div class="app" id="app">
 <aside class="sidebar" aria-label="Workspace sidebar">
@@ -216,7 +266,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   <button class="toolbar-button" id="activate" aria-pressed="false" aria-describedby="builder-limitation"><svg class="icon" aria-hidden="true"><use href="#i-power"/></svg><span>Activate</span></button>
   <button class="toolbar-button" id="discard"><svg class="icon" aria-hidden="true"><use href="#i-discard"/></svg>Discard Draft</button>
   <button class="toolbar-button" id="see-runs"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>See Runs</button>
-  <button class="toolbar-button" id="add-node"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add a Node</button>
+  <button class="toolbar-button" id="add-node" aria-expanded="false" aria-controls="palette"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add a Node</button>
   <button class="icon-button close-button" id="close-panel-top" title="Node configuration" aria-label="Node configuration" aria-expanded="true" aria-controls="inspector"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
  </div>
 </header>
@@ -226,6 +276,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  <section class="graph" aria-label="Workflow nodes">
   <svg class="connections" aria-hidden="true"></svg>
   <svg class="ports" aria-hidden="true"></svg>
+  <svg class="wire-layer" aria-hidden="true"></svg>
+  <div class="port-handles" aria-hidden="true"></div>
   <button class="node trigger" data-title="Record is created" data-icon="i-trigger" aria-pressed="false"><span class="node-icon"><svg class="icon" aria-hidden="true"><use href="#i-trigger"/></svg></span><span class="node-copy"><span class="node-kind">Trigger</span> <span class="node-name">Record is created</span></span></button>
   <button class="node update" data-title="Update record" data-icon="i-refresh" aria-pressed="false"><span class="node-icon"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg></span><span class="node-copy"><span class="node-kind">Action</span> <span class="node-name">Update record</span></span></button>
   <button class="node condition" data-title="If / Else" data-icon="i-branch" aria-pressed="false"><span class="node-icon"><svg class="icon" aria-hidden="true"><use href="#i-branch"/></svg></span><span class="node-copy"><span class="node-kind">Action</span> <span class="node-name">If / Else</span></span></button>
@@ -255,10 +307,14 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   </div></div><span class="code-overflow" aria-hidden="true" title="Scroll code horizontally"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12h16M8 8l-4 4 4 4m8-8 4 4-4 4"/></svg></span></div>
  </section>
  <button class="toolbar-button reopen-editor" id="reopen-editor" aria-label="Show workflow code" aria-expanded="true" aria-controls="editor" hidden><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg>Code</button>
+ <aside class="palette" id="palette" aria-labelledby="palette-title" hidden inert>
+  <header class="inspector-header"><h2 class="inspector-title" id="palette-title">Add a Node</h2><div class="header-actions"><button class="icon-button" id="close-palette" title="Close node palette" aria-label="Close node palette"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
+  <div class="palette-list" id="palette-list"></div>
+ </aside>
 </main>
 <aside class="inspector" aria-labelledby="inspector-title" id="inspector" tabindex="-1">
  <header class="inspector-header"><span class="agent-symbol"><svg class="icon" aria-hidden="true"><use id="panel-symbol" href="#i-sparkles"/></svg></span><h2 class="inspector-title" id="inspector-title" tabindex="-1">AI Agent</h2><div class="header-actions"><button class="icon-button" id="help" title="Help" aria-label="Help" aria-expanded="false" aria-controls="help-content"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg></button><button class="icon-button" id="close-panel" title="Close panel" aria-label="Close panel"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
- <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content"><p>Select a node to edit its configuration. Add a Node extends the selected branch; + extends the branch above it. Download exports the workflow as JSON.</p><p id="builder-limitation">This static builder saves configuration locally and exports JSON. It does not execute workflows; Activate only sets the configuration status.</p><button class="option-switch" id="topology-contrast" role="switch" aria-checked="false"><span>Higher contrast connections and fields</span><span class="switch-track" aria-hidden="true"></span></button></div></div>
+ <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content"><p>Select a node to edit its configuration. Add a Node opens the palette: drag an item onto the canvas, or click it to extend the selected branch. Drag a node to move it, or press the arrow keys while it has focus (Shift for bigger steps), and drag from its port to another node to connect them. + extends the branch above it. Download exports the workflow as JSON.</p><p id="builder-limitation">This static builder saves configuration locally and exports JSON. It does not execute workflows; Activate only sets the configuration status. Palette nodes, moved positions and drawn connections are not stored, so they reset on reload.</p><button class="option-switch" id="topology-contrast" role="switch" aria-checked="false"><span>Higher contrast connections and fields</span><span class="switch-track" aria-hidden="true"></span></button></div></div>
  <div class="tabs" role="tablist" aria-label="AI Agent configuration"><button class="tab" id="prompt-tab" role="tab" aria-selected="true" aria-controls="prompt-panel">Prompt</button><button class="tab" id="permissions-tab" role="tab" aria-selected="false" aria-controls="permissions-panel" tabindex="-1">Permissions</button></div>
  <div class="panel-scroll">
   <section class="tab-panel" id="prompt-panel" role="tabpanel" aria-labelledby="prompt-tab">
@@ -274,6 +330,10 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   </section>
   <section class="tab-panel" id="node-settings" aria-label="Node configuration" hidden></section>
   <section class="tab-panel" id="permissions-panel" role="tabpanel" aria-labelledby="permissions-tab" hidden><ul class="permissions-list"><li>Account creation<svg class="icon" aria-label="Allowed" role="img"><use href="#i-check"/></svg></li><li>Welcome emails<svg class="icon" aria-label="Allowed" role="img"><use href="#i-check"/></svg></li><li>Access permissions<svg class="icon" aria-label="Allowed" role="img"><use href="#i-check"/></svg></li></ul></section>
+  <form class="connection-field" id="connection-form">
+   <label class="field-label" for="connection-target">Connect to</label>
+   <div class="connection-controls"><div class="native-select"><select class="text-input" id="connection-target" required><option value="">Choose a node</option></select><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></div><button class="footer-button" id="connect-node" type="submit">Connect</button></div>
+  </form>
  </div>
  <footer class="inspector-footer"><button class="footer-button" id="save-draft">Save a Draft</button><span class="footer-spacer"></span><button class="footer-button" id="option" aria-pressed="false">Option</button><button class="footer-button delete" id="delete">Delete</button></footer>
 </aside>
@@ -293,8 +353,14 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  const compactRail = window.matchMedia('(min-width: 761px) and (max-width: 1000px)');
  const initialTemplates = $$('.node').map(node => node.cloneNode(true));
  const initialTypes = ['trigger','update','condition','agent','empty'];
- const titles = {trigger:'Record is created',update:'Update record',condition:'If / Else',agent:'AI Agent',empty:'Add an action'};
- const icons = {trigger:'i-trigger',update:'i-refresh',condition:'i-branch',agent:'i-ai',empty:'i-toggle'};
+ // Connectors are dummy node types: placeholder configuration, no external calls.
+ const connectors = {email:{label:'Email',subtitle:'Send email',icon:'i-mail',description:'Send an email'},github:{label:'GitHub',subtitle:'Create issue',icon:'i-github',description:'Create issue'},bot:{label:'Agent',subtitle:'Run agent',icon:'i-bot',description:'Run an external agent'}};
+ const titles = {trigger:'Record is created',update:'Update record',condition:'If / Else',agent:'AI Agent',empty:'Add an action',email:'Email',github:'GitHub',bot:'Agent'};
+ const icons = {trigger:'i-trigger',update:'i-refresh',condition:'i-branch',agent:'i-ai',empty:'i-toggle',email:'i-mail',github:'i-github',bot:'i-bot'};
+ const paletteGroups = [
+  {label:'Connectors',items:Object.entries(connectors).map(([type,{label,description}]) => ({type,name:label,description}))},
+  {label:'Nodes',items:[{type:'trigger',name:'Trigger',description:'Start the workflow'},{type:'empty',name:'Action',description:'Add a workflow step'},{type:'condition',name:'If / Else',description:'Split into two paths'},{type:'agent',name:'AI Agent',description:'Prompt a model'}]}
+ ];
  const aiDefaults = {prompt:$('#input-prompt').value,variable:'Summary',instruction:$('#instruction').value,model:'Claude Sonnet 4',type:'Text',expanded:true,tab:'prompt'};
  let records = [];
  let edges = [];
@@ -391,7 +457,28 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function makeRecord(node,id,type,lane) {
   node.dataset.nodeId = id;
   node.dataset.lane = lane;
-  return {id,type,lane,node,settings:{},ai:{...aiDefaults,outputs:[]}};
+  node.setAttribute('aria-description','Arrow keys move this node. Hold Shift for bigger steps.');
+  return {id,type,lane,node,settings:{},ai:{...aiDefaults,outputs:[]},pos:null,session:false};
+ }
+ function makeNode(type) {
+  const index = initialTypes.indexOf(type);
+  const node = initialTemplates[index < 0 ? 4 : index].cloneNode(true);
+  node.className = 'node ' + type;
+  node.setAttribute('aria-pressed','false');
+  if (connectors[type]) {
+   node.dataset.title = titles[type]; node.dataset.icon = icons[type];
+   node.querySelector('.node-kind').textContent = connectors[type].label;
+   node.querySelector('.node-name').textContent = connectors[type].subtitle;
+   node.querySelector('.node-icon use').setAttribute('href','#' + icons[type]);
+  }
+  return node;
+ }
+ // A moved node keeps its share of the graph width, as lanes do, and stays reachable when the graph narrows.
+ function placeNode(record) {
+  const half = record.node.offsetWidth / 2;
+  const width = graph.clientWidth;
+  record.node.style.left = Math.max(half + 6,Math.min(record.pos.x * width,width - half - 6)) + 'px';
+  record.node.style.top = record.pos.y + 'px';
  }
  // Topology is separate from the buttons: deleting a node can reconnect its neighbours.
  function resetFlow() {
@@ -415,12 +502,13 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function layoutFlow() {
   const rowTops = [50,153,255,370];
   const depthOf = id => {
-   const parent = edges.find(edge => edge.to === id);
+   const parent = edges.find(edge => edge.to === id && !edge.drawn) || edges.find(edge => edge.to === id);
    return parent ? depthOf(parent.from) + 1 : 0;
   };
   records.forEach(record => {
    const depth = depthOf(record.id);
    record.node.style.top = (depth < rowTops.length ? rowTops[depth] : rowTops[3] + (depth - 3) * 104) + 'px';
+   if (record.pos) placeNode(record); else record.node.style.left = '';
   });
   const maxBottom = Math.max(...records.map(record => parseFloat(record.node.style.top) + record.node.offsetHeight));
   graph.style.height = Math.max(492,maxBottom + 70) + 'px';
@@ -440,14 +528,26 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   $('.count').textContent = '(0/' + records.filter(record => record.type !== 'trigger').length + ')';
   records.forEach(record => record.node.setAttribute('aria-label',nodeName(record)));
   orderFlowDom();
+  renderConnectionTargets();
   connectNodes();
+ }
+ // The graph is its own stacking context, so nodes stack by recency under the port layers.
+ let stackOrder = [];
+ function raiseNode(record) {
+  stackOrder = [...stackOrder.filter(item => item !== record && records.includes(item)),record];
+  stackOrder.forEach((item,index) => item.node.style.setProperty('--stack',index + 2));
+ }
+ // A port under a node stacked above its owner stays hidden with its owner.
+ function portCovered(owner,x,y) {
+  const rank = stackOrder.indexOf(owner);
+  return records.some(other => stackOrder.indexOf(other) > rank && Math.abs(x - other.node.offsetLeft) < other.node.offsetWidth / 2 && y > other.node.offsetTop && y < other.node.offsetTop + other.node.offsetHeight);
  }
  function nodeName(record) {
   let branch = '';
   for (let current = record, edge; (edge = edges.find(item => item.to === current.id)); current = getRecord(edge.from)) {
    if (edge.from === 'condition' && current.lane !== 'trunk') { branch = (current.lane === 'left' ? 'If' : 'Else') + ' branch: '; break; }
   }
-  return branch + (record.type === 'trigger' ? 'Trigger ' : 'Action ') + titles[record.type] + (record.id.startsWith('action-') ? ' ' + record.id.slice(7) : '');
+  return branch + (record.type === 'trigger' ? 'Trigger ' : connectors[record.type] ? 'Connector ' : 'Action ') + titles[record.type] + (record.id.startsWith('action-') ? ' ' + record.id.slice(7) : '');
  }
  // Nodes are absolutely placed, so DOM order alone sets reading and tab order.
  function orderFlowDom() {
@@ -498,7 +598,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    shape(gradient,'stop',{offset:1,'stop-color':to});
    return `stroke:url(#${id})`;
   };
-  const dot = (x,y,purple) => shape(ports,'circle',{cx:x,cy:y,r:4.5,class:purple ? 'purple-dot' : ''});
+  const dot = (owner,x,y,purple) => { if (!portCovered(owner,x,y)) shape(ports,'circle',{cx:x,cy:y,r:4.5,class:purple ? 'purple-dot' : ''}); };
   edges.forEach(edge => {
    const from = getRecord(edge.from), to = getRecord(edge.to);
    const a = bounds(from), b = bounds(to);
@@ -510,8 +610,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    const toPurple = (branching && b.x < a.x) || to.id === selectedId;
    const style = from.type === 'trigger' ? fade(sy,b.y,'#7458a8','#a0a0a2') : toPurple ? fade(turn,b.y,'#c6c6c8','#7458a8') : '';
    shape(svg,'path',style ? {d:path,style} : {d:path});
-   dot(sx,sy,from.type === 'trigger' || (branching && from.id === selectedId));
-   dot(b.x,b.y,to.id === selectedId);
+   dot(from,sx,sy,from.type === 'trigger' || (branching && from.id === selectedId));
+   dot(to,b.x,b.y,to.id === selectedId);
   });
   const anchor = getRecord(plusAnchor);
   if (anchor) {
@@ -520,8 +620,20 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    add.style.left = a.x + 'px';
    add.style.top = (a.y+a.h+32) + 'px';
    shape(svg,'path',{d:`M${a.x} ${a.y+a.h}V${add.offsetTop}`,class:'dashed'});
-   dot(a.x,a.y+a.h,false);
+   dot(anchor,a.x,a.y+a.h,false);
   }
+  // Labels hold their measured lane spot until the branch moves, then ride its line.
+  [['.branch-label.if','left'],['.branch-label.else','right']].forEach(([selector,lane]) => {
+   const label = $(selector);
+   const branch = getRecord('condition');
+   const child = branch && outgoing(branch.id).map(edge => !edge.drawn && getRecord(edge.to)).find(item => item && item.lane === lane);
+   if (child && (branch.pos || child.pos)) {
+    const a = bounds(branch), b = bounds(child);
+    label.style.left = b.x + 'px';
+    label.style.top = ((a.y + a.h/2 + b.y) / 2 - 9) + 'px';
+   } else label.style.left = '';
+  });
+  syncPortHandles();
   placeFeedback();
  }
  // Sample the animated top positions too; connectors never jump ahead of the nodes.
@@ -584,13 +696,31 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  const fieldsByType = {
   trigger:[['Trigger','Record is created'],['Record','']],
   update:[['Record',''],['Field',''],['Value','']],
-  condition:[['Variable Name','Summary'],['Condition',''],['Value','']]
+  condition:[['Variable Name','Summary'],['Condition',''],['Value','']],
+  email:[['Action','Send email'],['To','team@example.com'],['Subject','Workflow update']],
+  github:[['Action','Create issue'],['Repository','acme/workflows'],['Title','New workflow record']],
+  bot:[['Action','Run agent'],['Agent','Onboarding agent'],['Instructions','Summarise the new record']]
  };
  const optionsByType = {
   trigger:['Run once per record','Skip records created by workflows'],
   action:['Continue if this step fails','Retry up to 3 times']
  };
+ function renderConnectionTargets() {
+  const select = $('#connection-target');
+  const previous = select.value;
+  const targets = records.filter(record => record.id !== selectedId);
+  const placeholder = document.createElement('option');
+  placeholder.value = ''; placeholder.textContent = targets.length ? 'Choose a node' : 'No other nodes';
+  select.replaceChildren(placeholder,...targets.map(record => {
+   const option = document.createElement('option');
+   option.value = record.id; option.textContent = nodeName(record);
+   return option;
+  }));
+  select.value = targets.some(record => record.id === previous) ? previous : '';
+  select.disabled = $('#connect-node').disabled = !selectedRecord() || !targets.length;
+ }
  function renderConfiguration(record) {
+  renderConnectionTargets();
   const ai = record.type === 'agent';
   $('#option').setAttribute('aria-pressed','false');
   $('#option').title = ai ? 'Permissions' : 'Node options';
@@ -667,6 +797,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
  function selectNode(record,tapped = false) {
   captureAI(); closeMenus(); selectedId = record.id;
+  raiseNode(record);
   records.forEach(item => {
    item.node.classList.toggle('selected',item === record);
    item.node.setAttribute('aria-pressed',String(item === record));
@@ -687,7 +818,10 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
  graph.addEventListener('click',event => {
   const node = event.target.closest('.node');
-  if (node) selectNode(getRecord(node.dataset.nodeId),true);
+  if (!node) return;
+  selectNode(getRecord(node.dataset.nodeId),true);
+  // Not every browser focuses a clicked button; arrow keys need the node focused.
+  node.focus({preventScroll:true});
  });
  function switchTab(tab) {
   const permissions = tab.id === 'permissions-tab';
@@ -893,7 +1027,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  // Keep the previous saved version until the recovery interval actually ends.
  // The deadline is absolute so a reload cannot restart the interval.
  function persistDiscard() {
-  localStorage.setItem(discardKey,JSON.stringify(pendingDiscard));
+  const {snapshot} = pendingDiscard;
+  localStorage.setItem(discardKey,JSON.stringify({...pendingDiscard,snapshot:{...snapshot,workflow:withoutSessionWork(snapshot.workflow)}}));
  }
  function clearDiscard(removeSaved = false) {
   clearTimeout(discardTimer);
@@ -947,11 +1082,22 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
  $('#code-size').addEventListener('click',() => setCodeSize(!$('#editor').classList.contains('large-code')));
  $('#skip-inspector').addEventListener('click',event => { event.preventDefault(); revealPanel(true,true); });
+ // Palette nodes, drawn edges and moved positions live only in this page session.
+ // Everything written to localStorage passes through here; Download keeps them.
+ function withoutSessionWork(data) {
+  const dropped = new Set(data.nodes.filter(node => node.session).map(node => node.id));
+  return {...data,
+   nodes:data.nodes.filter(node => !node.session).map(({pos,session,...node}) => node),
+   edges:data.edges.filter(edge => !edge.drawn && !dropped.has(edge.from) && !dropped.has(edge.to)),
+   selectedId:dropped.has(data.selectedId) ? '' : data.selectedId,
+   plusAnchor:dropped.has(data.plusAnchor) ? '' : data.plusAnchor
+  };
+ }
  function workflowData() {
   captureAI();
   return {
    name:'Automation Workflow',
-   nodes:records.map(({id,type,lane,settings,ai}) => ({id,type,lane,settings,ai})),
+   nodes:records.map(({id,type,lane,settings,ai,pos,session}) => ({id,type,lane,settings,ai,pos,session})),
    edges,active:$('#activate').getAttribute('aria-pressed') === 'true',
    selectedId,plusAnchor,favorite:$('#favorite').getAttribute('aria-pressed') === 'true',
    editorClosed:$('#editor').classList.contains('closing'),
@@ -966,29 +1112,32 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function restoreWorkflow(data) {
   // Validate the complete topology before replacing the current workflow.
   if (!data || data.name !== 'Automation Workflow' || !Array.isArray(data.nodes) || !data.nodes.length || !Array.isArray(data.edges)) throw new Error('Invalid workflow');
-  if (data.nodes.filter(node => node?.type === 'trigger').length !== 1) throw new Error('Invalid trigger');
+  if (!data.nodes.some(node => node?.type === 'trigger')) throw new Error('Invalid trigger');
   const ids = new Set();
   data.nodes.forEach(node => {
    if (!node || typeof node.id !== 'string' || !node.id || ids.has(node.id) || !Object.hasOwn(titles,node.type) || !['trunk','left','right'].includes(node.lane)) throw new Error('Invalid node');
    ids.add(node.id);
   });
+  // Only drawn connections may merge paths; the built-in tree keeps one parent per node.
   const parents = new Map();
   data.edges.forEach(edge => {
-   if (!edge || !ids.has(edge.from) || !ids.has(edge.to) || parents.has(edge.to)) throw new Error('Invalid connection');
-   parents.set(edge.to,edge.from);
+   if (!edge || !ids.has(edge.from) || !ids.has(edge.to) || edge.from === edge.to || (parents.has(edge.to) && !edge.drawn)) throw new Error('Invalid connection');
+   parents.set(edge.to,[...(parents.get(edge.to) || []),edge.from]);
   });
-  if (parents.has(data.nodes.find(node => node.type === 'trigger').id)) throw new Error('Invalid trigger connection');
-  ids.forEach(id => {
-   const seen = new Set();
-   while (id) {
-    if (seen.has(id)) throw new Error('Circular connection');
-    seen.add(id); id = parents.get(id);
-   }
-  });
+  if (data.nodes.every(node => node.type !== 'trigger' || parents.has(node.id))) throw new Error('Invalid trigger connection');
+  const settled = new Set();
+  const walk = (id,path) => {
+   if (path.has(id)) throw new Error('Circular connection');
+   if (settled.has(id)) return;
+   path.add(id);
+   (parents.get(id) || []).forEach(parent => walk(parent,path));
+   path.delete(id); settled.add(id);
+  };
+  ids.forEach(id => walk(id,new Set()));
   const restored = data.nodes.map(item => {
-   const template = initialTemplates[initialTypes.indexOf(item.type)].cloneNode(true);
-   template.className = 'node ' + item.type;
-   const record = makeRecord(template,item.id,item.type,item.lane);
+   const record = makeRecord(makeNode(item.type),item.id,item.type,item.lane);
+   if (Number.isFinite(item.pos?.x) && Number.isFinite(item.pos?.y)) record.pos = {x:item.pos.x,y:item.pos.y};
+   record.session = item.session === true;
    record.settings = item.settings && typeof item.settings === 'object' ? item.settings : {};
    const ai = item.ai && typeof item.ai === 'object' ? item.ai : {};
    record.ai = {...aiDefaults,...ai,outputs:Array.isArray(ai.outputs) ? ai.outputs.filter(output => output && typeof output === 'object') : []};
@@ -997,7 +1146,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   });
   dropDeleteUndo();
   $$('.node').forEach(node => node.remove());
-  records = restored; edges = data.edges.map(({from,to}) => ({from,to}));
+  records = restored; edges = data.edges.map(({from,to,drawn}) => drawn ? {from,to,drawn:true} : {from,to});
   records.forEach(record => graph.insertBefore(record.node,$('#add-action')));
   selectedId = ''; plusAnchor = ids.has(data.plusAnchor) ? data.plusAnchor : (records.find(record => record.type === 'agent') || records[0]).id;
   nextId = Math.max(0,...records.map(record => Number(record.id.match(/^action-(\d+)$/)?.[1]) || 0)) + 1;
@@ -1037,7 +1186,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   'Workflow runs':() => ({summary:'This static builder configures workflows but does not execute them. Activate sets configuration status only.',columns:['Run','Status','Started'],empty:'Nothing has run yet. Run history requires an execution service.'}),
   'Workflow versions':() => ({summary:'Save a Draft stores the version you can return to after a reload.',columns:['Version','Status','Actions'],rows:[['Current',workflowStatus(),String(actionCount())],...savedVersionRow()]}),
   Settings:() => ({summary:'Current settings for this workflow.',columns:['Setting','Value'],rows:[['Name','Automation Workflow'],['Status',workflowStatus()],['Favorite',$('#favorite').getAttribute('aria-pressed') === 'true' ? 'Yes' : 'No'],['Actions',String(actionCount())]]}),
-  Documentation:() => ({summary:'Select a node to edit its configuration.',columns:['Control','What it does'],rows:[['Add a Node','Extends the selected branch'],['+','Extends the branch above it'],['Download','Exports the workflow as JSON'],['Upload','Imports a downloaded JSON file'],['Save a Draft','Keeps your changes after a reload'],['Discard Draft','Resets the workflow; Undo survives reload during the recovery interval'],['Activate','Sets configuration status; this static builder does not execute workflows'],['Help (?)','Includes a switch for higher contrast connections and fields']]})
+  Documentation:() => ({summary:'Select a node to edit its configuration.',columns:['Control','What it does'],rows:[['Add a Node','Opens the palette: drag an item onto the canvas, or click it to extend the selected branch'],['Drag a node','Moves it; its connections follow'],['Drag a port','Connects the node to another node'],['+','Extends the branch above it'],['Download','Exports the workflow as JSON'],['Upload','Imports a downloaded JSON file'],['Save a Draft','Keeps your changes after a reload, except palette nodes, moves and drawn connections'],['Discard Draft','Resets the workflow; Undo survives reload during the recovery interval'],['Activate','Sets configuration status; this static builder does not execute workflows'],['Help (?)','Includes a switch for higher contrast connections and fields']]})
  };
  const workspaceView = $('#workspace-view');
  let sectionOpener;
@@ -1194,20 +1343,22 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   if (overflow > 0) window.scrollBy({top:overflow,behavior});
   else if (visibleTop < 12) window.scrollBy({top:visibleTop - 12,behavior});
  }
- function addNode(anchorId) {
+ function addNode(anchorId,item = null) {
   captureAI();
   const end = terminalFrom(anchorId);
-  const node = initialTemplates[4].cloneNode(true);
+  const node = makeNode(item ? item.type : 'empty');
   node.classList.add('added');
-  const record = makeRecord(node,'action-' + nextId++,'empty',end.lane);
+  const record = makeRecord(node,'action-' + nextId++,item ? item.type : 'empty',end.lane);
+  // Anything built on a session node is session work too, or a reload would strand it.
+  record.session = !!item || end.session;
+  if (end.pos) record.pos = {x:end.pos.x,y:end.pos.y + end.node.offsetHeight + 51};
   records.push(record); edges.push({from:end.id,to:record.id});
   graph.insertBefore(node,$('#add-action'));
   if (end.id === plusAnchor) plusAnchor = record.id;
   layoutFlow(); selectNode(record); trackLayout();
   revealAddedNode(record);
-  notify('Action added');
+  notify((item ? item.name : 'Action') + ' added');
  }
- $('#add-node').addEventListener('click',() => addNode(selectedId));
  $('#add-action').addEventListener('click',() => addNode(plusAnchor));
  $('#add-output').addEventListener('click',() => {
   setOutput(true);
@@ -1267,10 +1418,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  window.addEventListener('resize',placeFeedback);
  $('#save-draft').addEventListener('click',() => {
   captureAI();
-  try { localStorage.setItem(draftKey,JSON.stringify(workflowData())); }
+  const sessionOnly = records.some(record => record.session || record.pos) || edges.some(edge => edge.drawn);
+  try { localStorage.setItem(draftKey,JSON.stringify(withoutSessionWork(workflowData()))); }
   catch { notify('Draft could not be saved. Download the workflow to keep your changes.'); return; }
   clearDiscard();
-  $('#save-draft').classList.add('saved'); notify('Draft saved');
+  $('#save-draft').classList.add('saved'); notify(sessionOnly ? 'Draft saved. Palette nodes, moves and drawn connections reset on reload.' : 'Draft saved');
   window.setTimeout(() => $('#save-draft').classList.remove('saved'),1000);
  });
  $('#option').addEventListener('click',() => {
@@ -1282,7 +1434,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    $('#node-options').inert = !open;
   }
  });
- const descendants = id => outgoing(id).flatMap(edge => [getRecord(edge.to),...descendants(edge.to)]);
+ // Follows the built-in tree only: a drawn connection does not own its target.
+ const descendants = id => outgoing(id).filter(edge => !edge.drawn).flatMap(edge => [getRecord(edge.to),...descendants(edge.to)]);
  function setLane(record,lane) {
   record.lane = lane;
   record.node.dataset.lane = lane;
@@ -1305,20 +1458,24 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  $('#delete').addEventListener('click',event => {
   const record = selectedRecord();
   if (!record) return;
-  if (record.type === 'trigger') { notify('Trigger cannot be deleted'); return; }
+  if (record.type === 'trigger' && records.filter(item => item.type === 'trigger').length === 1) { notify('Trigger cannot be deleted'); return; }
   captureAI();
   // Deletes inside one Undo window restore together, from the state before the first.
   const snapshot = pendingDelete?.snapshot ?? {records:[...records],edges:edges.map(edge => ({...edge})),lanes:new Map(records.map(item => [item.id,item.lane])),plusAnchor};
   const incoming = edges.filter(edge => edge.to === record.id);
   const children = outgoing(record.id);
-  const branched = children.length > 1;
+  const paths = children.filter(edge => !edge.drawn);
+  const branched = record.type === 'condition' && paths.length > 1;
   // No condition is left to choose between the paths, so only the If path continues.
-  const elseChild = branched ? getRecord((children.find(edge => getRecord(edge.to).lane === 'right') || children[children.length - 1]).to) : null;
+  const elseChild = branched ? getRecord((paths.find(edge => getRecord(edge.to).lane === 'right') || paths[paths.length - 1]).to) : null;
   const removed = elseChild ? [record,elseChild,...descendants(elseChild.id)] : [record];
   const heirs = children.filter(edge => edge.to !== elseChild?.id).map(edge => getRecord(edge.to));
   if (branched || record.id === 'condition') heirs.flatMap(heir => [heir,...descendants(heir.id)]).forEach(item => setLane(item,record.lane));
   edges = edges.filter(edge => !removed.some(item => item.id === edge.from || item.id === edge.to));
-  incoming.forEach(parent => heirs.forEach(heir => edges.push({from:parent.from,to:heir.id})));
+  incoming.forEach(parent => children.filter(child => child.to !== elseChild?.id).forEach(child => {
+   if (edges.some(edge => edge.from === parent.from && edge.to === child.to)) return;
+   edges.push(parent.drawn || child.drawn ? {from:parent.from,to:child.to,drawn:true,bridge:true} : {from:parent.from,to:child.to});
+  }));
   records = records.filter(item => !removed.includes(item));
   const neighbour = getRecord(incoming[0]?.from) || heirs[0] || records[0];
   removed.forEach(item => {
@@ -1343,7 +1500,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   captureAI();
   // Nodes added since the delete stay, re-attached to the end of the path they extended.
   const added = records.filter(item => !snapshot.records.includes(item));
-  const addedEdges = edges.filter(edge => added.some(item => item.id === edge.to));
+  const addedEdges = edges.filter(edge => !edge.drawn && added.some(item => item.id === edge.to));
+  const sameEdge = (a,b) => a.from === b.from && a.to === b.to;
+  const drawnSince = edges.filter(edge => edge.drawn && !edge.bridge && !snapshot.edges.some(item => sameEdge(item,edge)));
   records = [...snapshot.records,...added];
   edges = snapshot.edges.map(edge => ({...edge}));
   plusAnchor = snapshot.plusAnchor;
@@ -1358,11 +1517,364 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    edges.push({from:end.id,to});
    setLane(getRecord(to),end.lane);
   });
+  drawnSince.forEach(edge => { if (!edges.some(item => sameEdge(item,edge))) edges.push(edge); });
   selectedId = '';
   layoutFlow(); selectNode(target); trackLayout();
   target.node.focus({preventScroll:true});
   notify(restored > 1 ? 'Actions restored' : 'Action restored');
  }
+ // All three drags share this Pointer Events path, so mouse, touch and pen behave alike.
+ // Below the threshold a mouse or keyboard press stays a native click. Touch and pen act on
+ // release instead, because Chromium can drop the click it synthesizes from a tap.
+ const dragThreshold = 4;
+ const scroller = $('#graph-scroll');
+ let activeDrag = null;
+ let swallowClick = false;
+ let swallowTimer;
+ function armClickSwallow(duration = 80) {
+  swallowClick = true;
+  clearTimeout(swallowTimer);
+  swallowTimer = window.setTimeout(() => { swallowClick = false; },duration);
+ }
+ document.addEventListener('pointerdown',() => { swallowClick = false; },true);
+ document.addEventListener('click',event => {
+  if (!swallowClick) return;
+  swallowClick = false;
+  event.stopPropagation(); event.preventDefault();
+ },true);
+ function trackDrag(event,source,handlers) {
+  if (activeDrag || !event.isPrimary || (event.pointerType === 'mouse' && event.button !== 0)) return;
+  const drag = {...handlers,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,moved:false};
+  const same = other => other.pointerId === event.pointerId;
+  const onMove = other => {
+   if (!same(other)) return;
+   drag.x = other.clientX; drag.y = other.clientY;
+   if (!drag.moved) {
+    if (Math.hypot(drag.x - drag.startX,drag.y - drag.startY) < dragThreshold) return;
+    drag.moved = true;
+    try { source.setPointerCapture(event.pointerId); } catch {}
+    drag.start?.(drag);
+    frame = requestAnimationFrame(autoScroll);
+   }
+   drag.move(drag);
+  };
+  const onUp = other => { if (same(other)) drag.finish(true,true); };
+  const onCancel = other => { if (same(other)) drag.finish(false,true); };
+  const onBlur = () => drag.finish(false,false);
+  // Nudges the graph when a drag rests against its top or bottom edge.
+  let frame = 0;
+  function autoScroll() {
+   const box = scroller.getBoundingClientRect();
+   const inside = drag.x >= box.left && drag.x <= box.right && drag.y >= box.top && drag.y <= box.bottom;
+   const step = !inside ? 0 : drag.y < box.top + 24 ? -6 : drag.y > box.bottom - 24 ? 6 : 0;
+   const before = scroller.scrollTop;
+   if (step) scroller.scrollTop += step;
+   if (scroller.scrollTop !== before) drag.move(drag);
+   frame = requestAnimationFrame(autoScroll);
+  }
+  drag.finish = (commit,released) => {
+   activeDrag = null;
+   cancelAnimationFrame(frame);
+   window.removeEventListener('pointermove',onMove);
+   window.removeEventListener('pointerup',onUp);
+   window.removeEventListener('pointercancel',onCancel);
+   window.removeEventListener('blur',onBlur);
+   try { source.releasePointerCapture(event.pointerId); } catch {}
+   if (!drag.moved) {
+    // A tap's own click can arrive up to the double-tap delay later; it must not act twice.
+    if (commit && event.pointerType !== 'mouse' && drag.tap) { armClickSwallow(400); drag.tap(); }
+    return;
+   }
+   // The click that follows the release belongs to the drag, even after Escape.
+   if (released) armClickSwallow();
+   else window.addEventListener('pointerup',() => armClickSwallow(),{once:true,capture:true});
+   drag.end?.(drag);
+   if (commit) drag.drop(drag); else drag.cancel?.(drag);
+  };
+  activeDrag = drag;
+  window.addEventListener('pointermove',onMove);
+  window.addEventListener('pointerup',onUp);
+  window.addEventListener('pointercancel',onCancel);
+  window.addEventListener('blur',onBlur);
+ }
+ const clamp = (value,low,high) => Math.max(low,Math.min(value,Math.max(low,high)));
+ // A short graph sits inside a taller scroller; that empty canvas is still droppable.
+ const canvasFloor = () => Math.max(graph.clientHeight,scroller.clientHeight);
+ graph.addEventListener('pointerdown',event => {
+  const handle = event.target.closest('.port-handle');
+  if (handle) { startWire(event,handle); return; }
+  const node = event.target.closest('.node');
+  if (node && !node.classList.contains('exiting')) startNodeDrag(event,node);
+ });
+ function startNodeDrag(event,node) {
+  const record = getRecord(node.dataset.nodeId);
+  if (!record) return;
+  const previous = record.pos;
+  const box = graph.getBoundingClientRect();
+  const offsetX = event.clientX - box.left - node.offsetLeft;
+  const offsetY = event.clientY - box.top - node.offsetTop;
+  trackDrag(event,node,{
+   tap() { selectNode(record,true); },
+   start() { graph.classList.add('node-dragging'); node.classList.add('dragging'); node.classList.remove('added'); },
+   move(drag) {
+    const now = graph.getBoundingClientRect();
+    const width = graph.clientWidth;
+    const half = node.offsetWidth / 2;
+    const x = clamp(drag.x - now.left - offsetX,half + 6,width - half - 6);
+    const y = clamp(drag.y - now.top - offsetY,6,canvasFloor() - node.offsetHeight - 6);
+    record.pos = {x:x / width,y};
+    placeNode(record);
+    connectNodes();
+   },
+   end() { graph.classList.remove('node-dragging'); node.classList.remove('dragging'); },
+   drop() { selectNode(record); layoutFlow(); trackLayout(); node.focus({preventScroll:true}); },
+   cancel() { record.pos = previous; layoutFlow(); trackLayout(); }
+  });
+ }
+ // Arrow keys take the same path as a pointer drop: same clamps, same session position.
+ const nudgeSteps = {ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+ let nudgeTimer;
+ function nudgeNode(record,dx,dy) {
+  const {node} = record;
+  const width = graph.clientWidth;
+  const half = node.offsetWidth / 2;
+  const fromX = parseFloat(node.style.left) || node.offsetLeft;
+  const fromY = parseFloat(node.style.top);
+  const x = clamp(fromX + dx,half + 6,width - half - 6);
+  const y = clamp(fromY + dy,6,canvasFloor() - node.offsetHeight - 6);
+  const moved = x !== fromX || y !== fromY;
+  if (moved) {
+   // Edges follow in the same frame, as they do during a drag.
+   graph.classList.add('node-dragging'); node.classList.add('dragging');
+   record.pos = {x:x / width,y};
+   layoutFlow();
+   void graph.offsetHeight;
+   graph.classList.remove('node-dragging'); node.classList.remove('dragging');
+   revealAddedNode(record);
+  }
+  // One announcement per burst, so a held key does not flood the live region.
+  clearTimeout(nudgeTimer);
+  nudgeTimer = window.setTimeout(() => notify(titles[record.type] + (moved ? ' moved to ' + Math.round(x) + ' across, ' + Math.round(y) + ' down' : ' is at the edge of the canvas')),200);
+ }
+ graph.addEventListener('keydown',event => {
+  const step = nudgeSteps[event.key];
+  const node = event.target.closest('.node');
+  if (!step || !node || node.classList.contains('exiting') || activeDrag || event.altKey || event.ctrlKey || event.metaKey) return;
+  const record = getRecord(node.dataset.nodeId);
+  if (!record) return;
+  event.preventDefault();
+  if (record.id !== selectedId) selectNode(record);
+  const size = event.shiftKey ? 10 : 1;
+  nudgeNode(record,step[0] * size,step[1] * size);
+ });
+ // One handle per node sits on its bottom port. Handles are kept, never rebuilt,
+ // because connectNodes runs during a wire drag and the handle holds the pointer.
+ const handleLayer = $('.port-handles');
+ const wireLayer = $('.wire-layer');
+ let hoveredId = '';
+ let wiringFrom = '';
+ function syncPortHandles() {
+  const known = new Set(records.map(record => record.id));
+  [...handleLayer.children].forEach(handle => { if (!known.has(handle.dataset.nodeId)) handle.remove(); });
+  records.forEach(record => {
+   let handle = handleLayer.querySelector(`[data-node-id="${record.id}"]`);
+   if (!handle) {
+    handle = document.createElement('div');
+    handle.className = 'port-handle'; handle.dataset.nodeId = record.id;
+    handleLayer.append(handle);
+   }
+   handle.style.left = record.node.offsetLeft + 'px';
+   handle.style.top = (record.node.offsetTop + record.node.offsetHeight) + 'px';
+   handle.classList.toggle('show',record.id === selectedId || record.id === hoveredId || record.id === wiringFrom);
+   handle.classList.toggle('wiring-from',record.id === wiringFrom);
+   handle.classList.toggle('from-trigger',record.type === 'trigger');
+   handle.classList.toggle('covered',portCovered(record,record.node.offsetLeft,record.node.offsetTop + record.node.offsetHeight));
+  });
+ }
+ function setHovered(id) {
+  if (id === hoveredId) return;
+  hoveredId = id;
+  syncPortHandles();
+ }
+ graph.addEventListener('pointerover',event => {
+  if (event.pointerType === 'mouse' && !activeDrag) setHovered(event.target.closest('.node,.port-handle')?.dataset.nodeId || '');
+ });
+ graph.addEventListener('pointerleave',event => { if (event.pointerType === 'mouse' && !activeDrag) setHovered(''); });
+ const reaches = (from,to) => from === to || outgoing(from).some(edge => reaches(edge.to,to));
+ function connectionProblem(from,to) {
+  if (from.id === to.id) return 'A node cannot connect to itself';
+  if (edges.some(edge => edge.from === from.id && edge.to === to.id)) return 'These nodes are already connected';
+  if (to.type === 'trigger') return 'A trigger starts the workflow, so it cannot receive a connection';
+  if (reaches(to.id,from.id)) return 'That connection would create a loop';
+  return '';
+ }
+ // Both input paths share validation and create the same session-only edge.
+ function createConnection(from,to) {
+  if (!from || !to) return;
+  const problem = connectionProblem(from,to);
+  if (problem) { notify(problem); return; }
+  edges.push({from:from.id,to:to.id,drawn:true});
+  layoutFlow(); trackLayout();
+  notify('Connected to ' + titles[to.type]);
+ }
+ $('#connection-form').addEventListener('submit',event => {
+  event.preventDefault();
+  createConnection(selectedRecord(),getRecord($('#connection-target').value));
+ });
+ // The body or handle under the pointer wins; otherwise a near miss snaps to an input port.
+ function wireTargetAt(x,y) {
+  const hit = document.elementFromPoint(x,y)?.closest('.graph .node,.graph .port-handle');
+  if (hit) return getRecord(hit.dataset.nodeId) || null;
+  if (!document.elementFromPoint(x,y)?.closest('#graph-scroll')) return null;
+  const box = graph.getBoundingClientRect();
+  return records.find(record => Math.hypot(x - box.left - record.node.offsetLeft,y - box.top - record.node.offsetTop) < 20) || null;
+ }
+ function startWire(event,handle) {
+  const from = getRecord(handle.dataset.nodeId);
+  if (!from) return;
+  event.preventDefault();
+  let target = null;
+  const line = document.createElementNS(wireLayer.namespaceURI,'path');
+  const tip = document.createElementNS(wireLayer.namespaceURI,'circle');
+  tip.setAttribute('r',4.5);
+  const mark = record => {
+   if (target === record) return;
+   target?.node.classList.remove('wire-target');
+   target = record;
+   target?.node.classList.add('wire-target');
+  };
+  trackDrag(event,handle,{
+   start() {
+    wiringFrom = from.id;
+    graph.classList.add('wiring');
+    wireLayer.replaceChildren(line,tip);
+    syncPortHandles();
+   },
+   move(drag) {
+    const box = graph.getBoundingClientRect();
+    const found = wireTargetAt(drag.x,drag.y);
+    mark(found && !connectionProblem(from,found) ? found : null);
+    const endX = target ? target.node.offsetLeft : drag.x - box.left;
+    const endY = target ? target.node.offsetTop : drag.y - box.top;
+    line.setAttribute('d',`M${from.node.offsetLeft} ${from.node.offsetTop + from.node.offsetHeight}L${endX} ${endY}`);
+    tip.setAttribute('cx',endX); tip.setAttribute('cy',endY);
+   },
+   end() {
+    wiringFrom = '';
+    graph.classList.remove('wiring');
+    wireLayer.replaceChildren();
+    mark(null);
+    syncPortHandles();
+   },
+   drop(drag) {
+    const found = wireTargetAt(drag.x,drag.y);
+    if (!found) return;
+    createConnection(from,found);
+   }
+  });
+ }
+ // Add a Node opens the palette: drag an item to place it, click or press Enter to chain it.
+ const palette = $('#palette');
+ let paletteTimer;
+ function buildPalette() {
+  $('#palette-list').replaceChildren(...paletteGroups.map(({label,items}) => {
+   const group = document.createElement('section');
+   const heading = document.createElement('h3'); heading.className = 'palette-group'; heading.textContent = label;
+   const list = document.createElement('div'); list.className = 'palette-items';
+   items.forEach(item => {
+    const button = document.createElement('button');
+    button.className = 'palette-item ' + item.type; button.dataset.type = item.type;
+    const icon = makeNode(item.type).querySelector('.node-icon');
+    const copy = document.createElement('span'); copy.className = 'palette-copy';
+    const name = document.createElement('span'); name.className = 'palette-name'; name.textContent = item.name;
+    const description = document.createElement('span'); description.className = 'palette-description'; description.textContent = item.description;
+    copy.append(name,description); button.append(icon,copy);
+    list.append(button);
+   });
+   group.append(heading,list);
+   return group;
+  }));
+ }
+ const paletteOpen = () => palette.classList.contains('open');
+ function openPalette() {
+  clearTimeout(paletteTimer);
+  palette.hidden = false; palette.inert = false;
+  void palette.offsetWidth;
+  palette.classList.add('open');
+  $('#add-node').setAttribute('aria-expanded','true');
+  $('#close-palette').focus({preventScroll:true});
+ }
+ function closePalette() {
+  activeDrag?.finish(false,false);
+  palette.classList.remove('open');
+  palette.inert = true;
+  $('#add-node').setAttribute('aria-expanded','false');
+  $('#add-node').focus({preventScroll:true});
+  clearTimeout(paletteTimer);
+  paletteTimer = window.setTimeout(() => { palette.hidden = true; },reducedMotion.matches ? 0 : 240);
+ }
+ const paletteItemOf = type => paletteGroups.flatMap(group => group.items).find(item => item.type === type);
+ $('#add-node').addEventListener('click',() => { if (paletteOpen()) closePalette(); else openPalette(); });
+ $('#close-palette').addEventListener('click',closePalette);
+ $('#palette-list').addEventListener('click',event => {
+  const button = event.target.closest('.palette-item');
+  if (button) addNode(selectedId,paletteItemOf(button.dataset.type));
+ });
+ // Editor and palette sit over the canvas but are not drop space. Pixels the phone palette
+ // yields during a drag fall through to the canvas beneath, since it covers most of the width.
+ function overDropSpace(x,y) {
+  const hit = document.elementFromPoint(x,y);
+  return !!hit?.closest('.canvas') && !hit.closest('.palette,.editor,.reopen-editor');
+ }
+ function dropNode(item,x,y) {
+  captureAI();
+  const node = makeNode(item.type);
+  node.classList.add('added');
+  const record = makeRecord(node,'action-' + nextId++,item.type,'trunk');
+  record.session = true;
+  records.push(record);
+  graph.insertBefore(node,$('#add-action'));
+  const box = graph.getBoundingClientRect();
+  const half = node.offsetWidth / 2;
+  const width = graph.clientWidth;
+  record.pos = {x:clamp(x - box.left,half + 6,width - half - 6) / width,y:clamp(y - box.top - node.offsetHeight / 2,6,canvasFloor() - node.offsetHeight - 6)};
+  layoutFlow(); selectNode(record); trackLayout();
+  node.focus({preventScroll:true});
+  notify(item.name + ' added');
+ }
+ $('#palette-list').addEventListener('pointerdown',event => {
+  const button = event.target.closest('.palette-item');
+  if (!button) return;
+  const item = paletteItemOf(button.dataset.type);
+  let ghost;
+  trackDrag(event,button,{
+   tap() { addNode(selectedId,item); },
+   start() {
+    ghost = makeNode(item.type);
+    graph.append(ghost);
+    const width = ghost.offsetWidth;
+    ghost.classList.add('drag-ghost');
+    ghost.style.width = width + 'px';
+    ghost.removeAttribute('aria-pressed');
+    ghost.inert = true; ghost.setAttribute('aria-hidden','true');
+    document.body.append(ghost);
+    button.classList.add('drag-source');
+    palette.classList.add('drag-through');
+   },
+   move(drag) {
+    ghost.style.left = drag.x + 'px';
+    ghost.style.top = drag.y + 'px';
+    ghost.classList.toggle('over-canvas',overDropSpace(drag.x,drag.y));
+   },
+   end() {
+    ghost.remove();
+    button.classList.remove('drag-source');
+    palette.classList.remove('drag-through');
+   },
+   drop(drag) { if (overDropSpace(drag.x,drag.y)) dropNode(item,drag.x,drag.y); }
+  });
+ });
+ buildPalette();
  resetFlow();
  renderConfiguration(getRecord('agent'));
  // Read first: restoring a draft writes its own view back. No collapse animation on load.
@@ -1426,12 +1938,14 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  // opener. The editor closes only when nothing else was open, from anywhere on the page.
  document.addEventListener('keydown',event => {
   if (event.key !== 'Escape' || event.repeat || event.isComposing) return;
+  if (activeDrag?.moved) { activeDrag.finish(false,false); event.preventDefault(); return; }
   const expanded = $('.select-button[aria-expanded="true"]');
   if ($('#feedback').contains(document.activeElement) && feedbackOffer) feedbackOffer.home.focus();
   else if (expanded) { closeMenus(); expanded.focus(); }
   else if (sectionTitle) closeSection();
   else if (app.classList.contains('nav-drawer')) { setDrawer(false); $('#collapse-sidebar').focus(); }
   else if (railExpanded()) { collapseRail(); $('#collapse-sidebar').focus(); }
+  else if (paletteOpen()) closePalette();
   else if ($('#help').getAttribute('aria-expanded') === 'true' && !app.classList.contains('panel-closed')) { setHelp(false); $('#help').focus(); }
   else if (!$('#editor').classList.contains('closing')) $('#close-editor').click();
   else return;

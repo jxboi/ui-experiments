@@ -9,14 +9,14 @@
 /* Reference: 1170 × 834. Rail/panel widths follow the screenshot (192/290).
    Canvas coordinates are measured in the reference's 688 × 488 graph region:
    trunk x=359, branches x=212/508; node tops y=50/153/255/370. */
-:root{--rail:192px;--inspector:290px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#d4d4da;--field-edge:#e8e8eb;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:Inter,"Inter Variable",-apple-system,BlinkMacSystemFont,"SF Pro Text",Roboto,"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;font-size:12px;color:var(--ink);background:var(--ground)}
+:root{--rail:192px;--inspector:290px;--topbar:48px;--paper:#fff;--ground:#fafafa;--line:#e9e9ec;--ink:#242426;--muted:#6a6a70;--purple:#8254c4;--purple-dark:#7442b6;--purple-wash:#f1ebf9;--purple-line:#9273b0;--node-edge:#e3e3e6;--node-ring:#f1f1f3;--node-fill:#f7f7f7;--selected-edge:#c0aedd;--selected-ring:#ebe4f5;--input-edge:#d4d4da;--field-edge:#e8e8eb;--input-fill:#fff;--motion:180ms;--ease:cubic-bezier(.22,1,.36,1);font-family:Inter,"Inter Variable",-apple-system,BlinkMacSystemFont,"SF Pro Text",Roboto,"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;font-size:13px;color:var(--ink);background:var(--ground)}
 *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}button,input,textarea{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion),color var(--motion),opacity var(--motion)}button{border:0;background:none}button:hover{background:#f0edf5}input:hover,textarea:hover{background:#fcfaff;border-color:#9273b0}:where(button,input,textarea,select,[tabindex]):focus-visible{outline:2px solid var(--purple);outline-offset:-2px}button:active{filter:brightness(.97)}button:disabled{cursor:default}::selection{background:#e5d7f7;color:#36204e}input,textarea{caret-color:var(--purple)}*{scrollbar-width:thin;scrollbar-color:#d7d0df transparent}.icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle}.svg-library{position:absolute;width:0;height:0;overflow:hidden}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}
 .app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr) var(--inspector);grid-template-rows:var(--topbar) minmax(0,1fr);height:100dvh;min-height:720px;transition:grid-template-columns 240ms var(--ease)}
 .sidebar{grid-row:1/-1;background:#f7f7f7;border-right:1px solid var(--line);min-width:0;overflow:hidden}.brand-row{height:var(--topbar);display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #f0f0f2}.brand{display:flex;align-items:center;gap:7px;color:#727278}.brand-mark{width:20px;height:20px;border-radius:50%;background:#bda6e0;filter:blur(2px)}.icon-button{width:28px;height:28px;min-width:24px;min-height:24px;display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:9px;color:var(--muted);background:#fff;flex:none}.icon-button .icon{width:14px;height:14px}.collapse-button{border-radius:8px}.navigation{padding:13px 12px}.nav-item{height:28px;width:100%;display:flex;align-items:center;gap:8px;padding:0 1px;text-align:left;color:#626268;border-radius:6px;white-space:nowrap}.nav-item>.icon{width:14px;height:14px;margin:0 -1px;color:#85858b;stroke-width:1.3}.nav-item:hover{color:#432e60;background:#f0edf5}.workflow-children{position:relative;margin:0 0 0 6px;padding-left:12px}.workflow-children:before{content:"";position:absolute;left:0;top:0;bottom:14px;width:1px;background:#e5e5e9}.workflow-children .nav-item{position:relative;padding-left:7px;height:28px;gap:7px}.workflow-children .nav-item:before{content:"";position:absolute;left:-12px;top:0;width:9px;height:14px;border-left:1px solid #e5e5e9;border-bottom:1px solid #e5e5e9;border-bottom-left-radius:6px}.nav-item.active{background:#ececec;color:#36363b;font-weight:500}.nav-item.active:hover{background:#e2dbea;color:#543477}.nav-marker{width:13px;height:13px;border-radius:4px;display:grid;place-items:center;background:var(--purple);color:white;flex:none}.nav-marker .icon{width:9px;height:9px;stroke-width:1.8}.nav-marker.blue{background:#508dca}.nav-marker.green{background:#41a67e}
-.topbar{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 14px;border-bottom:1px solid var(--line);background:#fafafa;min-width:0;z-index:3}.breadcrumb{display:flex;align-items:baseline;gap:4px;white-space:nowrap;font-size:11.5px;min-width:0;margin:0;font-weight:500}.breadcrumb .crumb,.breadcrumb .count{color:var(--muted)}.breadcrumb strong{font-weight:500}.toolbar{display:flex;align-items:center;gap:5px;flex:none}.toolbar-button,.footer-button{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid #e6e6e9;background:#fff;box-shadow:0 1px 2px #23212b04;border-radius:8px;height:28px;padding:0 7px;color:#68686e;white-space:nowrap;font-size:11.5px}.toolbar-button .icon{width:12px;height:12px;color:#818188}.toolbar-button:hover,.footer-button:hover,.icon-button:hover{background:#f2edf9;border-color:#cbb6e7;color:#633899}.toolbar .icon-button{border-radius:9px}.toolbar .close-button{margin-left:5px;color:#bf1f2c}.toolbar .close-button .icon{width:16px;height:16px;stroke-width:2.3}.toolbar-button[aria-pressed="true"],.icon-button[aria-pressed="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
-.canvas{position:relative;display:flex;flex-direction:column;grid-column:2;grid-row:2;min-width:0;min-height:0;overflow:hidden;background-color:var(--ground);background-image:radial-gradient(circle,#d9d9e0 .65px,transparent .8px);background-size:15px 15px;background-position:7px 7px}.draft{position:absolute;right:16px;top:19px;z-index:1;padding:4px 9px;border-radius:6px;background:#faf3c7;color:#675022;font-size:11.5px;line-height:14px}.graph-scroll{flex:1;min-height:0;overflow:auto;overflow-anchor:none}.graph{height:492px;flex:none;position:relative;width:100%;isolation:isolate;transition:height 240ms var(--ease)}.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.connections path,.connections line{fill:none;stroke:#c9c9ce;stroke-width:2;vector-effect:non-scaling-stroke}.connections .dashed{stroke-dasharray:2 3}.node{position:absolute;display:flex;align-items:center;gap:10px;left:52.18023%;transform:translateX(-50%);width:168px;height:52px;border-radius:17px;border:1px solid var(--node-edge);background:var(--node-fill);box-shadow:0 0 0 3px var(--node-ring);padding:9px 12px;text-align:left;transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}.node:hover{border-color:#9273b0;background:#f3eef9;box-shadow:0 0 0 3px #e8ddf36b}.node.trigger{top:50px;background:var(--purple-wash);border-color:var(--selected-edge);box-shadow:0 0 0 3px var(--selected-ring)}.node.update{top:153px}.node.condition{top:255px;width:142px}.node.agent{top:370px;left:30.81395%}.node.empty{top:370px;left:73.83721%}.node.selected{border-color:var(--selected-edge);background:var(--purple-wash);box-shadow:0 0 0 3px var(--selected-ring)}.node.selected:hover{border-color:var(--purple);background:#eae0f7}.node-icon{width:32px;height:32px;display:grid;place-items:center;background:#e5e5e7;border-radius:11px;color:#77777e;flex:none}.node-icon .icon{height:19px;width:19px;stroke-width:1.35}.trigger .node-icon,.agent .node-icon{background:var(--purple);color:#fff;box-shadow:0 1px 3px #5b328f26}.node-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}.node-kind{font-size:11.5px;line-height:13px;color:var(--muted)}.node-name{font-size:12px;line-height:14px;font-weight:400}.node.empty{background:var(--node-fill)}.node.empty:hover{background:#f3eef9}.node.selected.empty{background:var(--purple-wash)}.node.selected.empty:hover{background:#eae0f7}.empty .node-name{color:#707077;font-weight:400}.node.empty:hover .node-name{color:#6c6c73}.branch-label{position:absolute;top:317px;transform:translateX(-50%);border:1px solid #dfdfe4;background:#f7f7f8;border-radius:5px;min-width:29px;line-height:16px;text-align:center;font-size:10px;color:#3d3d43}.branch-label.if{left:27.32558%;background:#f2ebfb;border-color:#d9c8ee;color:#4d376b}.branch-label.else{left:77.32558%}.add-action{position:absolute;left:30.81395%;top:454px;transform:translateX(-50%);width:28px;height:28px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:#77777e}.add-action .icon{height:13px;width:13px}.add-action:hover{border-color:var(--purple);background:var(--purple-wash);color:var(--purple)}
-.editor{position:relative;flex:none;margin:auto 31px 9px 33px;height:282px;min-height:282px;background:white;border:1px solid #ededf0;border-radius:15px;padding:0 5px 5px;box-shadow:0 1px 3px #24202c08;display:flex;flex-direction:column;overflow:hidden;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity 260ms var(--ease),visibility 0s}.editor.closing{height:0;min-height:0;margin-bottom:0;padding:0;border-width:0;opacity:0;visibility:hidden;pointer-events:none;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity 260ms var(--ease),visibility 0s 260ms}.editor-header{height:39px;min-height:39px;display:flex;align-items:center;gap:9px;padding:0 8px}.code-icon{width:21px;height:21px;border-radius:6px;background:#f5f5f6;display:grid;place-items:center}.code-icon .icon{width:13px;height:13px}.editor-title{font-weight:500;font-size:12px;margin:0}.editor-header .icon-button{margin-left:auto;margin-right:-6px;border:0;background:transparent;width:28px;height:28px}.editor-header .icon-button:hover{background:var(--purple-wash)}.editor-code-shell{position:relative;display:flex;flex:1;min-height:0}.code-overflow{display:none;position:absolute;right:6px;bottom:4px;width:18px;height:16px;align-items:center;justify-content:center;border-radius:3px;background:#fafafa;color:#737377;pointer-events:none;z-index:3}.code-overflow .icon{width:14px;height:14px}.code-overflowing .code-overflow{display:flex}.editor-body{--code-row:18px;flex:1;min-height:0;overflow:auto;border-radius:9px;background:#fafafa;padding:10px 0;font:11.5px/var(--code-row) "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#51515a;counter-reset:line}.code-line{display:flex;min-height:var(--code-row);white-space:pre;counter-increment:line}.code-line:before{content:counter(line);display:block;text-align:center;flex:0 0 34px;position:sticky;left:0;z-index:2;background:#fafafa;font:10px/var(--code-row) "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#737377;user-select:none}.code-line code{margin-left:10px;font:inherit;display:block;padding-right:10px;position:relative}.code-lines{position:relative;width:max-content;min-width:100%;min-height:100%}.editor-code-shell{--guide-x:44px}.code-lines:after{content:"";position:absolute;left:var(--guide-x);top:calc(3 * var(--code-row));bottom:-10px;border-left:1px solid #e2e2e6;pointer-events:none}.editor-code-shell:after{content:"";position:absolute;left:calc(var(--guide-x) - var(--code-scroll,0px));top:100%;height:5px;border-left:1px solid #e2e2e6;pointer-events:none}.editor-code-shell.guide-under-gutter:after{display:none}.code-line code{flex:none}.token-key{color:#207a9e}.token-variable{color:#268057}.token-type{color:#4f7c66}.token-string{color:#c2298f}
-.inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:12px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto;margin-right:-4px}.header-actions .icon-button{width:28px;height:28px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:10px 13px 0;background:#f1f1f1;border-radius:9px;height:30px;flex:none;padding:1px}.tabs:before{content:"";box-sizing:border-box;position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:12px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:17px 13px 16px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:9px}.field-label{display:block;color:var(--muted);font-size:12px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:28px;padding:4px 8px;border:1px solid var(--field-edge);background:var(--input-fill);border-radius:9px;text-align:left;font-size:12px}.select-button:hover{border-color:#9273b0;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:13px;height:13px;color:#d47b58}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:9px;margin-bottom:12px}textarea{display:block;resize:none;width:100%;height:100px;min-height:85px;padding:7px;border:1px solid var(--field-edge);border-radius:10px;background:var(--input-fill);line-height:14px;font-size:12px}#input-prompt{padding:7px 0 7px 6px;font-size:11.5px;letter-spacing:-.12px}.field-label.output-label{margin-bottom:6px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:12px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:8px 9px}.output-fields .field{margin-bottom:10px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:28px;border:1px solid var(--field-edge);border-radius:9px;padding:4px 7px;background:var(--input-fill);font-size:12px;min-width:0}.instruction-input{font-size:11.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:11.5px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:12px 8px 6px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:11.5px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:500}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
+.topbar{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 8px 0 14px;border-bottom:1px solid var(--line);background:#fafafa;min-width:0;z-index:3}.breadcrumb{display:flex;align-items:baseline;gap:4px;white-space:nowrap;font-size:13px;min-width:0;margin:0;font-weight:500}.breadcrumb .crumb,.breadcrumb .count{color:var(--muted)}.breadcrumb strong{font-weight:500}.toolbar{display:flex;align-items:center;gap:5px;flex:none}.toolbar-button,.footer-button{display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1px solid #e6e6e9;background:#fff;box-shadow:0 1px 2px #23212b04;border-radius:8px;height:28px;padding:0 7px;color:#68686e;white-space:nowrap;font-size:13px}.toolbar-button .icon{width:12px;height:12px;color:#818188}.toolbar-button:hover,.footer-button:hover,.icon-button:hover{background:#f2edf9;border-color:#cbb6e7;color:#633899}.toolbar .icon-button{border-radius:9px}.toolbar .close-button{margin-left:5px;color:#bf1f2c}.toolbar .close-button .icon{width:16px;height:16px;stroke-width:2.3}.toolbar-button[aria-pressed="true"],.icon-button[aria-pressed="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
+.canvas{position:relative;display:flex;flex-direction:column;grid-column:2;grid-row:2;min-width:0;min-height:0;overflow:hidden;background-color:var(--ground);background-image:radial-gradient(circle,#d9d9e0 .65px,transparent .8px);background-size:15px 15px;background-position:7px 7px}.draft{position:absolute;right:16px;top:19px;z-index:1;padding:4px 9px;border-radius:6px;background:#faf3c7;color:#675022;font-size:13px;line-height:14px}.graph-scroll{flex:1;min-height:0;overflow:auto;overflow-anchor:none}.graph{height:492px;flex:none;position:relative;width:100%;isolation:isolate;transition:height 240ms var(--ease)}.connections{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}.connections path,.connections line{fill:none;stroke:#c9c9ce;stroke-width:2;vector-effect:non-scaling-stroke}.connections .dashed{stroke-dasharray:2 3}.node{position:absolute;display:flex;align-items:center;gap:10px;left:52.18023%;transform:translateX(-50%);width:168px;height:52px;border-radius:17px;border:1px solid var(--node-edge);background:var(--node-fill);box-shadow:0 0 0 3px var(--node-ring);padding:9px 12px;text-align:left;transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}.node:hover{border-color:#9273b0;background:#f3eef9;box-shadow:0 0 0 3px #e8ddf36b}.node.trigger{top:50px;background:var(--purple-wash);border-color:var(--selected-edge);box-shadow:0 0 0 3px var(--selected-ring)}.node.update{top:153px}.node.condition{top:255px;width:142px}.node.agent{top:370px;left:30.81395%}.node.empty{top:370px;left:73.83721%}.node.selected{border-color:var(--selected-edge);background:var(--purple-wash);box-shadow:0 0 0 3px var(--selected-ring)}.node.selected:hover{border-color:var(--purple);background:#eae0f7}.node-icon{width:32px;height:32px;display:grid;place-items:center;background:#e5e5e7;border-radius:11px;color:#77777e;flex:none}.node-icon .icon{height:19px;width:19px;stroke-width:1.35}.trigger .node-icon,.agent .node-icon{background:var(--purple);color:#fff;box-shadow:0 1px 3px #5b328f26}.node-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}.node-kind{font-size:13px;line-height:13px;color:var(--muted)}.node-name{font-size:13px;line-height:14px;font-weight:500}.node.empty{background:var(--node-fill)}.node.empty:hover{background:#f3eef9}.node.selected.empty{background:var(--purple-wash)}.node.selected.empty:hover{background:#eae0f7}.empty .node-name{color:#707077;font-weight:400}.node.empty:hover .node-name{color:#6c6c73}.branch-label{position:absolute;top:317px;transform:translateX(-50%);border:1px solid #dfdfe4;background:#f7f7f8;border-radius:5px;min-width:29px;line-height:16px;text-align:center;font-size:10px;color:#3d3d43}.branch-label.if{left:27.32558%;background:#f2ebfb;border-color:#d9c8ee;color:#4d376b}.branch-label.else{left:77.32558%}.add-action{position:absolute;left:30.81395%;top:454px;transform:translateX(-50%);width:28px;height:28px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:#77777e}.add-action .icon{height:13px;width:13px}.add-action:hover{border-color:var(--purple);background:var(--purple-wash);color:var(--purple)}
+.editor{position:relative;flex:none;margin:auto 31px 9px 33px;height:282px;min-height:282px;background:white;border:1px solid #ededf0;border-radius:15px;padding:0 5px 5px;box-shadow:0 1px 3px #24202c08;display:flex;flex-direction:column;overflow:hidden;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity 260ms var(--ease),visibility 0s}.editor.closing{height:0;min-height:0;margin-bottom:0;padding:0;border-width:0;opacity:0;visibility:hidden;pointer-events:none;transition:height 260ms var(--ease),min-height 260ms var(--ease),margin-top 260ms var(--ease),margin-bottom 260ms var(--ease),padding 260ms var(--ease),border-width 260ms var(--ease),opacity 260ms var(--ease),visibility 0s 260ms}.editor-header{height:39px;min-height:39px;display:flex;align-items:center;gap:9px;padding:0 8px}.code-icon{width:21px;height:21px;border-radius:6px;background:#f5f5f6;display:grid;place-items:center}.code-icon .icon{width:13px;height:13px}.editor-title{font-weight:500;font-size:13px;margin:0}.editor-header .icon-button{margin-left:auto;margin-right:-6px;border:0;background:transparent;width:28px;height:28px}.editor-header .icon-button:hover{background:var(--purple-wash)}.editor-code-shell{position:relative;display:flex;flex:1;min-height:0}.code-overflow{display:none;position:absolute;right:6px;bottom:4px;width:18px;height:16px;align-items:center;justify-content:center;border-radius:3px;background:#fafafa;color:#737377;pointer-events:none;z-index:3}.code-overflow .icon{width:14px;height:14px}.code-overflowing .code-overflow{display:flex}.editor-body{--code-row:18px;flex:1;min-height:0;overflow:auto;border-radius:9px;background:#fafafa;padding:10px 0;font:11.5px/var(--code-row) "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#51515a;counter-reset:line}.code-line{display:flex;min-height:var(--code-row);white-space:pre;counter-increment:line}.code-line:before{content:counter(line);display:block;text-align:center;flex:0 0 34px;position:sticky;left:0;z-index:2;background:#fafafa;font:10px/var(--code-row) "SFMono-Regular",Consolas,"Liberation Mono",monospace;color:#737377;user-select:none}.code-line code{margin-left:10px;font:inherit;display:block;padding-right:10px;position:relative}.code-lines{position:relative;width:max-content;min-width:100%;min-height:100%}.editor-code-shell{--guide-x:44px}.code-lines:after{content:"";position:absolute;left:var(--guide-x);top:calc(3 * var(--code-row));bottom:-10px;border-left:1px solid #e2e2e6;pointer-events:none}.editor-code-shell:after{content:"";position:absolute;left:calc(var(--guide-x) - var(--code-scroll,0px));top:100%;height:5px;border-left:1px solid #e2e2e6;pointer-events:none}.editor-code-shell.guide-under-gutter:after{display:none}.code-line code{flex:none}.token-key{color:#207a9e}.token-variable{color:#268057}.token-type{color:#4f7c66}.token-string{color:#c2298f}
+.inspector{grid-column:3;grid-row:2;min-width:0;display:flex;flex-direction:column;border-left:1px solid var(--line);background:#fafafa;overflow:hidden;transition:opacity var(--motion),transform var(--motion),visibility 0s}.inspector-header{height:40px;min-height:40px;display:flex;align-items:center;gap:7px;padding:0 13px;border-bottom:1px solid #efeff1}.agent-symbol{background:#db4bdd;border-radius:6px;width:19px;height:19px;display:grid;place-items:center;color:white}.agent-symbol .icon{width:13px;height:13px}.inspector-title{font-weight:500;font-size:13px;line-height:16px;margin:0}.header-actions{display:flex;gap:0;margin-left:auto;margin-right:-4px}.header-actions .icon-button{width:28px;height:28px;border:0;background:transparent}.header-actions .icon-button:hover{background:var(--purple-wash)}.header-actions .icon{width:12px;height:12px}.tabs{display:flex;position:relative;isolation:isolate;margin:10px 13px 0;background:#f1f1f1;border-radius:9px;height:30px;flex:none;padding:1px}.tabs:before{content:"";box-sizing:border-box;position:absolute;z-index:-1;top:1px;bottom:1px;left:1px;width:calc(50% - 1px);border:1px solid #e7e7ea;border-radius:8px;background:#fff;box-shadow:0 1px 2px #1c122c03;transition:transform 220ms var(--ease)}.tabs.permissions-active:before{transform:translateX(100%)}.tab{flex:1;border-radius:8px;color:#65656b;font-size:13px;min-width:0}.tab[aria-selected="true"]{color:#242426}.tab:hover{background:#dcd3ea55;color:#533778}.panel-scroll{padding:17px 13px 16px;overflow:auto;flex:1;min-height:0}.tab-panel{animation:tab-in 180ms var(--ease)}@keyframes tab-in{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}.field{margin-bottom:9px}.field-label{display:block;color:var(--muted);font-size:13px;line-height:15px;margin-bottom:5px}.dropdown{position:relative}.select-button{display:flex;align-items:center;gap:5px;width:100%;min-height:28px;padding:4px 8px;border:1px solid var(--field-edge);background:var(--input-fill);border-radius:9px;text-align:left;font-size:13px}.select-button:hover{border-color:#9273b0;background:#faf7ff}.select-button[aria-expanded="true"]{border-color:var(--purple);background:#faf7ff}.model-icon{width:13px;height:13px;color:#d47b58}.select-button>.chevron{margin-left:auto;width:12px;height:12px;color:#77777e}.dropdown-menu{position:absolute;left:0;right:0;top:calc(100% + 4px);padding:4px;background:#fff;border:1px solid #ddd4e8;box-shadow:0 5px 16px #33234614;border-radius:9px;z-index:10;animation:tab-in var(--motion) var(--ease)}.dropdown-menu button{width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;min-height:28px;padding:5px 7px;border-radius:5px}.dropdown-menu button[aria-selected="true"]{background:var(--purple-wash);color:#663898}.dropdown-menu button .icon{width:12px;height:12px}.dropdown-menu button[aria-selected="false"] .icon{visibility:hidden}.prompt-field{margin-top:9px;margin-bottom:12px}textarea{display:block;resize:none;width:100%;height:100px;min-height:85px;padding:7px;border:1px solid var(--field-edge);border-radius:10px;background:var(--input-fill);line-height:14px;font-size:13px}#input-prompt{padding:7px 0 7px 6px;font-size:13px;letter-spacing:-.12px}.field-label.output-label{margin-bottom:6px}.output-card{border:1px solid #e3e3e8;border-radius:11px;background:white;overflow:visible}.output-toggle{min-height:31px;width:100%;display:flex;align-items:center;justify-content:space-between;text-align:left;padding:7px 10px;border-radius:10px 10px 0 0;font-size:13px}.output-toggle:hover{background:#f7f2fc}.output-toggle .icon{width:12px;height:12px;color:#77777e;transition:transform var(--motion)}.output-toggle[aria-expanded="false"] .icon{transform:rotate(180deg)}.output-content{display:grid;grid-template-rows:1fr;transition:grid-template-rows 220ms var(--ease),opacity var(--motion);opacity:1}.output-content.collapsed{grid-template-rows:0fr;opacity:0}.output-content-inner{min-height:0;overflow:hidden}.output-content:not(.collapsed) .output-content-inner{overflow:visible}.output-fields{border-top:1px solid #eeeef0;padding:8px 9px}.output-fields .field{margin-bottom:10px}.output-fields .field:last-child{margin-bottom:0}.text-input{width:100%;height:28px;border:1px solid var(--field-edge);border-radius:9px;padding:4px 7px;background:var(--input-fill);font-size:13px;min-width:0}.instruction-input{font-size:12.5px;letter-spacing:-.12px}.add-output{transition:padding-left var(--motion),background-color var(--motion),color var(--motion);display:flex;gap:5px;align-items:center;min-height:30px;margin-top:3px;padding:4px 1px;border-radius:5px;font-size:13px}.add-output .icon{width:13px;height:13px}.add-output:hover{padding-left:5px;color:var(--purple-dark);background:#f3eef9}.permissions-list{list-style:none;margin:0;padding:0}.permissions-list li{display:flex;align-items:center;justify-content:space-between;min-height:39px;border-bottom:1px solid var(--line);color:#55515b}.permissions-list .icon{color:var(--purple);width:14px;height:14px}.inspector-footer{height:47px;min-height:47px;padding:12px 8px 6px 13px;display:flex;align-items:center;gap:5px;border-top:1px solid #eeeef0;background:#fafafa}.footer-spacer{flex:1}.footer-button{font-size:13px;padding:0 7px}.footer-button.delete{color:#af303b;font-weight:500}.footer-button.delete:hover{border-color:#e3b1b8;background:#fff0f2}.inspector-footer .saved{color:var(--purple-dark);background:var(--purple-wash)}
 .app.sidebar-collapsed{--rail:52px}.sidebar-collapsed .nav-label,.sidebar-collapsed .workflow-children:before,.sidebar-collapsed .workflow-children .nav-item:before{display:none}.sidebar-collapsed .brand-row{padding:0 13px}.sidebar-collapsed .brand{display:none}.sidebar-collapsed .navigation{padding:13px 9px}.sidebar-collapsed .nav-item{justify-content:center}.sidebar-collapsed .workflow-children{margin-left:0;padding-left:0}.sidebar-collapsed .workflow-children .nav-item{padding-left:0}.app.panel-closed{grid-template-columns:var(--rail) minmax(0,1fr) 0}.panel-closed .inspector{opacity:0;pointer-events:none;visibility:hidden;transition:opacity var(--motion),visibility 0s var(--motion)}.panel-closed .canvas{grid-column:2}
 /* Ports overlay the node edges, independently of the connector layer. */
 .connections{z-index:0}.ports{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:1000}.ports circle{fill:#c7c7cb;transition:fill var(--motion)}.ports .purple-dot{fill:var(--purple)}
@@ -56,11 +56,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  .sidebar{grid-column:1;grid-row:1/-1;position:relative;z-index:15;justify-self:start;width:var(--rail);overflow:clip;transition:width 220ms var(--ease),box-shadow 220ms}.brand-row{padding:0;justify-content:center;height:48px;position:sticky;top:0;z-index:1;background:#f7f7f7}.brand{display:none}
  .navigation{padding:13px 6px;position:sticky;top:48px}.nav-label{display:none}.nav-item{height:34px;justify-content:center;padding:0}.nav-item>.icon{width:15px;height:15px}
  .workflow-children{margin:0 0 12px;padding:0}.workflow-children:before,.workflow-children .nav-item:before{display:none}.workflow-children .nav-item{height:30px;padding:0;margin-bottom:2px}.nav-marker{width:15px;height:15px}
- .topbar{grid-column:2;grid-row:1;min-height:112px;display:block;padding:12px 8px 8px}.breadcrumb{font-size:11.5px;gap:3px;white-space:normal;flex-wrap:wrap;margin-bottom:10px}
- .toolbar{flex-wrap:wrap;gap:5px}.toolbar-button{height:28px;padding:0 6px;font-size:11.5px}.toolbar .close-button{margin-left:0}
+ .topbar{grid-column:2;grid-row:1;min-height:112px;display:block;padding:12px 8px 8px}.breadcrumb{font-size:13px;gap:3px;white-space:normal;flex-wrap:wrap;margin-bottom:10px}
+ .toolbar{flex-wrap:wrap;gap:5px}.toolbar-button{height:28px;padding:0 6px;font-size:13px}.toolbar .close-button{margin-left:0}
  .canvas{grid-column:2;grid-row:2;overflow:hidden;padding-bottom:13px}.draft{right:10px}.graph-scroll{flex:none;height:460px;transition:height 260ms var(--ease)}.canvas{transition:padding-bottom 260ms var(--ease)}.canvas:has(.editor.closing){padding-bottom:0}.canvas:has(.editor.closing) .graph-scroll{height:473px}.graph{height:492px}
  .node{width:min(168px,calc(50% - 32px));gap:6px;padding:9px 8px;border-radius:15px;height:60px}.node.trigger,.node.update{width:176px;max-width:calc(100% - 20px)}.node.condition{width:150px}
- .node-icon{width:28px;height:30px;border-radius:9px}.node-kind{font-size:11.5px}.node-name,.node.empty .node-name{font-size:12px}.node-copy{gap:2px;white-space:normal;min-width:0}
+ .node-icon{width:28px;height:30px;border-radius:9px}.node-kind{font-size:13px}.node-name,.node.empty .node-name{font-size:13px}.node-copy{gap:2px;white-space:normal;min-width:0}
  .node.trigger,.node.update,.node.condition{left:50%}.node[data-lane="left"]{left:25%}.node[data-lane="right"]{left:75%}.node[data-lane="trunk"]{left:50%}
  .branch-label.if{left:18%}.branch-label.else{left:82%}.add-action{left:25%}
  .editor,.canvas.flow-expanded .editor{position:relative;inset:auto;margin:8px 10px 0;width:calc(100% - 20px);height:282px;min-height:282px;max-height:none;border-radius:12px}.editor-body{font-size:11.5px}.code-line:before{flex-basis:28px;font-size:10px}.editor-code-shell{--guide-x:38px}
@@ -88,10 +88,10 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 @media(min-width:761px){.app:not(.sidebar-collapsed) .navigation>.nav-item{width:calc(100% + 4px);margin-left:-4px;padding-left:5px}}
 .draft{transition:opacity 220ms,transform 220ms var(--ease)}.draft.inactive{opacity:0;transform:translateY(-5px);pointer-events:none}
 .node.exiting{opacity:0;transform:translateX(-50%) scale(.94);pointer-events:none;transition:opacity 180ms,transform 180ms var(--ease)}
-.workspace-view{position:fixed;left:var(--view-left,192px);top:var(--view-top,60px);z-index:12;width:var(--view-width,300px);max-height:calc(100dvh - 24px);overflow:auto;padding:12px;background:#fff;border:1px solid #dcdce2;border-radius:11px;box-shadow:0 6px 20px #29223324;opacity:0;transform:translateY(4px);transition:opacity 180ms var(--ease),transform 180ms var(--ease)}.workspace-view.open{opacity:1;transform:translateY(0)}.workspace-view header{display:flex;align-items:center;justify-content:space-between;gap:8px}.workspace-view h2{font-size:13px;font-weight:500;margin:0}.workspace-view header .icon-button{border:0;background:transparent;width:28px;height:28px}.workspace-view header .icon-button:hover{background:var(--purple-wash)}.workspace-view p{color:#626268;line-height:1.5;margin:8px 0 0}.view-table{width:100%;margin-top:10px;border-collapse:collapse;font-size:11.5px;line-height:15px}.view-table th{padding:0 8px 5px 0;border-bottom:1px solid var(--line);color:var(--muted);font-weight:400;text-align:left}.view-table td{padding:7px 8px 7px 0;border-bottom:1px solid #f2f2f4;vertical-align:top}.view-table td[colspan]{padding:14px 0;text-align:center;color:#626268;border-bottom:0}
+.workspace-view{position:fixed;left:var(--view-left,192px);top:var(--view-top,60px);z-index:12;width:var(--view-width,300px);max-height:calc(100dvh - 24px);overflow:auto;padding:12px;background:#fff;border:1px solid #dcdce2;border-radius:11px;box-shadow:0 6px 20px #29223324;opacity:0;transform:translateY(4px);transition:opacity 180ms var(--ease),transform 180ms var(--ease)}.workspace-view.open{opacity:1;transform:translateY(0)}.workspace-view header{display:flex;align-items:center;justify-content:space-between;gap:8px}.workspace-view h2{font-size:13px;font-weight:500;margin:0}.workspace-view header .icon-button{border:0;background:transparent;width:28px;height:28px}.workspace-view header .icon-button:hover{background:var(--purple-wash)}.workspace-view p{color:#626268;line-height:1.5;margin:8px 0 0}.view-table{width:100%;margin-top:10px;border-collapse:collapse;font-size:12.5px;line-height:15px}.view-table th{padding:0 8px 5px 0;border-bottom:1px solid var(--line);color:var(--muted);font-weight:400;text-align:left}.view-table td{padding:7px 8px 7px 0;border-bottom:1px solid #f2f2f4;vertical-align:top}.view-table td[colspan]{padding:14px 0;text-align:center;color:#626268;border-bottom:0}
 .navigation:has(.nav-item.section-open) .nav-item.active:not(:hover){background:transparent}.nav-item.section-open{background:var(--purple-wash);color:#50316f;font-weight:500}.nav-item.section-open>.icon{color:var(--purple-dark)}.nav-item.section-open:hover{background:#e4d6f3;color:#50316f}.toolbar-button.section-open{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}.toolbar-button.section-open .icon{color:var(--purple-dark)}.toolbar-button.section-open:hover{background:#e4d6f3;border-color:#b795dd;color:#50316f}
 .feedback{display:flex;flex-direction:column;gap:4px;width:max-content}.feedback.has-action.visible{pointer-events:auto}.feedback-row{display:flex;align-items:center;justify-content:space-between;gap:10px}.feedback-action{min-height:28px;padding:2px 8px;border-radius:6px;font-weight:500;color:#50316f;text-decoration:underline;flex:none}.feedback-action:hover{background:#e4d6f3}
-.options-reveal{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows 220ms var(--ease),opacity 180ms}.options-reveal.open{grid-template-rows:1fr;opacity:1}.options-inner{min-height:0;overflow:hidden}.options-title{margin:4px 0 4px;color:var(--muted);font-size:12px;font-weight:400;line-height:15px}.option-switch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:32px;padding:4px 6px;border-radius:7px;text-align:left}.switch-track{position:relative;flex:none;width:26px;height:16px;border:1px solid #90909a;border-radius:8px;background:var(--input-fill);transition:background-color var(--motion),border-color var(--motion)}.switch-track:after{content:"";position:absolute;left:2px;top:2px;width:10px;height:10px;border-radius:50%;background:#6a6a70;transition:transform var(--motion),background-color var(--motion)}.option-switch[aria-checked="true"] .switch-track{background:var(--purple);border-color:var(--purple)}.option-switch[aria-checked="true"] .switch-track:after{background:#fff;transform:translateX(10px)}
+.options-reveal{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows 220ms var(--ease),opacity 180ms}.options-reveal.open{grid-template-rows:1fr;opacity:1}.options-inner{min-height:0;overflow:hidden}.options-title{margin:4px 0 4px;color:var(--muted);font-size:13px;font-weight:400;line-height:15px}.option-switch{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:32px;padding:4px 6px;border-radius:7px;text-align:left}.switch-track{position:relative;flex:none;width:26px;height:16px;border:1px solid #90909a;border-radius:8px;background:var(--input-fill);transition:background-color var(--motion),border-color var(--motion)}.switch-track:after{content:"";position:absolute;left:2px;top:2px;width:10px;height:10px;border-radius:50%;background:#6a6a70;transition:transform var(--motion),background-color var(--motion)}.option-switch[aria-checked="true"] .switch-track{background:var(--purple);border-color:var(--purple)}.option-switch[aria-checked="true"] .switch-track:after{background:#fff;transform:translateX(10px)}
 @media(max-width:760px){.editor.closing,.canvas.flow-expanded .editor.closing{height:0;min-height:0;margin-top:0;padding:0;border-width:0}.code-line code{margin-left:5px;padding-right:5px}.code-line:before{flex-basis:24px}.editor-code-shell{--guide-x:29px}.workspace-view{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:60dvh;z-index:16;transform:translateY(12px)}}
 
 /* Soft edge and 255 to 248 fill, as measured in the reference. Hover, focus, the Help
@@ -99,7 +99,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 .text-input,textarea,.select-button{background-color:var(--input-fill);background-image:linear-gradient(#fff,#f8f8f8);box-shadow:none}
 .text-input:hover,textarea:hover,.select-button:hover{background-image:linear-gradient(#fff,#f5effb);border-color:#87639f}
 .select-button[aria-expanded="true"]{background-image:linear-gradient(#fff,#f5effb)}
-.help-content p{margin:0 0 8px}.help-content .option-switch{margin-top:6px}.configuration-note{font-size:12px;line-height:1.5;color:#626268;margin:6px 0 10px}
+.help-content p{margin:0 0 8px}.help-content .option-switch{margin-top:6px}.configuration-note{font-size:13px;line-height:1.5;color:#626268;margin:6px 0 10px}
 .code-size{display:none}.editor-header .code-size{margin-left:auto}.editor-header:has(.code-size) .icon-button{margin-left:0}
 @media(min-width:761px){.editor-header:has(.code-size) .icon-button{margin-left:auto}.editor{max-width:624px}}
 /* Stronger topology and field edges are available without altering the soft defaults.
@@ -174,15 +174,15 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 .palette{position:absolute;top:0;bottom:0;left:0;z-index:5;width:248px;display:flex;flex-direction:column;background:#fafafa;border-right:1px solid var(--line);box-shadow:4px 0 18px #29223322;transform:translateX(-102%);transition:transform 240ms var(--ease),opacity var(--motion)}
 .palette.open{transform:none}
 .palette-list{flex:1;min-height:0;overflow:auto;padding:12px 13px 16px}
-.palette-group{margin:0 0 6px;font-size:12px;font-weight:400;line-height:15px;color:var(--muted)}
+.palette-group{margin:0 0 6px;font-size:13px;font-weight:400;line-height:15px;color:var(--muted)}
 .palette-items{display:grid;gap:6px;margin-bottom:14px}
 .palette-item{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:7px 9px;border:1px solid var(--field-edge);border-radius:10px;background:#fff;text-align:left;touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab}
 .palette-item:hover{background:#fcfaff;border-color:#cbb6e7}
 .palette-item:focus-visible{outline-offset:-1px}
 .palette-item.drag-source{border-color:var(--selected-edge);background:var(--purple-wash)}
 .palette-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
-.palette-name{font-size:12px;line-height:15px;font-weight:500}
-.palette-description{font-size:11.5px;line-height:14px;color:var(--muted)}
+.palette-name{font-size:13px;line-height:15px;font-weight:500}
+.palette-description{font-size:12.5px;line-height:14px;color:var(--muted)}
 .node.drag-ghost{position:fixed;margin:0;z-index:60;transform:translate(-50%,-50%);pointer-events:none;transition:opacity var(--motion);opacity:.55;box-shadow:0 0 0 3px var(--node-ring),0 6px 20px #29223324}
 .node.drag-ghost.over-canvas{opacity:1;border-color:var(--selected-edge)}
 #add-node[aria-expanded="true"]{color:var(--purple-dark);background:var(--purple-wash);border-color:var(--purple-line)}
@@ -314,7 +314,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 </main>
 <aside class="inspector" aria-labelledby="inspector-title" id="inspector" tabindex="-1">
  <header class="inspector-header"><span class="agent-symbol"><svg class="icon" aria-hidden="true"><use id="panel-symbol" href="#i-sparkles"/></svg></span><h2 class="inspector-title" id="inspector-title" tabindex="-1">AI Agent</h2><div class="header-actions"><button class="icon-button" id="help" title="Help" aria-label="Help" aria-expanded="false" aria-controls="help-content"><svg class="icon" aria-hidden="true"><use href="#i-help"/></svg></button><button class="icon-button" id="close-panel" title="Close panel" aria-label="Close panel"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div></header>
- <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content"><p>Select a node to edit its configuration. Add a Node opens the palette: drag an item onto the canvas, or click it to extend the selected branch. Drag a node to move it, or press the arrow keys while it has focus (Shift for bigger steps), and drag from its port to another node to connect them. + extends the branch above it. Download exports the workflow as JSON.</p><p id="builder-limitation">This static builder saves configuration locally and exports JSON. It does not execute workflows; Activate only sets the configuration status. Palette nodes, moved positions and drawn connections are not stored, so they reset on reload.</p><button class="option-switch" id="topology-contrast" role="switch" aria-checked="false"><span>Higher contrast connections and fields</span><span class="switch-track" aria-hidden="true"></span></button></div></div>
+ <div class="help-reveal" id="help-reveal" inert><div class="help-content" id="help-content"><p>Select a node to edit its configuration. Add a Node opens the palette: drag an item onto the canvas, or click it to extend the selected branch. Drag a node to move it, or press the arrow keys while it has focus (Shift for bigger steps), and drag from its port to another node to connect them. + extends the branch above it. Download exports the workflow as JSON.</p><p id="builder-limitation">This static builder saves configuration locally and exports JSON. It does not execute workflows; Activate only sets the configuration status. Save a Draft keeps all nodes, positions and connections after a reload.</p><button class="option-switch" id="topology-contrast" role="switch" aria-checked="false"><span>Higher contrast connections and fields</span><span class="switch-track" aria-hidden="true"></span></button></div></div>
  <div class="tabs" role="tablist" aria-label="AI Agent configuration"><button class="tab" id="prompt-tab" role="tab" aria-selected="true" aria-controls="prompt-panel">Prompt</button><button class="tab" id="permissions-tab" role="tab" aria-selected="false" aria-controls="permissions-panel" tabindex="-1">Permissions</button></div>
  <div class="panel-scroll">
   <section class="tab-panel" id="prompt-panel" role="tabpanel" aria-labelledby="prompt-tab">
@@ -351,6 +351,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
  const phone = window.matchMedia('(max-width: 760px)');
  const compactRail = window.matchMedia('(min-width: 761px) and (max-width: 1000px)');
+ const graphStrip = window.matchMedia('(max-width: 1100px)');
  const initialTemplates = $$('.node').map(node => node.cloneNode(true));
  const initialTypes = ['trigger','update','condition','agent','empty'];
  // Connectors are dummy node types: placeholder configuration, no external calls.
@@ -473,12 +474,14 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   }
   return node;
  }
+ // Up to 1100px the graph's top 40px sit behind the Draft strip, so nodes stay 6px below it.
+ const nodeTopFloor = () => graphStrip.matches ? 46 : 6;
  // A moved node keeps its share of the graph width, as lanes do, and stays reachable when the graph narrows.
  function placeNode(record) {
   const half = record.node.offsetWidth / 2;
   const width = graph.clientWidth;
   record.node.style.left = Math.max(half + 6,Math.min(record.pos.x * width,width - half - 6)) + 'px';
-  record.node.style.top = record.pos.y + 'px';
+  record.node.style.top = Math.max(nodeTopFloor(),record.pos.y) + 'px';
  }
  // Topology is separate from the buttons: deleting a node can reconnect its neighbours.
  function resetFlow() {
@@ -1009,8 +1012,8 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed') !== 'true'));
  }
  $('#favorite').addEventListener('click',() => togglePressed($('#favorite')));
- const draftKey = 'automation-workflow-draft';
- const discardKey = 'automation-workflow-pending-discard';
+ const draftKey = 'automation-workflow-v1';
+ const discardKey = 'automation-workflow-pending-discard-v1';
  const contrastKey = 'automation-workflow-topology-contrast';
  const viewKey = 'automation-workflow-view';
  // Written on every change, independent of Save a Draft, and restored on load.
@@ -1024,18 +1027,15 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    return view && typeof view === 'object' ? view : null;
   } catch { return null; }
  }
- // Keep the previous saved version until the recovery interval actually ends.
+ // Discard recovery is separate from the saved workflow, which Discard never removes.
  // The deadline is absolute so a reload cannot restart the interval.
  function persistDiscard() {
-  const {snapshot} = pendingDiscard;
-  localStorage.setItem(discardKey,JSON.stringify({...pendingDiscard,snapshot:{...snapshot,workflow:withoutSessionWork(snapshot.workflow)}}));
+  try { localStorage.setItem(discardKey,JSON.stringify(pendingDiscard)); } catch {}
  }
- function clearDiscard(removeSaved = false) {
+ function clearDiscard() {
   clearTimeout(discardTimer);
   if (!pendingDiscard) return;
   try {
-   // Never erase a draft saved in the meantime, including in another tab.
-   if (removeSaved && pendingDiscard.snapshot.saved !== null && localStorage.getItem(draftKey) === pendingDiscard.snapshot.saved) localStorage.removeItem(draftKey);
    localStorage.removeItem(discardKey);
   } catch { /* Retained recovery data can be reconciled at the next load. */ }
   pendingDiscard = null;
@@ -1045,7 +1045,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   if (!pendingDiscard) return;
   if (Date.now() < pendingDiscard.deadline) { armDiscard(); return; }
   if (feedbackInUse()) { extendDiscardDeadline(8000); return; }
-  clearDiscard(true);
+  clearDiscard();
  }
  function armDiscard() {
   clearTimeout(discardTimer);
@@ -1054,7 +1054,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function extendDiscardDeadline(delay) {
   if (!pendingDiscard) return;
   pendingDiscard.deadline = Date.now() + delay;
-  try { persistDiscard(); } catch {}
+  persistDiscard();
   armDiscard();
  }
  function offerDiscardUndo(focus = false) {
@@ -1082,16 +1082,14 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  }
  $('#code-size').addEventListener('click',() => setCodeSize(!$('#editor').classList.contains('large-code')));
  $('#skip-inspector').addEventListener('click',event => { event.preventDefault(); revealPanel(true,true); });
- // Palette nodes, drawn edges and moved positions live only in this page session.
- // Everything written to localStorage passes through here; Download keeps them.
- function withoutSessionWork(data) {
-  const dropped = new Set(data.nodes.filter(node => node.session).map(node => node.id));
-  return {...data,
-   nodes:data.nodes.filter(node => !node.session).map(({pos,session,...node}) => node),
-   edges:data.edges.filter(edge => !edge.drawn && !dropped.has(edge.from) && !dropped.has(edge.to)),
-   selectedId:dropped.has(data.selectedId) ? '' : data.selectedId,
-   plusAnchor:dropped.has(data.plusAnchor) ? '' : data.plusAnchor
-  };
+ // Each node has one output and one input; edge endpoints identify those ports.
+ // The versioned saved graph includes session nodes, drawn edges and positions.
+ function restoreSavedWorkflow() {
+  try {
+   const saved = localStorage.getItem(draftKey);
+   if (saved) { restoreWorkflow(JSON.parse(saved)); return true; }
+  } catch { /* Unavailable storage or an invalid save leaves the base workflow usable. */ }
+  return false;
  }
  function workflowData() {
   captureAI();
@@ -1119,9 +1117,12 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    ids.add(node.id);
   });
   // Only drawn connections may merge paths; the built-in tree keeps one parent per node.
+  // Delete appends its re-parented edge, so this cannot depend on the order of the array.
   const parents = new Map();
+  const treeParented = new Set();
   data.edges.forEach(edge => {
-   if (!edge || !ids.has(edge.from) || !ids.has(edge.to) || edge.from === edge.to || (parents.has(edge.to) && !edge.drawn)) throw new Error('Invalid connection');
+   if (!edge || !ids.has(edge.from) || !ids.has(edge.to) || edge.from === edge.to || (!edge.drawn && treeParented.has(edge.to))) throw new Error('Invalid connection');
+   if (!edge.drawn) treeParented.add(edge.to);
    parents.set(edge.to,[...(parents.get(edge.to) || []),edge.from]);
   });
   if (data.nodes.every(node => node.type !== 'trigger' || parents.has(node.id))) throw new Error('Invalid trigger connection');
@@ -1146,7 +1147,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   });
   dropDeleteUndo();
   $$('.node').forEach(node => node.remove());
-  records = restored; edges = data.edges.map(({from,to,drawn}) => drawn ? {from,to,drawn:true} : {from,to});
+  records = restored; edges = data.edges.map(edge => ({...edge}));
   records.forEach(record => graph.insertBefore(record.node,$('#add-action')));
   selectedId = ''; plusAnchor = ids.has(data.plusAnchor) ? data.plusAnchor : (records.find(record => record.type === 'agent') || records[0]).id;
   nextId = Math.max(0,...records.map(record => Number(record.id.match(/^action-(\d+)$/)?.[1]) || 0)) + 1;
@@ -1186,7 +1187,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   'Workflow runs':() => ({summary:'This static builder configures workflows but does not execute them. Activate sets configuration status only.',columns:['Run','Status','Started'],empty:'Nothing has run yet. Run history requires an execution service.'}),
   'Workflow versions':() => ({summary:'Save a Draft stores the version you can return to after a reload.',columns:['Version','Status','Actions'],rows:[['Current',workflowStatus(),String(actionCount())],...savedVersionRow()]}),
   Settings:() => ({summary:'Current settings for this workflow.',columns:['Setting','Value'],rows:[['Name','Automation Workflow'],['Status',workflowStatus()],['Favorite',$('#favorite').getAttribute('aria-pressed') === 'true' ? 'Yes' : 'No'],['Actions',String(actionCount())]]}),
-  Documentation:() => ({summary:'Select a node to edit its configuration.',columns:['Control','What it does'],rows:[['Add a Node','Opens the palette: drag an item onto the canvas, or click it to extend the selected branch'],['Drag a node','Moves it; its connections follow'],['Drag a port','Connects the node to another node'],['+','Extends the branch above it'],['Download','Exports the workflow as JSON'],['Upload','Imports a downloaded JSON file'],['Save a Draft','Keeps your changes after a reload, except palette nodes, moves and drawn connections'],['Discard Draft','Resets the workflow; Undo survives reload during the recovery interval'],['Activate','Sets configuration status; this static builder does not execute workflows'],['Help (?)','Includes a switch for higher contrast connections and fields']]})
+  Documentation:() => ({summary:'Select a node to edit its configuration.',columns:['Control','What it does'],rows:[['Add a Node','Opens the palette: drag an item onto the canvas, or click it to extend the selected branch'],['Drag a node','Moves it; its connections follow'],['Drag a port','Connects the node to another node'],['+','Extends the branch above it'],['Download','Exports the workflow as JSON'],['Upload','Imports a downloaded JSON file'],['Save a Draft','Keeps all nodes, positions and connections after a reload'],['Discard Draft','Reverts to the last saved workflow; Undo survives reload during the recovery interval'],['Activate','Sets configuration status; this static builder does not execute workflows'],['Help (?)','Includes a switch for higher contrast connections and fields']]})
  };
  const workspaceView = $('#workspace-view');
  let sectionOpener;
@@ -1349,7 +1350,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const node = makeNode(item ? item.type : 'empty');
   node.classList.add('added');
   const record = makeRecord(node,'action-' + nextId++,item ? item.type : 'empty',end.lane);
-  // Anything built on a session node is session work too, or a reload would strand it.
+  // Track additions consistently when extending a palette-created branch.
   record.session = !!item || end.session;
   if (end.pos) record.pos = {x:end.pos.x,y:end.pos.y + end.node.offsetHeight + 51};
   records.push(record); edges.push({from:end.id,to:record.id});
@@ -1369,19 +1370,13 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  $('#discard').addEventListener('click',event => {
   closeMenus();
   const snapshot = {
-   workflow:JSON.parse(JSON.stringify(workflowData())),saved:savedDraft(),
+   workflow:JSON.parse(JSON.stringify(workflowData())),
    help:$('#help').getAttribute('aria-expanded') === 'true',
    editorClosed:$('#editor').classList.contains('closing'),
    panelClosed:app.classList.contains('panel-closed')
   };
-  const previousPending = pendingDiscard;
   pendingDiscard = {version:1,snapshot,deadline:Date.now() + 8000};
-  try { persistDiscard(); }
-  catch {
-   pendingDiscard = previousPending;
-   notify('Discard could not be saved. Download the workflow to keep your changes.');
-   return;
-  }
+  persistDiscard();
   armDiscard();
   // Do not copy the discarded AI form back over the fresh initial record.
   resetFlow(); selectedId = '';
@@ -1389,7 +1384,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   $('#favorite').setAttribute('aria-pressed','false');
   setHelp(false); closeSection(false);
   $('#option').setAttribute('aria-pressed','false');
-  showEditor(false); selectNode(getRecord('agent')); trackLayout();
+  showEditor(false);
+  if (!restoreSavedWorkflow()) selectNode(getRecord('agent'));
+  trackLayout();
   $('#graph-scroll').scrollTop = 0; $('.panel-scroll').scrollTop = 0;
   // Keyboard activation reports detail 0; move focus so Undo is one key away.
   offerDiscardUndo(event.detail === 0);
@@ -1397,7 +1394,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  function undoDiscard() {
   if (!pendingDiscard) return;
   const {snapshot} = pendingDiscard;
-  restoreWorkflow(snapshot.workflow);
+  // An unreadable snapshot leaves the current workflow as it is, and Undo cannot succeed later.
+  try { restoreWorkflow(snapshot.workflow); }
+  catch { clearDiscard(); $('#discard').focus({preventScroll:true}); notify('Could not restore the discarded draft.'); return; }
   // The saved draft is still intact; recovery must not overwrite a newer save.
   clearDiscard();
   setHelp(snapshot.help);
@@ -1418,11 +1417,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  window.addEventListener('resize',placeFeedback);
  $('#save-draft').addEventListener('click',() => {
   captureAI();
-  const sessionOnly = records.some(record => record.session || record.pos) || edges.some(edge => edge.drawn);
-  try { localStorage.setItem(draftKey,JSON.stringify(withoutSessionWork(workflowData()))); }
+  // One serialization and one write, only when Save is pressed.
+  try { localStorage.setItem(draftKey,JSON.stringify(workflowData())); }
   catch { notify('Draft could not be saved. Download the workflow to keep your changes.'); return; }
   clearDiscard();
-  $('#save-draft').classList.add('saved'); notify(sessionOnly ? 'Draft saved. Palette nodes, moves and drawn connections reset on reload.' : 'Draft saved');
+  $('#save-draft').classList.add('saved'); notify('Draft saved');
   window.setTimeout(() => $('#save-draft').classList.remove('saved'),1000);
  });
  $('#option').addEventListener('click',() => {
@@ -1621,7 +1620,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
     const width = graph.clientWidth;
     const half = node.offsetWidth / 2;
     const x = clamp(drag.x - now.left - offsetX,half + 6,width - half - 6);
-    const y = clamp(drag.y - now.top - offsetY,6,canvasFloor() - node.offsetHeight - 6);
+    const y = clamp(drag.y - now.top - offsetY,nodeTopFloor(),canvasFloor() - node.offsetHeight - 6);
     record.pos = {x:x / width,y};
     placeNode(record);
     connectNodes();
@@ -1641,7 +1640,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const fromX = parseFloat(node.style.left) || node.offsetLeft;
   const fromY = parseFloat(node.style.top);
   const x = clamp(fromX + dx,half + 6,width - half - 6);
-  const y = clamp(fromY + dy,6,canvasFloor() - node.offsetHeight - 6);
+  const y = clamp(fromY + dy,nodeTopFloor(),canvasFloor() - node.offsetHeight - 6);
   const moved = x !== fromX || y !== fromY;
   if (moved) {
    // Edges follow in the same frame, as they do during a drag.
@@ -1708,7 +1707,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   if (reaches(to.id,from.id)) return 'That connection would create a loop';
   return '';
  }
- // Both input paths share validation and create the same session-only edge.
+ // Both input paths share validation and create the same drawn edge.
  function createConnection(from,to) {
   if (!from || !to) return;
   const problem = connectionProblem(from,to);
@@ -1837,7 +1836,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const box = graph.getBoundingClientRect();
   const half = node.offsetWidth / 2;
   const width = graph.clientWidth;
-  record.pos = {x:clamp(x - box.left,half + 6,width - half - 6) / width,y:clamp(y - box.top - node.offsetHeight / 2,6,canvasFloor() - node.offsetHeight - 6)};
+  record.pos = {x:clamp(x - box.left,half + 6,width - half - 6) / width,y:clamp(y - box.top - node.offsetHeight / 2,nodeTopFloor(),canvasFloor() - node.offsetHeight - 6)};
   layoutFlow(); selectNode(record); trackLayout();
   node.focus({preventScroll:true});
   notify(item.name + ' added');
@@ -1847,6 +1846,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   if (!button) return;
   const item = paletteItemOf(button.dataset.type);
   let ghost;
+  let droppable = false;
   trackDrag(event,button,{
    tap() { addNode(selectedId,item); },
    start() {
@@ -1866,12 +1866,14 @@ select:hover{background:#fcfaff;border-color:#9273b0}
     ghost.style.top = drag.y + 'px';
     ghost.classList.toggle('over-canvas',overDropSpace(drag.x,drag.y));
    },
-   end() {
+   end(drag) {
     ghost.remove();
     button.classList.remove('drag-source');
+    // Hit-test while the faded phone palette still yields its pixels to the canvas.
+    droppable = overDropSpace(drag.x,drag.y);
     palette.classList.remove('drag-through');
    },
-   drop(drag) { if (overDropSpace(drag.x,drag.y)) dropNode(item,drag.x,drag.y); }
+   drop(drag) { if (droppable) dropNode(item,drag.x,drag.y); }
   });
  });
  buildPalette();
@@ -1885,15 +1887,12 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   if (recovery?.version === 1 && recovery.snapshot?.workflow && Number.isFinite(recovery.deadline)) {
    pendingDiscard = recovery;
    if (recovery.deadline > Date.now()) offerDiscardUndo();
-   else clearDiscard(true);
+   else clearDiscard();
   } else if (recovery) localStorage.removeItem(discardKey);
-  // A pending discard reloads the reset canvas, with Undo for the remaining time.
-  if (!pendingDiscard) {
-   const saved = localStorage.getItem(draftKey);
-   if (saved) restoreWorkflow(JSON.parse(saved));
-  }
-  setTopologyContrast(localStorage.getItem(contrastKey) === 'true');
- } catch { notify('Saved draft could not be restored.'); }
+ } catch { /* Discard undo remains available in memory when storage is unavailable. */ }
+ // Always show the saved canvas, including while a discard can still be undone.
+ restoreSavedWorkflow();
+ try { setTopologyContrast(localStorage.getItem(contrastKey) === 'true'); } catch {}
  if (savedView) {
   setCodeSize(savedView.largeCode === true);
   if (savedView.editorClosed === true) hideEditor(); else showEditor(false);

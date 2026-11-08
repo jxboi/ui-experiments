@@ -154,6 +154,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
 .node{touch-action:none;-webkit-user-select:none;user-select:none;cursor:grab}
 .graph .node:focus-visible{z-index:999}
 .node.dragging{z-index:1002;cursor:grabbing}
+.graph .node.placement-corrected{transition:background-color var(--motion),border-color var(--motion),box-shadow var(--motion)}
 .graph.node-dragging .node.dragging,.graph.node-dragging .add-action,.graph.node-dragging .branch-label{transition:none}
 .node.wire-target,.node.wire-target:hover{border-color:var(--purple);background:#f3eef9;box-shadow:0 0 0 3px var(--selected-ring)}
 .graph.wiring,.graph.wiring .node{cursor:crosshair}
@@ -483,6 +484,136 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   record.node.style.left = Math.max(half + 6,Math.min(record.pos.x * width,width - half - 6)) + 'px';
   record.node.style.top = Math.max(nodeTopFloor(),record.pos.y) + 'px';
  }
+ // Rectangles use centre x / top y, matching the existing translated node cards.
+ const nodeGap = 8;
+ const nodesOverlap = (a,b) => Math.abs(a.x - b.x) < (a.w + b.w) / 2 + nodeGap && a.y < b.y + b.h + nodeGap && a.y + a.h + nodeGap > b.y;
+ function freeNodePosition(rect,others,bounds,upward = false) {
+  const lowX = rect.w / 2 + 6, highX = bounds.width - rect.w / 2 - 6;
+  const lowY = bounds.top, highY = bounds.bottom - rect.h - 6;
+  const origin = {...rect,x:clamp(rect.x,lowX,highX),y:clamp(rect.y,lowY,highY)};
+  const free = candidate => others.every(other => !nodesOverlap(candidate,other));
+  if (free(origin)) return origin;
+  // At a boundary, the nearest free rectangle lies on an obstacle edge or a clamp.
+  // Search their Cartesian product numerically; equal distances prefer down/right/left/up.
+  const xs = new Set([origin.x,lowX,highX]), ys = new Set([origin.y,lowY,highY]);
+  others.forEach(other => {
+   xs.add(clamp(other.x - (other.w + rect.w) / 2 - nodeGap,lowX,highX));
+   xs.add(clamp(other.x + (other.w + rect.w) / 2 + nodeGap,lowX,highX));
+   ys.add(clamp(other.y - rect.h - nodeGap,lowY,highY));
+   ys.add(clamp(other.y + other.h + nodeGap,lowY,highY));
+  });
+  const direction = candidate => candidate.y > origin.y ? 0 : candidate.x > origin.x ? 1 : candidate.x < origin.x ? 2 : 3;
+  const nearest = allowed => {
+   let best = null, distance = Infinity;
+   for (const x of xs) for (const y of ys) {
+    const candidate = {...origin,x,y};
+    const squared = (x - origin.x) ** 2 + (y - origin.y) ** 2;
+    if (allowed(candidate) && free(candidate) && (squared < distance || (squared === distance && (direction(candidate) < direction(best) || (direction(candidate) === direction(best) && (y < best.y || (y === best.y && x < best.x))))))) {
+     best = candidate; distance = squared;
+    }
+   }
+   return best;
+  };
+  // An Up key keeps travelling up, so a card can pass the one above it.
+  if (upward) {
+   const above = nearest(candidate => candidate.y <= origin.y);
+   if (above) return above;
+  }
+  // Prefer the minimum downward clearance, cascading past every card encountered.
+  let down = {...origin};
+  for (let i = 0; i < others.length; i++) {
+   const hits = others.filter(other => nodesOverlap(down,other));
+   if (!hits.length) return down;
+   down.y = Math.max(...hits.map(other => other.y + other.h + nodeGap));
+   if (down.y > highY) break;
+  }
+  if (down.y <= highY && free(down)) return down;
+  return nearest(() => true);
+ }
+ const sameNodeRect = (a,b) => a && a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
+ function landNode(record) {
+  record.node.classList.add('placement-corrected');
+  requestAnimationFrame(() => requestAnimationFrame(() => record.node.classList.remove('placement-corrected')));
+ }
+ // A card's own left can be mid-transition, so a hidden probe with no transition reads its lane's resting x.
+ const laneProbe = document.createElement('div');
+ laneProbe.className = 'node';
+ laneProbe.style.cssText = 'visibility:hidden;transition:none';
+ function laneX(lane) {
+  laneProbe.dataset.lane = lane;
+  graph.append(laneProbe);
+  const x = laneProbe.offsetLeft;
+  laneProbe.remove();
+  return x;
+ }
+ // The + sits 32px under its card, or clear below a card that already occupies that spot.
+ let plusDrop = 0;
+ function plusSpot(anchor,others) {
+  const spot = {x:anchor.x,y:anchor.y + anchor.h + 32,w:$('#add-action').offsetWidth,h:$('#add-action').offsetHeight};
+  for (let i = 0; i < others.length; i++) {
+   const hits = others.filter(other => nodesOverlap(spot,other));
+   if (!hits.length) break;
+   spot.y = Math.max(...hits.map(other => other.y + other.h + nodeGap));
+  }
+  return spot;
+ }
+ function settleNodes(placed,naturalBottom,upward,anchor) {
+  // Read dimensions once, before any correction writes. The search never reads layout.
+  const width = graph.clientWidth;
+  const heights = new Map(records.map(record => [record,record.node.offsetHeight]));
+  // A stored position was valid when it was placed: the canvas grows to it, it never clamps it.
+  const storedBottom = records.filter(record => record.pos).map(record => record.pos.y + heights.get(record) + 6);
+  const bounds = {width,top:nodeTopFloor(),bottom:Math.max(canvasFloor(),naturalBottom + 70,...storedBottom)};
+  const laneXs = {};
+  const requested = new Map(records.map(record => [record,{x:parseFloat(record.node.style.left) || (laneXs[record.lane] ??= laneX(record.lane)),y:parseFloat(record.node.style.top),w:record.node.offsetWidth,h:heights.get(record)}]));
+  const settled = [];
+  // Resolve the placed card last so all other cards keep their drawn positions.
+  const order = placed ? [...records.filter(record => record !== placed),placed] : records;
+  const placements = order.map(record => {
+   const request = requested.get(record);
+   const previous = record.drawnPlacement;
+   const desired = sameNodeRect(previous?.requested,request) ? previous.rect : request;
+   // The + is an obstacle for a card being placed, unless the + is that card's own.
+   const anchorRect = settled[order.indexOf(anchor)];
+   const obstacles = record === placed && record !== anchor ? [...settled,plusSpot(anchorRect,settled.filter(other => other !== anchorRect))] : settled;
+   const moving = upward && record === placed;
+   let rect = freeNodePosition(desired,obstacles,bounds,moving);
+   if (!rect) {
+    // A completely full graph needs more scrollable canvas, never a hidden/overlapping card.
+    bounds.bottom = Math.max(bounds.bottom,...obstacles.map(other => other.y + other.h + nodeGap)) + request.h + 6;
+    rect = freeNodePosition(desired,obstacles,bounds,moving);
+   }
+   settled.push(rect);
+   return {record,request,rect};
+  });
+  placements.forEach(({record,request,rect}) => {
+   const corrected = !sameNodeRect(request,rect);
+   if (corrected) {
+    // Land at the corrected position immediately; do not animate through another card.
+    landNode(record);
+   }
+   // A card with no stored position keeps its lane's percentage, so it follows every width change.
+   if (record.pos || corrected) record.node.style.left = rect.x + 'px';
+   record.node.style.top = rect.y + 'px';
+   record.drawnPlacement = {requested:request,rect};
+   if (record === placed && (record.pos || corrected)) {
+    record.pos = {x:rect.x / width,y:rect.y};
+    record.drawnPlacement.requested = {...rect};
+   }
+  });
+  const anchorRect = anchor.drawnPlacement.rect;
+  plusDrop = plusSpot(anchorRect,settled.filter(other => other !== anchorRect)).y - (anchorRect.y + anchorRect.h + 32);
+ }
+ function commitDrawnPositions() {
+  records.forEach(record => {
+   const placement = record.drawnPlacement;
+   // Only a correction changes what is stored, so Save after a reload writes the same position.
+   if (placement && !sameNodeRect(placement.requested,placement.rect)) {
+    record.pos = {x:placement.rect.x / graph.clientWidth,y:placement.rect.y};
+    placement.requested = {...placement.rect};
+   }
+  });
+ }
  // Topology is separate from the buttons: deleting a node can reconnect its neighbours.
  function resetFlow() {
   dropDeleteUndo();
@@ -502,24 +633,35 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   while (outgoing(record.id).length) record = getRecord(outgoing(record.id)[0].to);
   return record;
  }
- function layoutFlow() {
+ function layoutFlow(placed = null,upward = false) {
   const rowTops = [50,153,255,370];
   const depthOf = id => {
    const parent = edges.find(edge => edge.to === id && !edge.drawn) || edges.find(edge => edge.to === id);
    return parent ? depthOf(parent.from) + 1 : 0;
   };
+  const heights = new Map(records.map(record => [record,record.node.offsetHeight]));
+  let naturalBottom = 0;
   records.forEach(record => {
    const depth = depthOf(record.id);
-   record.node.style.top = (depth < rowTops.length ? rowTops[depth] : rowTops[3] + (depth - 3) * 104) + 'px';
+   const top = depth < rowTops.length ? rowTops[depth] : rowTops[3] + (depth - 3) * 104;
+   naturalBottom = Math.max(naturalBottom,top + heights.get(record));
+   record.node.style.top = top + 'px';
    if (record.pos) placeNode(record); else record.node.style.left = '';
+   // Preserve restore-only corrections on untouched cards while a move is in progress.
+   if ((activeDrag?.moved || nudgingRecord) && record !== nudgingRecord && !record.node.classList.contains('dragging') && record.drawnPlacement && !sameNodeRect(record.drawnPlacement.requested,record.drawnPlacement.rect)) {
+    const {rect} = record.drawnPlacement;
+    record.node.style.left = rect.x + 'px'; record.node.style.top = rect.y + 'px';
+   }
   });
-  const maxBottom = Math.max(...records.map(record => parseFloat(record.node.style.top) + record.node.offsetHeight));
-  graph.style.height = Math.max(492,maxBottom + 70) + 'px';
-  $('.canvas').classList.toggle('flow-expanded',maxBottom + 70 > 492);
+  // Pointer moves use placeNode directly; held arrow keys defer collision work until release.
   const anchor = terminalFrom(plusAnchor);
   plusAnchor = anchor.id;
+  if (!activeDrag?.moved && !nudgingRecord) settleNodes(placed,naturalBottom,upward,anchor);
+  const maxBottom = Math.max(...records.map(record => parseFloat(record.node.style.top) + record.node.offsetHeight),parseFloat(anchor.node.style.top) + anchor.node.offsetHeight + plusDrop);
+  graph.style.height = Math.max(492,maxBottom + 70) + 'px';
+  $('.canvas').classList.toggle('flow-expanded',maxBottom + 70 > 492);
   $('#add-action').style.left = anchor.node.offsetLeft + 'px';
-  $('#add-action').style.top = (anchor.node.offsetTop + anchor.node.offsetHeight + 32) + 'px';
+  $('#add-action').style.top = (anchor.node.offsetTop + anchor.node.offsetHeight + 32 + plusDrop) + 'px';
   // A label appears only where a path actually leaves the condition on that side.
   const branch = getRecord('condition');
   const laneOpen = lane => !!branch && outgoing(branch.id).some(edge => getRecord(edge.to).lane === lane);
@@ -621,20 +763,62 @@ select:hover{background:#fcfaff;border-color:#9273b0}
    const a = bounds(anchor);
    const add = $('#add-action');
    add.style.left = a.x + 'px';
-   add.style.top = (a.y+a.h+32) + 'px';
+   // A moving + stays with its card; it steps clear again when the move completes.
+   add.style.top = (a.y+a.h+32+(anchor.node.classList.contains('dragging') || anchor === nudgingRecord ? 0 : plusDrop)) + 'px';
    shape(svg,'path',{d:`M${a.x} ${a.y+a.h}V${add.offsetTop}`,class:'dashed'});
    dot(anchor,a.x,a.y+a.h,false);
   }
-  // Labels hold their measured lane spot until the branch moves, then ride its line.
+  // Labels hold their measured lane spot until the branch moves or a card takes it, then
+  // take the clear stretch of their line nearest its midpoint. Settled rectangles, not
+  // mid-transition ones, so a label does not hop while the cards glide into place.
+  const resting = record => record.drawnPlacement && record !== nudgingRecord && !record.node.classList.contains('dragging') ? record.drawnPlacement.rect : bounds(record);
+  const labelled = [];
   [['.branch-label.if','left'],['.branch-label.else','right']].forEach(([selector,lane]) => {
    const label = $(selector);
    const branch = getRecord('condition');
    const child = branch && outgoing(branch.id).map(edge => !edge.drawn && getRecord(edge.to)).find(item => item && item.lane === lane);
-   if (child && (branch.pos || child.pos)) {
-    const a = bounds(branch), b = bounds(child);
-    label.style.left = b.x + 'px';
-    label.style.top = ((a.y + a.h/2 + b.y) / 2 - 9) + 'px';
-   } else label.style.left = '';
+   if (!child || label.hidden) { label.style.left = ''; return; }
+   const a = resting(branch), b = resting(child);
+   const w = label.offsetWidth, h = label.offsetHeight;
+   const add = $('#add-action');
+   const plus = anchor && {x:resting(anchor).x,y:resting(anchor).y + resting(anchor).h + 32 + plusDrop,w:add.offsetWidth,h:add.offsetHeight};
+   const obstacles = [...records.map(resting),...(plus ? [plus] : []),...labelled];
+   // x and y are the label's centre x and top, as its own left and top are.
+   const clear = (x,y) => obstacles.every(other => Math.abs(x - other.x) >= (w + other.w) / 2 + 2 || y + h + 2 <= other.y || y >= other.y + other.h + 2);
+   let spot = null;
+   if (!branch.pos && !child.pos) {
+    label.style.left = '';
+    const home = {x:label.offsetLeft,y:a.y + 62};
+    if (clear(home.x,home.y)) spot = home;
+   }
+   if (!spot) {
+    const branching = outgoing(branch.id).length > 1;
+    const sy = a.y + a.h/2;
+    const turn = (a.y + a.h + b.y) / 2;
+    const wire = branching ? [[a.x + (b.x < a.x ? -a.w/2 : a.w/2),sy],[b.x,sy],[b.x,b.y]] : [[a.x,a.y + a.h],[a.x,turn],[b.x,turn],[b.x,b.y]];
+    const middle = {x:b.x,y:(sy + b.y) / 2 - 9};
+    let distance = Infinity;
+    const consider = (x,y) => {
+     const squared = (x - middle.x) ** 2 + (y - middle.y) ** 2;
+     if (squared < distance && clear(x,y)) { spot = {x,y}; distance = squared; }
+    };
+    if (branching) consider(middle.x,middle.y);
+    for (let i = 1; i < wire.length && distance; i++) {
+     const [x1,y1] = wire[i - 1], [x2,y2] = wire[i];
+     const steps = Math.ceil(Math.hypot(x2 - x1,y2 - y1) / 2);
+     for (let step = 0; step <= steps; step++) consider(x1 + (x2 - x1) * step / steps,y1 + (y2 - y1) * step / steps - h/2);
+    }
+    // No clear stretch at all (the cards are packed around it): stay as close beside the line as possible.
+    for (let reach = 4; !spot && reach <= 240; reach += 4) for (let turnIndex = 0; turnIndex < 16; turnIndex++) {
+     const angle = turnIndex * Math.PI / 8;
+     const x = middle.x + Math.cos(angle) * reach, y = middle.y + Math.sin(angle) * reach;
+     if (x >= w/2 && x <= graph.clientWidth - w/2 && y >= 0) consider(x,y);
+    }
+   }
+   if (!spot) return;
+   if (branch.pos || child.pos || spot.x !== label.offsetLeft) label.style.left = spot.x + 'px';
+   label.style.top = spot.y + 'px';
+   labelled.push({x:spot.x,y:spot.y,w,h});
   });
   syncPortHandles();
   placeFeedback();
@@ -1148,7 +1332,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   dropDeleteUndo();
   $$('.node').forEach(node => node.remove());
   records = restored; edges = data.edges.map(edge => ({...edge}));
-  records.forEach(record => graph.insertBefore(record.node,$('#add-action')));
+  records.forEach(record => {
+   // Saved cards land together instead of crossing other cards from their template positions.
+   landNode(record);
+   graph.insertBefore(record.node,$('#add-action'));
+  });
   selectedId = ''; plusAnchor = ids.has(data.plusAnchor) ? data.plusAnchor : (records.find(record => record.type === 'agent') || records[0]).id;
   nextId = Math.max(0,...records.map(record => Number(record.id.match(/^action-(\d+)$/)?.[1]) || 0)) + 1;
   setActive(!!data.active); $('#favorite').setAttribute('aria-pressed',String(!!data.favorite));
@@ -1319,7 +1507,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const box = scroller.getBoundingClientRect();
   const graphBox = graph.getBoundingClientRect();
   const top = graphBox.top - box.top + scroller.scrollTop + parseFloat(node.style.top);
-  const bottom = top + node.offsetHeight + (plusAnchor === record.id ? 32 + $('#add-action').offsetHeight : 0);
+  const bottom = top + node.offsetHeight + (plusAnchor === record.id ? 32 + plusDrop + $('#add-action').offsetHeight : 0);
   const left = graphBox.left - box.left + scroller.scrollLeft + node.offsetLeft - node.offsetWidth / 2;
   let targetTop = scroller.scrollTop, targetLeft = scroller.scrollLeft;
   if (bottom + 12 > targetTop + scroller.clientHeight) targetTop = bottom + 12 - scroller.clientHeight;
@@ -1356,7 +1544,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   records.push(record); edges.push({from:end.id,to:record.id});
   graph.insertBefore(node,$('#add-action'));
   if (end.id === plusAnchor) plusAnchor = record.id;
-  layoutFlow(); selectNode(record); trackLayout();
+  layoutFlow(record); selectNode(record); trackLayout();
   revealAddedNode(record);
   notify((item ? item.name : 'Action') + ' added');
  }
@@ -1416,6 +1604,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  window.addEventListener('scroll',placeFeedback,{passive:true,capture:true});
  window.addEventListener('resize',placeFeedback);
  $('#save-draft').addEventListener('click',() => {
+  finishNudge(); commitDrawnPositions();
   captureAI();
   // One serialization and one write, only when Save is pressed.
   try { localStorage.setItem(draftKey,JSON.stringify(workflowData())); }
@@ -1600,6 +1789,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  // A short graph sits inside a taller scroller; that empty canvas is still droppable.
  const canvasFloor = () => Math.max(graph.clientHeight,scroller.clientHeight);
  graph.addEventListener('pointerdown',event => {
+  finishNudge();
   const handle = event.target.closest('.port-handle');
   if (handle) { startWire(event,handle); return; }
   const node = event.target.closest('.node');
@@ -1626,18 +1816,29 @@ select:hover{background:#fcfaff;border-color:#9273b0}
     connectNodes();
    },
    end() { graph.classList.remove('node-dragging'); node.classList.remove('dragging'); },
-   drop() { selectNode(record); layoutFlow(); trackLayout(); node.focus({preventScroll:true}); },
+   drop() { selectNode(record); layoutFlow(record); trackLayout(); node.focus({preventScroll:true}); },
    cancel() { record.pos = previous; layoutFlow(); trackLayout(); }
   });
  }
  // Arrow keys take the same path as a pointer drop: same clamps, same session position.
  const nudgeSteps = {ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
  let nudgeTimer;
+ let nudgingRecord = null;
+ let nudgingUp = false;
+ function finishNudge() {
+  if (!nudgingRecord) return;
+  const record = nudgingRecord;
+  nudgingRecord = null;
+  layoutFlow(record,nudgingUp); trackLayout(); revealAddedNode(record);
+ }
  function nudgeNode(record,dx,dy) {
+  if (nudgingRecord && nudgingRecord !== record) finishNudge();
+  nudgingRecord = record;
+  nudgingUp = dy < 0;
   const {node} = record;
   const width = graph.clientWidth;
   const half = node.offsetWidth / 2;
-  const fromX = parseFloat(node.style.left) || node.offsetLeft;
+  const fromX = parseFloat(node.style.left) || laneX(record.lane);
   const fromY = parseFloat(node.style.top);
   const x = clamp(fromX + dx,half + 6,width - half - 6);
   const y = clamp(fromY + dy,nodeTopFloor(),canvasFloor() - node.offsetHeight - 6);
@@ -1653,7 +1854,11 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   }
   // One announcement per burst, so a held key does not flood the live region.
   clearTimeout(nudgeTimer);
-  nudgeTimer = window.setTimeout(() => notify(titles[record.type] + (moved ? ' moved to ' + Math.round(x) + ' across, ' + Math.round(y) + ' down' : ' is at the edge of the canvas')),200);
+  nudgeTimer = window.setTimeout(() => {
+   finishNudge();
+   const blocked = moved && parseFloat(node.style.left) === fromX && parseFloat(node.style.top) === fromY;
+   notify(titles[record.type] + (blocked ? ' has no free space that way' : moved ? ' moved to ' + Math.round(parseFloat(node.style.left)) + ' across, ' + Math.round(parseFloat(node.style.top)) + ' down' : ' is at the edge of the canvas'));
+  },200);
  }
  graph.addEventListener('keydown',event => {
   const step = nudgeSteps[event.key];
@@ -1666,6 +1871,9 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const size = event.shiftKey ? 10 : 1;
   nudgeNode(record,step[0] * size,step[1] * size);
  });
+ graph.addEventListener('keyup',event => { if (nudgeSteps[event.key]) finishNudge(); });
+ graph.addEventListener('focusout',finishNudge);
+ window.addEventListener('blur',finishNudge);
  // One handle per node sits on its bottom port. Handles are kept, never rebuilt,
  // because connectNodes runs during a wire drag and the handle holds the pointer.
  const handleLayer = $('.port-handles');
@@ -1837,7 +2045,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
   const half = node.offsetWidth / 2;
   const width = graph.clientWidth;
   record.pos = {x:clamp(x - box.left,half + 6,width - half - 6) / width,y:clamp(y - box.top - node.offsetHeight / 2,nodeTopFloor(),canvasFloor() - node.offsetHeight - 6)};
-  layoutFlow(); selectNode(record); trackLayout();
+  layoutFlow(record); selectNode(record); trackLayout();
   node.focus({preventScroll:true});
   notify(item.name + ' added');
  }
@@ -1903,7 +2111,7 @@ select:hover{background:#fcfaff;border-color:#9273b0}
  window.addEventListener('pagehide',() => {
   if (pendingDiscard && $('#feedback').contains(document.activeElement)) extendDiscardDeadline(8000);
  });
- const graphObserver = new ResizeObserver(() => { layoutFlow(); });
+ const graphObserver = new ResizeObserver(() => { layoutFlow(); trackLayout(); });
  graphObserver.observe(graph);
  // A narrower/shorter graph can hide the selection even without adding a node.
  // Debounce the coordinated editor/column transitions before measuring final bounds.

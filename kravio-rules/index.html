@@ -9,7 +9,7 @@
   :root{--ink:#202121;--muted:#68696b;--icon:#888b8d;--line:#e5e5e8;--surface:#f8f8f9;--hover:#efeff2;--focus:#686e77;--ease:cubic-bezier(.2,.8,.2,1)}
   *{box-sizing:border-box}
   html{background:#fff;scrollbar-color:#c4c5c8 #fff}
-  body{margin:0;background:#fff;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:1.4;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:#fff;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;letter-spacing:-.005em;font-size:20px;line-height:1.4;-webkit-font-smoothing:antialiased}
   button,input{font:inherit;color:inherit}
   button{cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
   button,input{outline:0}
@@ -22,6 +22,7 @@
   .row:hover{border-color:#d6d7da;background:#f6f6f7}
   .status-row{margin-bottom:16px;color:var(--muted);gap:12px}
   .status-row .lock{display:flex;align-items:center;justify-content:center;width:30px;flex-shrink:0;color:var(--icon)}
+  .status-row .lock svg{width:17px;height:17px}
   .status-row .picker{background:#fafafa;color:var(--muted);margin-left:0}
   .rule-list{position:relative;display:flex;flex-direction:column;gap:16px;min-width:0}
   .row-controls{display:flex;align-items:center;gap:6px;flex:1;min-width:0}
@@ -33,6 +34,7 @@
   .picker[aria-expanded="true"] svg{transform:rotate(180deg)}
   .text-field{width:113px;flex:0 1 113px}
   .join-word{color:var(--muted);width:26px;text-align:center;flex-shrink:0}
+  .pair{display:flex;align-items:center;gap:6px;flex:0 1 auto;min-width:0}
   .picker.seniority{min-width:144px}
   .picker.expense-type{min-width:186px}
   .picker.merchant{min-width:149px}
@@ -42,14 +44,15 @@
   .picker.branch-choice{color:var(--muted);background:#fafafa;min-width:117px}
   .icon-button{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:0 0 32px;padding:5px;border:1px solid transparent;border-radius:7px;background:transparent;color:var(--icon);transition:background .15s,color .15s,border-color .15s}
   .icon-button svg{width:22px;height:22px}
-  .grip{cursor:grab;touch-action:none;user-select:none;margin-right:4px}
-  .grip svg{width:14px;height:20px}
+  .grip{cursor:grab;touch-action:none;user-select:none;margin-right:4px;color:#6c7074}
+  .grip svg{width:22px;height:22px}
   .grip:hover{background:#e5e6e9;color:#4d5257}
   .trash{margin-left:6px}
   .trash:hover{background:#f7e7e6;color:#a33c33}
   .group{position:relative;border:1px solid var(--line);border-radius:24px;padding:19px 20px 20px;background:#fff;min-width:0;transition:border-color .2s,background .2s}
   .group:hover{border-color:#d5d6d9}
   .group-title{font-size:16px;line-height:24px;color:var(--muted);margin:0 0 21px;font-weight:400}
+  .group-name{color:#37393b;font-weight:500}
   .group>.rule-list{margin-left:42px}
   .group>.add-button{margin-top:22px}
   .add-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;box-shadow:0 1px 2px #20212107;padding:6px 15px;font-weight:500;line-height:30px;transition:background .15s,border-color .15s,transform .15s}
@@ -65,7 +68,7 @@
   .branch{margin:20px 0 16px;display:inline-flex;align-items:center;gap:3px;border:1px solid #deeadf;border-radius:16px;padding:1px 7px;min-height:28px;font-size:16px;line-height:24px;color:#34743c;background:#f3f9f3}
   .branch svg{width:15px;height:15px}
   .then-heading{margin-bottom:0}
-  .branch.false{margin-top:32px;border-color:#f0dedf;background:#fcf3f3;color:#a13d34}
+  .branch.false{margin-top:36px;border-color:#f0dedf;background:#fcf3f3;color:#a13d34}
   .then-section>.section-actions{margin-top:22px}
   .chip-field{display:flex;align-items:center;gap:5px;flex:1;min-width:100px;min-height:44px;padding:4px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:border-color .15s,background .15s}
   .chip-field:hover{border-color:#bfc3c8;background:#fdfdfe}
@@ -119,6 +122,7 @@
     .picker.seniority,.picker.expense-type,.picker.merchant,.picker.currency,.picker.operator,.picker.multi-operator,.picker.branch-choice{min-width:0}
     .text-field{width:110px;flex-basis:110px}
     .join-word{width:18px}
+    .pair{gap:3px}
     .status-row{align-items:center;flex-wrap:wrap;column-gap:6px;padding:7px 10px}
     .status-row .lock{width:24px}
     .status-row .picker{margin-left:30px}
@@ -149,7 +153,7 @@
 <body>
 <main aria-label="Expense rules builder">
   <section class="section" aria-labelledby="when-heading">
-    <h1 id="when-heading">WHEN</h1>
+    <h2 id="when-heading">WHEN</h2>
     <div id="status"></div>
     <div id="conditions" class="rule-list" data-kind="condition" aria-label="Conditions"></div>
     <div class="section-actions">
@@ -161,11 +165,15 @@
     <h2 id="then-heading" class="then-heading">THEN</h2>
     <div class="branch" id="true-label"></div>
     <div id="true-actions" class="rule-list" data-kind="action" aria-label="If true actions"></div>
+    <div class="section-actions">
+      <button class="add-button" type="button" data-add="rule" data-target="true-actions" aria-label="Add rule to If true"></button>
+      <button class="add-button" type="button" data-add="group" data-target="true-actions" aria-label="Add group to If true"></button>
+    </div>
     <div class="branch false" id="false-label"></div>
     <div id="false-actions" class="rule-list" data-kind="action" aria-label="If false actions"></div>
     <div class="section-actions">
-      <button class="add-button" type="button" data-add="rule" data-target="true-actions"></button>
-      <button class="add-button" type="button" data-add="group" data-target="true-actions"></button>
+      <button class="add-button" type="button" data-add="rule" data-target="false-actions" aria-label="Add rule to If false"></button>
+      <button class="add-button" type="button" data-add="group" data-target="false-actions" aria-label="Add group to If false"></button>
     </div>
   </section>
 </main>
@@ -179,7 +187,7 @@
     check:'<path d="m4 12 5 5L20 6"/>',
     trash:'<path d="M3 6h18M9 6V4h6v2M5 6l1 15h12l1-15M10 10v7M14 10v7"/>',
     lock:'<rect x="4" y="10" width="16" height="12" rx="3"/><path d="M8 10V6a4 4 0 0 1 8 0v4M12 14v3"/>',
-    grip:'<g fill="currentColor" stroke="none"><circle cx="8" cy="5" r="2"/><circle cx="16" cy="5" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></g>',
+    grip:'<g fill="currentColor" stroke="none"><circle cx="8.5" cy="5.5" r="2.3"/><circle cx="15.5" cy="5.5" r="2.3"/><circle cx="8.5" cy="12" r="2.3"/><circle cx="15.5" cy="12" r="2.3"/><circle cx="8.5" cy="18.5" r="2.3"/><circle cx="15.5" cy="18.5" r="2.3"/></g>',
     rule:'<path d="M6 3v12M18 6v4a8 8 0 0 1-8 8H9"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="4" r="3"/>',
     group:'<path d="M3 7V5a2 2 0 0 1 2-2h5l3 4M3 7h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/>',
     condition:'<path d="M3 3v14h11M3 7h11"/><circle cx="18" cy="7" r="3"/><circle cx="18" cy="17" r="3"/>'
@@ -192,9 +200,9 @@
   function announce(message){document.getElementById('announcer').textContent=message}
   function directItems(list){return Array.from(list.children).filter(n=>n.classList.contains('rule-item')&&!n.dataset.removing)}
   function select(value,options,label,classes='',changed){
-    const b=button('picker '+classes,label);b.append(el('span','',value));b.insertAdjacentHTML('beforeend',icon('chevron'));
+    const b=button('picker '+classes,label+': '+value);b.append(el('span','',value));b.insertAdjacentHTML('beforeend',icon('chevron'));
     b.setAttribute('aria-haspopup','listbox');b.setAttribute('aria-expanded','false');
-    configs.set(b,{options,value:()=>b.firstElementChild.textContent,choose(v){b.firstElementChild.textContent=v;if(changed)changed(v);announce(label+': '+v)}});
+    configs.set(b,{options,label,value:()=>b.firstElementChild.textContent,choose(v){b.firstElementChild.textContent=v;b.setAttribute('aria-label',label+': '+v);if(changed)changed(v);announce(label+': '+v)}});
     return b;
   }
   function closePicker(restore=false){
@@ -219,7 +227,7 @@
     if(pickerOwner===owner){closePicker();return}
     closePicker();const config=configs.get(owner);if(!config)return;
     pickerOwner=owner;panel=el('div','picker-panel');panel.id='value-picker';panel.setAttribute('role','listbox');
-    panel.setAttribute('aria-label',owner.getAttribute('aria-label')||'Choose a value');
+    panel.setAttribute('aria-label',config.label||owner.getAttribute('aria-label')||'Choose a value');
     owner.setAttribute('aria-expanded','true');owner.setAttribute('aria-controls',panel.id);
     let options=typeof config.options==='function'?config.options():config.options;
     if(!options.length)panel.append(el('div','picker-note','All available values are selected.'));
@@ -253,17 +261,17 @@
     configs.set(add,{options:()=>expenseTypes.filter(v=>!values.includes(v)),value:()=>'',choose(v){values.push(v);draw();announce(v+' added')}});
     field.addEventListener('click',event=>{if(!event.target.closest('button'))openPicker(add)});draw();return field;
   }
+  function pair(word,...nodes){const p=el('span','pair');p.append(el('span','join-word',word),...nodes);return p}
   function controlsForCondition(row,field,initial){
     const controls=row.querySelector('.row-controls');controls.replaceChildren();
     const fieldClass={'Seniority':'seniority','Expense type':'expense-type','Merchant':'merchant','Currency':'currency'}[field]||'';
     controls.append(select(field,fields,'Condition field',fieldClass,value=>controlsForCondition(row,value)));
-    controls.append(el('span','join-word','is'));
     if(field==='Expense type'){
-      controls.append(select('Any of',['Any of','None of','All of'],'Condition operator','multi-operator'),chips(initial||['Food & drink','Travel','Hotel']));
+      controls.append(pair('is',select('Any of',['Any of','None of','All of'],'Condition operator','multi-operator')),chips(initial||['Food & drink','Travel','Hotel']));
     }else if(field==='Merchant'){
-      controls.append(select(initial||'Uber',['Uber','Amazon','Airbnb','Lyft','Starbucks'],'Merchant'));
+      controls.append(pair('is',select(initial||'Uber',['Uber','Amazon','Airbnb','Lyft','Starbucks'],'Merchant')));
     }else{
-      controls.append(select(field==='Expense amount'?'Greater than':'Equal to',field==='Expense amount'?['Greater than','Less than','Equal to','Not equal to']:operators,'Condition operator','operator'));
+      controls.append(pair('is',select(field==='Expense amount'?'Greater than':'Equal to',field==='Expense amount'?['Greater than','Less than','Equal to','Not equal to']:operators,'Condition operator','operator')));
       if(field==='Seniority'||field==='Expense amount'){
         const input=el('input','text-field');input.type='text';input.value=initial||(field==='Seniority'?'Manager':'100');input.setAttribute('aria-label',field==='Seniority'?'Seniority value':'Expense amount');
         if(field==='Expense amount')input.inputMode='decimal';controls.append(input);
@@ -289,7 +297,7 @@
       else{
         const actionValue=v||(k==='If false'?'Assign manual review':'Auto-approve');
         controls.append(select(actionValue,['Auto-approve','Assign manual review','Reject','Request more information'],'Action','',next=>draw(k,next)));
-        if(actionValue==='Assign manual review')controls.append(el('span','join-word','to'),select('Line manager',['Line manager','Finance team','Department head','Expense owner'],'Reviewer'));
+        if(actionValue==='Assign manual review')controls.append(pair('to',select('Line manager',['Line manager','Finance team','Department head','Expense owner'],'Reviewer')));
       }
       scheduleGeometry();
     }
@@ -300,9 +308,9 @@
   }
   function addLogic(list,value='And'){
     if(list.querySelector(':scope > .connector'))return;
-    const line=el('div','connector'),toggle=button('logic');toggle.textContent=value;toggle.setAttribute('aria-label','Group logic: '+value+'. Toggle And / Or');
+    const line=el('div','connector'),toggle=button('logic');toggle.textContent=value;list.dataset.logic=value.toLowerCase();toggle.setAttribute('aria-label','Group logic: '+value+'. Toggle And / Or');
     toggle.addEventListener('click',()=>{
-      toggle.textContent=toggle.textContent==='And'?'Or':'And';toggle.setAttribute('aria-label','Group logic: '+toggle.textContent+'. Toggle And / Or');announce('Group logic changed to '+toggle.textContent);
+      toggle.textContent=toggle.textContent==='And'?'Or':'And';list.dataset.logic=toggle.textContent.toLowerCase();toggle.setAttribute('aria-label','Group logic: '+toggle.textContent+'. Toggle And / Or');announce('Group logic changed to '+toggle.textContent);
       if(!reduced.matches)toggle.animate([{background:'#e2e6e7'},{background:'#fff'}],{duration:240});
     });line.append(toggle);list.prepend(line);scheduleGeometry();
   }
@@ -317,15 +325,15 @@
   }
   function updateTitle(card){
     const list=card.querySelector(':scope > .rule-list'),count=directItems(list).length,word=list.dataset.kind==='action'?'action':'condition';
-    card.querySelector(':scope > .group-title').textContent='Group · '+count+' '+word+(count===1?'':'s');
+    card.querySelector(':scope > .group-title').replaceChildren(el('span','group-name','Group'),' · '+count+' '+word+(count===1?'':'s'));
   }
   function layoutConnectors(){
     geometryFrame=0;
     document.querySelectorAll('.rule-list').forEach(list=>{
       const items=directItems(list),line=list.querySelector(':scope > .connector');
       if(line){
-        line.hidden=!items.length;
-        if(items.length){const first=items[0],last=items[items.length-1];const top=first.offsetTop+first.offsetHeight/2;line.style.top=top+'px';line.style.height=Math.max(1,last.offsetTop+last.offsetHeight/2-top)+'px'}
+        line.hidden=items.length<2;
+        if(items.length>1){const first=items[0],last=items[items.length-1];const top=first.offsetTop+first.offsetHeight/2;line.style.top=top+'px';line.style.height=Math.max(1,last.offsetTop+last.offsetHeight/2-top)+'px'}
       }
       if(list.parentElement.classList.contains('group'))updateTitle(list.parentElement);
     });
@@ -340,7 +348,7 @@
   }
   function removeRow(row){
     const list=row.parentElement;if(row.dataset.removing)return;
-    closePicker();row.dataset.removing='true';const next=row.nextElementSibling?.querySelector('button')||row.previousElementSibling?.querySelector('button')||list.parentElement.querySelector('.add-button');
+    closePicker();row.dataset.removing='true';const next=row.nextElementSibling?.querySelector('button')||row.previousElementSibling?.querySelector('button')||document.querySelector('.add-button[data-target="'+list.id+'"]');
     const height=row.offsetHeight;
     row.style.overflow='hidden';
     const anim=row.animate([{height:height+'px',minHeight:height+'px',opacity:1,marginBottom:'0px'},{height:'0px',minHeight:'0px',opacity:0,paddingTop:'0px',paddingBottom:'0px',borderTopWidth:'0px',borderBottomWidth:'0px',marginBottom:'-16px'}],{duration:reduced.matches?0:200,easing:'cubic-bezier(.2,.8,.2,1)',fill:'forwards'});
@@ -353,7 +361,7 @@
   const conditions=document.getElementById('conditions'),truth=document.getElementById('true-actions'),fallback=document.getElementById('false-actions');
   conditions.append(condition('Seniority','Manager'),group('condition',true));addLogic(conditions,'And');
   truth.append(action('If true','Auto-approve'),action('Notify','The contractor'),action('Add to','Monthly expense report'));addLogic(truth,'And');
-  fallback.append(action('If false','Assign manual review'));
+  fallback.append(action('If false','Assign manual review'));addLogic(fallback);
   ['true','false'].forEach(branch=>{document.getElementById(branch+'-label').innerHTML=icon('check')+'<span>If '+branch+'</span>'});
   document.querySelectorAll('.section-actions>.add-button').forEach(b=>{const type=b.dataset.add;b.innerHTML=icon(type)+'<span>Add '+type+'</span>'});
   document.querySelectorAll('.rule-list').forEach(observeList);
@@ -365,7 +373,7 @@
     if(add){
       const list=document.getElementById(add.dataset.target),kind=list.dataset.kind;
       insertItem(list,add.dataset.add==='group'?group(kind):kind==='condition'?condition():action('Notify'));
-      if(list===fallback&&!list.querySelector(':scope>.connector'))addLogic(list);return;
+      return;
     }
     if(panel&&!panel.contains(event.target))closePicker();
   });

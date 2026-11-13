@@ -318,7 +318,7 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
  function render(animate) {
   const tokens = norm(input.value).split(' ').filter(Boolean);
   const has = (fields, token) => fields.some(field => field.includes(token));
-  let projectCount = 0, versionCount = 0, versionFiltered = false;
+  let projectCount = 0, versionCount = 0, allMatched = true;
   for (const project of projects) {
    const projectMatch = tokens.every(token => has(project.fields, token));
    const hits = project.versions.map(version => tokens.length > 0
@@ -328,7 +328,6 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
    const visible = (selected === 'All' || selected === project.group) && (projectMatch || hitCount > 0);
    // Only version-level matches force the project open; a project matched by name/description keeps its default state.
    const forced = visible && hitCount > 0 && !projectMatch && project.versions.length > 1;
-   if (visible && !projectMatch && hitCount > 0) versionFiltered = true;
    project.versions.forEach((version, i) => { version.el.hidden = forced && !hits[i]; });
    if (project.button) {
     const isOpen = forced || open.has(project.index);
@@ -338,13 +337,17 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
     project.button.setAttribute('aria-expanded', String(isOpen));
     project.label.textContent = isOpen ? 'Show fewer' : `Show all ${project.versions.length} versions`;
     if (forced) project.note.textContent = `Showing ${hitCount} of ${project.versions.length} versions`;
-    project.availability.hidden = !visible || !projectMatch || isOpen;
+    project.availability.hidden = !visible || !projectMatch || isOpen || (!tokens.length && selected === 'All');
     if (!project.availability.hidden) project.availability.textContent = `${project.versions.length} available · 1 shown`;
    }
    if (animate && visible && !project.shown) fade(project.el, 220);
    project.shown = visible; project.el.hidden = !visible;
    cells[project.index].classList.toggle('on', visible);
-   if (visible) { projectCount++; versionCount += project.versions.length ? (forced ? hitCount : project.versions.length) : 1; }
+   if (visible) {
+    const counted = project.versions.length ? (forced ? hitCount : project.versions.length) : 1;
+    projectCount++; versionCount += counted;
+    if (hitCount !== counted) allMatched = false;
+   }
   }
   for (const group of groups) {
    const n = projects.filter(project => project.group === group.name && project.shown).length;
@@ -355,7 +358,7 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
   }
   jump.forEach(link => { link.hidden = !groups.find(group => group.name === link.dataset.group).shown; });
   const versionKind = !tokens.length && selected === 'All' ? ''
-   : versionFiltered || (tokens.length && projectCount === 0) ? 'matching ' : 'available ';
+   : allMatched || (tokens.length && projectCount === 0) ? 'matching ' : 'available ';
   const readoutMarkup = `<span class="m"><span class="n">${projectCount}</span> of ${projects.length} projects</span><span class="sep">, </span><span class="m"><span class="n">${versionCount}</span> of ${totalVersions} ${versionKind}versions</span>`;
   // Disclosure changes do not change either count or repeat the live announcement.
   if (readout.innerHTML !== readoutMarkup) readout.innerHTML = readoutMarkup;

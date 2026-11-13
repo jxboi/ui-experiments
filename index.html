@@ -1,255 +1,112 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light" />
-    <link rel="icon" href="data:," />
-    <title>UI Experiments</title>
-    <style>
-      * { box-sizing: border-box; }
-      html, body { margin: 0; padding: 0; }
-      body {
-        background: #ededed;
-        color: #1a1a1a;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        min-height: 100vh;
-      }
-      .wrap {
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 64px 24px 80px;
-      }
-      h1 {
-        margin: 0 0 8px;
-        font-size: 32px;
-        line-height: 1.15;
-        font-weight: 650;
-        letter-spacing: -0.02em;
-        color: #111;
-      }
-      .cards {
-        margin-top: 32px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
-      }
-      .card {
-        display: block;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 24px;
-        text-decoration: none;
-        color: inherit;
-      }
-      .card:hover {
-        border-color: #c4c4c4;
-      }
-      .card:focus-visible {
-        outline: 2px solid #111;
-        outline-offset: 2px;
-      }
-      .card h2 {
-        margin: 0;
-        font-size: 18px;
-        line-height: 1.3;
-        font-weight: 600;
-        color: #111;
-        letter-spacing: -0.01em;
-      }
-      .card p {
-        margin: 10px 0 0;
-        font-size: 15px;
-        line-height: 1.55;
-        color: #555;
-      }
-      .card .arrow {
-        display: inline-block;
-        margin-top: 20px;
-        font-size: 18px;
-        line-height: 1;
-        color: #888;
-      }
-      .versions {
-        list-style: none;
-        margin: 20px 0 0;
-        padding: 0;
-      }
-      .versions li {
-        border-top: 1px solid #ddd;
-      }
-      .version-link {
-        display: block;
-        padding: 16px 0;
-        color: inherit;
-        text-decoration: none;
-      }
-      .version-link:hover .version-label {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
-      .version-link:focus-visible {
-        outline: 2px solid #111;
-        outline-offset: 2px;
-      }
-      .version-label {
-        font-size: 15px;
-        line-height: 1.4;
-        font-weight: 600;
-        color: #111;
-      }
-      .version-description, .version-score {
-        display: block;
-        margin-top: 6px;
-        font-size: 14px;
-        line-height: 1.5;
-        color: #555;
-      }
-      @media (max-width: 640px) {
-        .wrap { padding: 40px 16px 56px; }
-        h1 { font-size: 28px; }
-        .cards {
-          grid-template-columns: 1fr;
-          margin-top: 24px;
-        }
-        .card { padding: 20px; }
-      }
-    </style>
-  </head>
-  <body>
-    <main class="wrap">
-      <h1>UI Experiments</h1>
-      <div class="cards">
-        <a class="card" href="./interactive-sidebar/">
-          <h2>Interactive Sidebar</h2>
-          <p>A sidebar component with four states — collapsed dark rail, collapsed light rail, expanded menu, and a search-focused state — with live search.</p>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <section class="card" aria-labelledby="flowai-heading">
-          <h2 id="flowai-heading">FlowAI Team Members</h2>
-          <p>A team members management page with a workspace sidebar, member statistics, and a searchable members table.</p>
-          <ul class="versions">
-            <li>
-              <a class="version-link" href="./flowai-team-members/">
-                <span class="version-label">First version (one-shot)</span>
-                <span class="version-description">The original one-shot team members page.</span>
-                <span class="version-score">Opus score 7.0/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter1/">
-                <span class="version-label">Iteration 1 — Visual system and layout</span>
-                <span class="version-description">Refinements to the visual system and page layout.</span>
-                <span class="version-score">Opus score 7.4/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter2/">
-                <span class="version-label">Iteration 2 — Responsive and sidebar density</span>
-                <span class="version-description">Phone drawer, all four Workflow Runs visible, and lighter type.</span>
-                <span class="version-score">Opus score 8.0/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter3/">
-                <span class="version-label">Iteration 3 — Member portraits</span>
-                <span class="version-description">Generated illustrated portraits for all 11 members, embedded as data URIs, replacing the initials stand-ins.</span>
-                <span class="version-score">Opus score 8.3/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter4/">
-                <span class="version-label">Iteration 4 — Type, surfaces, spacing, icons</span>
-                <span class="version-description">Taller top bar, larger subtitle, borderless stat cards, and a multicolour flame.</span>
-                <span class="version-score">Opus score 8.3/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter6/">
-                <span class="version-label">Iteration 6 — Visual details</span>
-                <span class="version-description">Lighter member names, enlarged sidebar icons, outline-free usage card, and a softer subtitle.</span>
-                <span class="version-score">Opus score 8.4/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter7/">
-                <span class="version-label">Iteration 7 — Sidebar foot and vertical rhythm</span>
-                <span class="version-description">Taller usage card, softer H1, wider All Roles filter, green badge, and a taller Upgrade button.</span>
-                <span class="version-score">Opus score 8.5/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter8/">
-                <span class="version-label">Iteration 8 — Sidebar fits at short heights</span>
-                <span class="version-description">Full sidebar fits at 1440x900, tighter 32px nav pitch, larger subtitle, and 44px phone search and filters.</span>
-                <span class="version-score">Opus score 8.7/10</span>
-              </a>
-            </li>
-            <li>
-              <a class="version-link" href="./flowai-team-members-iter9/">
-                <span class="version-label">Iteration 9 — First-view fit at 1440x900</span>
-                <span class="version-description">Six table rows visible at 1440x900, compact stat panel, lighter sidebar and top bar, and stat cards capped at 361px.</span>
-                <span class="version-score">Opus score 8.7/10</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section class="card" aria-labelledby="kravio-heading">
-          <h2 id="kravio-heading">Kravio Dashboard</h2>
-          <p>A customer-support dashboard with ticket statistics, a 14-bar volume chart, and a tickets table with filters and search.</p>
-          <ul class="versions">
-            <li>
-              <a class="version-link" href="./kravio-dashboard/">
-                <span class="version-label">Iteration 28 — Chart tooltip pin cleanup</span>
-                <span class="version-description">Pinned bar shows a visible ring, hover still responds while pinned, arrow keys move the pin, Enter toggles it, and Escape unpins only when the chart is focused.</span>
-                <span class="version-score">Opus score 9.2/10</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section class="card" aria-labelledby="workflow-heading">
-          <h2 id="workflow-heading">Automation Workflow</h2>
-          <p>An automation workflow builder with a node canvas, a code editor overlay, and a per-node configuration panel.</p>
-          <ul class="versions">
-            <li>
-              <a class="version-link" href="./automation-workflow/">
-                <span class="version-label">Iteration 6 — Workflow Edits: connectors, palette and drags</span>
-                <span class="version-description">Email, GitHub and Agent connectors in a slide-over palette, with mouse and touch drags to place nodes, move them and draw edges. Every category is at least 9.0.</span>
-                <span class="version-score">Codex score 9.63/10</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section class="card" aria-labelledby="fable-heading">
-          <h2 id="fable-heading">Fable Bill Split</h2>
-          <p>All 31 components from the Fable 5.2 bill-splitting demo — December calendar, Send to Leo, the 4/4 paid-back ring, tip slider, request timer, chat and more — as one working bento page.</p>
-          <ul class="versions">
-            <li>
-              <a class="version-link" href="./fable-bill-split/">
-                <span class="version-label">Iteration 5 — Target met, every category at least 9.0</span>
-                <span class="version-description">Send now flashes an in-card confirmation, avatar initials clear 4.5:1, the auto-tip switch uses the reference's pale green, and the ring and date grid sit exactly on the reference.</span>
-                <span class="version-score">Opus score 9.5/10</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section class="card" aria-labelledby="kravio-rules-heading">
-          <h2 id="kravio-rules-heading">Kravio Rules</h2>
-          <p>An expense-approval rule builder with WHEN/THEN conditions, nested And/Or groups, and If true / If false actions.</p>
-          <ul class="versions">
-            <li>
-              <a class="version-link" href="./kravio-rules/">
-                <span class="version-label">Iteration 2 — Target met, every category at least 9.0</span>
-                <span class="version-description">Nested condition groups, rule rows with field, operator and value, and separate action lists for the true and false branches.</span>
-                <span class="version-score">Codex score 9.4/10</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </main>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Jia’s collection of UI experiments. Explore components, dashboards and workflow builders, one iteration at a time.">
+<link rel="icon" href="data:,">
+<title>UI Experiments</title>
+<style>
+:root{--paper:#f7f7f0;--surface:#fffefa;--ink:#203e35;--body:#48584f;--muted:#626b60;--line:#d9ded1;--green:#285548;--wash:#e9eee2;--gold:#e4c776;--ease:cubic-bezier(.2,.8,.2,1);font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none;view-transition-name:none;scrollbar-gutter:stable}
+*{box-sizing:border-box}body{margin:0;-webkit-font-smoothing:antialiased}button,input{font:inherit}button,a,input{-webkit-tap-highlight-color:transparent}button,a{touch-action:manipulation}button{cursor:pointer}a{color:inherit}button,input,a{outline:none}::selection{background:#d7e4c9;color:#203e35}[hidden]{display:none!important}.shell{max-width:1232px;margin:0 auto;padding:0 48px}.masthead{display:flex;align-items:center;justify-content:space-between;padding-top:30px;padding-bottom:27px;border-bottom:1px solid var(--line);font-size:13px;letter-spacing:.02em}.brand{display:flex;align-items:center;gap:11px;font-weight:600}.brand-mark{width:24px;height:24px;color:var(--green)}.masthead-note{color:var(--muted)}.hero{display:grid;grid-template-columns:1.25fr 1fr;align-items:end;gap:48px;padding:53px 0 39px}h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(42px,5.3vw,74px);line-height:1.08;letter-spacing:-.04em;font-weight:400;margin:0}.intro{font-size:16px;line-height:1.7;max-width:350px;margin:0 0 3px auto;color:var(--body)}.toolbar{padding:24px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}.search-label{display:block;font-size:12px;font-weight:700;margin-bottom:10px;letter-spacing:.02em}.search-box{position:relative;display:flex;align-items:center}.search-icon{position:absolute;left:16px;width:20px;height:20px;pointer-events:none;color:var(--muted)}#search{width:100%;min-width:0;height:50px;padding:0 88px 0 46px;border:1px solid #b4bdae;border-radius:7px;color:var(--ink);background:var(--surface);font-size:15px;caret-color:var(--green);transition:border-color 180ms,background 180ms}#search::placeholder{color:var(--muted);opacity:1}#search:hover{border-color:var(--green);background:#fafbf5}#search:focus{border-color:var(--green);outline:1px solid var(--green);outline-offset:-1px}.shortcut{position:absolute;right:16px;display:grid;place-items:center;width:24px;height:26px;border:1px solid var(--line);border-radius:4px;font:13px Arial;color:var(--muted);pointer-events:none}.clear-input{position:absolute;right:9px;display:grid;place-items:center;width:34px;height:34px;padding:7px;border:1px solid transparent;border-radius:5px;color:var(--body);background:transparent;transition:background 180ms,border-color 180ms}.clear-input svg{width:18px;height:18px}.clear-input:hover{background:var(--wash);color:var(--ink)}.clear-input:focus-visible{border-color:var(--green)}.filter-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px}.filters{display:flex;flex-wrap:wrap;gap:7px}.chip{padding:9px 15px;min-height:38px;border:1px solid transparent;border-radius:6px;background:transparent;color:var(--body);font-size:13px;line-height:18px;transition:background 180ms,color 180ms,border-color 180ms}.chip:hover{background:var(--wash);color:var(--ink)}.chip[aria-pressed="true"]{background:var(--green);color:#fffefa}.chip[aria-pressed="true"]:hover{background:#1c4236}.chip:focus-visible{border-color:var(--ink);outline:1px solid var(--ink);outline-offset:-1px}.chip[aria-pressed="true"]:focus-visible{border-color:var(--gold);outline-color:var(--gold)}.result-count{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;margin:0}.directory{view-transition-name:directory;padding-top:46px;min-height:250px}.group+.group{margin-top:48px}.group-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:18px}.group-heading>div{display:flex;align-items:baseline;gap:20px}h2{font-size:19px;font-weight:600;letter-spacing:-.02em;margin:0}.group-heading p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.group-count{font-size:12px;color:var(--muted);white-space:nowrap}.projects{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:clip}.project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.65fr);gap:48px;padding:28px 30px;min-width:0}.project+.project{border-top:1px solid var(--line)}.project-overview{min-width:0}.project-meta{display:flex;align-items:center;gap:9px;margin-bottom:14px;color:var(--muted);font-size:11px;letter-spacing:.025em}.project-icon{width:21px;height:21px;color:var(--green)}h3{font-size:21px;font-weight:500;line-height:1.3;letter-spacing:-.025em;margin:0 0 10px}.project-description{font-size:14px;line-height:1.75;color:var(--body);margin:0;max-width:42ch}.versions{margin:-12px 0;padding:0;list-style:none;min-width:0}.version+.version{border-top:1px solid var(--line)}.version-link{display:block;text-decoration:none;padding:17px 12px;border:1px solid transparent;border-radius:6px;margin:0 -12px;transition:background 180ms,border-color 180ms}.version-link:hover{background:#f0f3e9}.version-link:focus-visible{border-color:var(--green);background:#f0f3e9}.version-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}.version-label{font-size:14px;font-weight:600;line-height:1.5}.arrow{width:20px;height:20px;flex-shrink:0;color:var(--green);transition:transform 180ms var(--ease)}.version-link:hover .arrow,.direct-link:hover .arrow{transform:translateX(3px)}.version-description{display:block;color:var(--body);font-size:13px;line-height:1.7;margin-top:6px;max-width:70ch}.version-score{display:inline-block;font-size:11px;line-height:1.6;font-variant-numeric:tabular-nums;color:#36543e;background:var(--wash);border-radius:4px;padding:3px 7px;margin-top:11px}.direct-link{text-decoration:none;transition:background 180ms,box-shadow 180ms}.direct-link:hover{background:#f0f3e9}.direct-link:focus-visible{box-shadow:inset 0 0 0 1px var(--green)}.direct-action{display:flex;align-items:center;justify-content:flex-end;gap:19px;font-size:13px;color:var(--green);align-self:center}.empty{text-align:center;padding:65px 20px 75px}.empty-icon{width:32px;height:32px;margin-bottom:17px;color:var(--green)}.empty h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.4;overflow-wrap:anywhere}.empty p{font-size:14px;color:var(--body);line-height:1.7}.reset{margin-top:9px;background:var(--green);color:var(--surface);padding:11px 19px;border:1px solid transparent;border-radius:6px;min-height:42px;transition:background 180ms,border-color 180ms}.reset:hover{background:#1b4236}.reset:focus-visible{border-color:var(--gold);outline:1px solid var(--gold);outline-offset:-1px}footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:24px 0 30px;margin-top:55px;font-size:12px;color:var(--muted)}.footer-signature{color:var(--ink)}::view-transition{pointer-events:none}::view-transition-group(directory){animation-duration:180ms;animation-timing-function:var(--ease)}::view-transition-old(directory){animation:fade-out 150ms ease-out both}::view-transition-new(directory){animation:fade-in 200ms var(--ease) both}@keyframes fade-out{to{opacity:0;transform:translateY(-3px)}}@keyframes fade-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1100px){.hero{min-height:203px}}@media(max-width:850px){.shell{padding:0 32px}.hero{grid-template-columns:1fr 1fr;gap:25px;padding:40px 0 32px}h1{font-size:52px}.intro{font-size:14px}.project{gap:28px;padding:24px;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}.group-heading>div{display:block}.group-heading p{margin-top:6px}.project-description{font-size:13px}h3{font-size:20px}.filter-row{align-items:flex-start;flex-direction:column;gap:14px}.result-count{padding-left:3px}.directory{padding-top:36px}}
+@media(max-width:680px){.hero{display:block}.intro{margin:17px 0 0;max-width:42ch}}
+@media(max-width:540px){.shell{padding:0 20px}.masthead{padding-top:22px;padding-bottom:21px;font-size:12px}.masthead-note{font-size:11px}.hero{display:block;padding:33px 0 26px}h1{font-size:46px}.intro{margin:17px 0 0;max-width:36ch;font-size:14px}.toolbar{padding:17px}.search-label{font-size:12px}#search{font-size:14px;height:48px;padding-left:40px;padding-right:48px}.search-icon{left:13px;width:18px}.shortcut{right:12px}.filter-row{margin-top:14px}.filters{gap:5px}.chip{padding:8px 10px;font-size:12px;min-height:36px}.directory{padding-top:30px}.group-heading{margin-bottom:15px;gap:12px}.group-heading p{font-size:12px;max-width:24ch}.group-count{font-size:11px}h2{font-size:18px}.project{display:block;padding:22px}.project-meta{margin-bottom:12px}.project-description{font-size:14px}.versions{margin:22px 0 -9px;padding-top:2px;border-top:1px solid var(--line)}.version-link{padding-top:17px;padding-bottom:17px}.version-label{font-size:13px}.version-description{font-size:12px}.version-top{gap:15px}.version-score{font-size:11px}.direct-action{justify-content:space-between;margin-top:24px;padding-top:19px;border-top:1px solid var(--line)}.group+.group{margin-top:32px}footer{margin-top:36px;flex-direction:column;gap:9px;line-height:1.6}.empty{padding:45px 0}.empty h2{font-size:24px}}
+@media(max-width:350px){.shell{padding:0 16px}h1{font-size:40px}.toolbar{padding:14px}.chip{padding:7px 8px}.filters{gap:3px}.project{padding:20px}.masthead-note{max-width:100px;text-align:right;line-height:1.5}.brand{gap:7px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important;scroll-behavior:auto!important}::view-transition-group(directory),::view-transition-old(directory),::view-transition-new(directory){animation:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+<div class="masthead"><div class="brand"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><path d="M13 17h8m-4-4v8"/></svg><span>Jia’s playground</span></div><span class="masthead-note">Interfaces, one iteration at a time.</span></div>
+<div class="hero"><h1>UI Experiments</h1><p class="intro">A collection of interfaces and the details that make them work. Explore a project. Follow its iterations.</p></div>
+</header>
+<main>
+<div class="toolbar" role="search" aria-label="Experiment directory">
+<label class="search-label" for="search">Search</label>
+<div class="search-box"><svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="search" type="text" aria-label="Search experiments" aria-controls="directory" aria-keyshortcuts="/" placeholder="Search experiments" autocomplete="off" spellcheck="false"><kbd class="shortcut" aria-hidden="true">/</kbd><button class="clear-input" type="button" aria-label="Clear search" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+<div class="filter-row"><div class="filters" role="group" aria-label="Filter by group"><button class="chip" type="button" data-filter="All" aria-pressed="true" aria-controls="directory">All</button><button class="chip" type="button" data-filter="Components" aria-pressed="false" aria-controls="directory">Components</button><button class="chip" type="button" data-filter="Dashboards" aria-pressed="false" aria-controls="directory">Dashboards</button><button class="chip" type="button" data-filter="Builders" aria-pressed="false" aria-controls="directory">Builders</button></div><p class="result-count" role="status" aria-live="polite" aria-atomic="true">6 projects, 14 versions</p></div>
+</div>
+<div class="directory" id="directory">
+<section class="group" data-group="Components" aria-labelledby="group-0"><div class="group-heading"><div><h2 id="group-0">Components</h2><p>Small interactions. Complete experiences.</p></div><span class="group-count">2 projects</span></div><div class="projects"><a class="project direct-link" href="./interactive-sidebar/"><div class="project-overview"><div class="project-meta"><svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M10 4v16M4 9h6"/></svg><span>1 version</span></div><h3 id="project-0">Interactive Sidebar</h3><p class="project-description">A sidebar component with four states — collapsed dark rail, collapsed light rail, expanded menu, and a search-focused state — with live search.</p></div><div class="direct-action"><span>Explore experiment</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a><article class="project" aria-labelledby="project-4"><div class="project-overview"><div class="project-meta"><svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="10" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><rect x="3" y="16" width="8" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/></svg><span>1 version</span></div><h3 id="project-4">Fable Bill Split</h3><p class="project-description">All 31 components from the Fable 5.2 bill-splitting demo — December calendar, Send to Leo, the 4/4 paid-back ring, tip slider, request timer, chat and more — as one working bento page.</p></div><ul class="versions"><li class="version"><a class="version-link" href="./fable-bill-split/"><span class="version-top"><span class="version-label">Iteration 5 — Target met, every category at least 9.0</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Send now flashes an in-card confirmation, avatar initials clear 4.5:1, the auto-tip switch uses the reference&#x27;s pale green, and the ring and date grid sit exactly on the reference.</span><span class="version-score">Opus score 9.5/10</span></a></li></ul></article></div></section><section class="group" data-group="Dashboards" aria-labelledby="group-1"><div class="group-heading"><div><h2 id="group-1">Dashboards</h2><p>Information, organised for everyday work.</p></div><span class="group-count">2 projects</span></div><div class="projects"><article class="project" aria-labelledby="project-1"><div class="project-overview"><div class="project-meta"><svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg><span>9 versions</span></div><h3 id="project-1">FlowAI Team Members</h3><p class="project-description">A team members management page with a workspace sidebar, member statistics, and a searchable members table.</p></div><ul class="versions"><li class="version"><a class="version-link" href="./flowai-team-members/"><span class="version-top"><span class="version-label">First version (one-shot)</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">The original one-shot team members page.</span><span class="version-score">Opus score 7.0/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter1/"><span class="version-top"><span class="version-label">Iteration 1 — Visual system and layout</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Refinements to the visual system and page layout.</span><span class="version-score">Opus score 7.4/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter2/"><span class="version-top"><span class="version-label">Iteration 2 — Responsive and sidebar density</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Phone drawer, all four Workflow Runs visible, and lighter type.</span><span class="version-score">Opus score 8.0/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter3/"><span class="version-top"><span class="version-label">Iteration 3 — Member portraits</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Generated illustrated portraits for all 11 members, embedded as data URIs, replacing the initials stand-ins.</span><span class="version-score">Opus score 8.3/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter4/"><span class="version-top"><span class="version-label">Iteration 4 — Type, surfaces, spacing, icons</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Taller top bar, larger subtitle, borderless stat cards, and a multicolour flame.</span><span class="version-score">Opus score 8.3/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter6/"><span class="version-top"><span class="version-label">Iteration 6 — Visual details</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Lighter member names, enlarged sidebar icons, outline-free usage card, and a softer subtitle.</span><span class="version-score">Opus score 8.4/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter7/"><span class="version-top"><span class="version-label">Iteration 7 — Sidebar foot and vertical rhythm</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Taller usage card, softer H1, wider All Roles filter, green badge, and a taller Upgrade button.</span><span class="version-score">Opus score 8.5/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter8/"><span class="version-top"><span class="version-label">Iteration 8 — Sidebar fits at short heights</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Full sidebar fits at 1440x900, tighter 32px nav pitch, larger subtitle, and 44px phone search and filters.</span><span class="version-score">Opus score 8.7/10</span></a></li><li class="version"><a class="version-link" href="./flowai-team-members-iter9/"><span class="version-top"><span class="version-label">Iteration 9 — First-view fit at 1440x900</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Six table rows visible at 1440x900, compact stat panel, lighter sidebar and top bar, and stat cards capped at 361px.</span><span class="version-score">Opus score 8.7/10</span></a></li></ul></article><article class="project" aria-labelledby="project-2"><div class="project-overview"><div class="project-meta"><svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 18v-5m7 5V6m7 12V9"/></svg><span>1 version</span></div><h3 id="project-2">Kravio Dashboard</h3><p class="project-description">A customer-support dashboard with ticket statistics, a 14-bar volume chart, and a tickets table with filters and search.</p></div><ul class="versions"><li class="version"><a class="version-link" href="./kravio-dashboard/"><span class="version-top"><span class="version-label">Iteration 28 — Chart tooltip pin cleanup</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Pinned bar shows a visible ring, hover still responds while pinned, arrow keys move the pin, Enter toggles it, and Escape unpins only when the chart is focused.</span><span class="version-score">Opus score 9.2/10</span></a></li></ul></article></div></section><section class="group" data-group="Builders" aria-labelledby="group-2"><div class="group-heading"><div><h2 id="group-2">Builders</h2><p>Tools for connecting actions and logic.</p></div><span class="group-count">2 projects</span></div><div class="projects"><article class="project" aria-labelledby="project-3"><div class="project-overview"><div class="project-meta"><svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h6a3 3 0 013 3v6M6 9v6a3 3 0 003 3h6"/></svg><span>1 version</span></div><h3 id="project-3">Automation Workflow</h3><p class="project-description">An automation workflow builder with a node canvas, a code editor overlay, and a per-node configuration panel.</p></div><ul class="versions"><li class="version"><a class="version-link" href="./automation-workflow/"><span class="version-top"><span class="version-label">Iteration 6 — Workflow Edits: connectors, palette and drags</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Email, GitHub and Agent connectors in a slide-over palette, with mouse and touch drags to place nodes, move them and draw edges. Every category is at least 9.0.</span><span class="version-score">Codex score 9.63/10</span></a></li></ul></article><article class="project" aria-labelledby="project-5"><div class="project-overview"><div class="project-meta"><svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6m0 0H6v7m6-7h6v7"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/></svg><span>1 version</span></div><h3 id="project-5">Kravio Rules</h3><p class="project-description">An expense-approval rule builder with WHEN/THEN conditions, nested And/Or groups, and If true / If false actions.</p></div><ul class="versions"><li class="version"><a class="version-link" href="./kravio-rules/"><span class="version-top"><span class="version-label">Iteration 2 — Target met, every category at least 9.0</span><svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="version-description">Nested condition groups, rule rows with field, operator and value, and separate action lists for the true and false branches.</span><span class="version-score">Codex score 9.4/10</span></a></li></ul></article></div></section><section class="empty" aria-labelledby="empty-title" hidden><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5M8 10.5h5"/></svg><h2 id="empty-title"></h2><p>Try a different term, or start again with all experiments.</p><button class="reset" type="button">Clear search</button></section>
+</div>
+</main>
+<footer><span class="footer-signature">Made with curiosity, by Jia.</span><span>Six projects. Many small decisions.</span></footer>
+</div>
+<script>
+(() => {
+ 'use strict';
+ const input = document.querySelector('#search');
+ const clear = document.querySelector('.clear-input');
+ const shortcut = document.querySelector('.shortcut');
+ const chips = [...document.querySelectorAll('.chip')];
+ const groups = [...document.querySelectorAll('.group')];
+ const count = document.querySelector('.result-count');
+ const empty = document.querySelector('.empty');
+ const emptyTitle = document.querySelector('#empty-title');
+ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+ const normalise = text => text.toLocaleLowerCase().replace(/\s+/g, ' ').trim();
+ const projects = [...document.querySelectorAll('.project')].map(element => ({
+  element,
+  group: element.closest('.group').dataset.group,
+  name: normalise(element.querySelector('h3').textContent),
+  description: normalise(element.querySelector('.project-description').textContent),
+  versions: [...element.querySelectorAll('.version')].map(element => ({element, text: normalise(element.textContent)}))
+ }));
+ let selected = 'All';
+ let transition;
+ let revision = 0;
+ function render() {
+  const query = normalise(input.value);
+  let projectCount = 0, versionCount = 0;
+  for (const project of projects) {
+   const matchesProject = !query || project.name.includes(query) || project.description.includes(query);
+   let matchingVersions = 0;
+   for (const version of project.versions) {
+    const match = matchesProject || version.text.includes(query);
+    version.element.hidden = !match;
+    if (match) matchingVersions++;
+   }
+   const visible = (selected === 'All' || selected === project.group) && (matchesProject || matchingVersions > 0);
+   project.element.hidden = !visible;
+   if (visible) { projectCount++; versionCount += project.versions.length ? matchingVersions : 1; }
+  }
+  for (const group of groups) {
+   const visible = projects.filter(project => project.group === group.dataset.group && !project.element.hidden).length;
+   group.hidden = visible === 0;
+   group.querySelector('.group-count').textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
+  }
+  count.textContent = `${projectCount} ${projectCount === 1 ? 'project' : 'projects'}, ${versionCount} ${versionCount === 1 ? 'version' : 'versions'}`;
+  empty.hidden = projectCount !== 0;
+  emptyTitle.textContent = `No experiments match '${input.value.trim()}'`;
+ }
+ function update() {
+  const current = ++revision;
+  clear.hidden = !input.value;
+  shortcut.hidden = !!input.value;
+  chips.forEach(chip => chip.setAttribute('aria-pressed', String(chip.dataset.filter === selected)));
+  if (transition) transition.skipTransition();
+  if (document.startViewTransition && !reducedMotion.matches) {
+   transition = document.startViewTransition(() => { if (current === revision) render(); });
+   transition.finished.catch(() => {});
+  } else {
+   render();
+   if (!reducedMotion.matches) document.querySelector('.directory').animate([{opacity:.65,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}], {duration:180,easing:'ease-out'});
+  }
+ }
+ function reset() { input.value = ''; selected = 'All'; update(); input.focus({preventScroll:true}); }
+ input.addEventListener('input', update);
+ input.addEventListener('keydown', event => { if (event.key === 'Escape') {event.preventDefault(); reset();} });
+ clear.addEventListener('click', reset);
+ document.querySelector('.reset').addEventListener('click', reset);
+ chips.forEach(chip => chip.addEventListener('click', () => { selected = chip.dataset.filter; update(); }));
+ document.addEventListener('keydown', event => {
+  if (event.key !== '/' || event.ctrlKey || event.metaKey || event.altKey || event.target.closest('input,textarea,select,[contenteditable]')) return;
+  event.preventDefault(); input.focus();
+ });
+})();
+</script>
+</body>
 </html>

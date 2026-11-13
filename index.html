@@ -86,9 +86,6 @@ label.kicker{margin-bottom:8px}
 .readout .n{font:700 38px/1 var(--mono);letter-spacing:-.03em;color:var(--accent);font-variant-numeric:tabular-nums}
 .readout .m{white-space:nowrap}
 .readout .sep{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-.gauge{display:flex;gap:4px}
-.gauge i{flex:1;height:10px;background:rgba(236,238,239,.2);transition:background-color 220ms var(--ease)}
-.gauge i.on{background:var(--accent)}
 .bench-f{grid-column:1/-1;border-top:2px solid var(--ink);padding:14px 22px;display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap}
 .bench-f .kicker{margin:0}
 .filters{display:flex;flex-wrap:wrap;gap:8px}
@@ -181,7 +178,6 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
  .bench{grid-template-columns:minmax(0,1fr)}
  .bench-r{flex-direction:row;flex-wrap:wrap;align-items:center}
  .bench-r>div:first-child{flex:1 1 280px}
- .bench-r .gauge{flex:1 1 200px}
  .to-search{display:none}
 }
 @media (max-width:760px){
@@ -254,7 +250,6 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
 <div class="bench-r">
 <div><span class="kicker">Readout</span>
 <p class="readout" role="status" aria-live="polite" aria-atomic="true"></p></div>
-<div class="gauge" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
 </div>
 <div class="bench-f">
 <span class="kicker" id="filter-label">Series</span>
@@ -291,7 +286,6 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
  const chips = [...document.querySelectorAll('.chip')];
  const groups = [...document.querySelectorAll('.group')].map(el => ({el, name: el.dataset.group, count: $('.group-count', el), shown: true}));
  const jump = [...document.querySelectorAll('.jump a')];
- const cells = [...document.querySelectorAll('.gauge i')];
  const readout = $('.readout'), empty = $('.empty'), emptyTitle = $('#empty-title'), emptyText = $('.empty-text');
  const searchAll = $('.search-all'), resetBtn = $('.reset'), bar = $('.bar');
  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -341,7 +335,6 @@ footer{margin-top:20px;border-top:2px solid var(--ink)}
    }
    if (animate && visible && !project.shown) fade(project.el, 220);
    project.shown = visible; project.el.hidden = !visible;
-   cells[project.index].classList.toggle('on', visible);
    if (visible) {
     const counted = project.versions.length ? (forced ? hitCount : project.versions.length) : 1;
     projectCount++; versionCount += counted;
